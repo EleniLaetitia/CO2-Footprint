@@ -63,14 +63,38 @@
         .controls label, .controls select, .controls input {
             margin-right: 10px;
         }
+        .language-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        .nav-left {
+            text-align: left;
+        }
+        .nav-right {
+            text-align: right;
+        }
+        .rtl {
+            direction: rtl;
+        }
     </style>
 </head>
 <body>
 
+    <!-- Button für Sprachauswahl -->
+    <div class="language-btn">
+        <label for="language">Sprache wählen:</label>
+        <select id="language" onchange="changeLanguage()">
+            <option value="de">Deutsch</option>
+            <option value="en">Englisch</option>
+            <option value="he">Hebräisch</option>
+        </select>
+    </div>
+
     <!-- Header mit Navigation -->
     <header>
-        <h1>CO2-Footprint</h1>
-        <nav>
+        <h1 id="title">CO2-Footprint</h1>
+        <nav id="nav-menu" class="nav-left">
             <ul>
                 <li><a href="#">Startseite</a></li>
                 <li><a href="#">Über uns</a></li>
@@ -81,8 +105,10 @@
 
     <!-- Hauptbereich mit Filter- und Suchfunktion -->
     <main>
-        <h2>Willkommen auf unserer CO2-Footprint Website</h2>
-        <p>Hier können Sie sehen, welche Unternehmen und Länder jährlich wie viel CO2 emittieren. Unsere Arbeit soll für mehr Transparenz sorgen.</p>
+        <h2 id="welcome-text">Willkommen auf unserer CO2-Footprint Website</h2>
+        <p id="description">
+            Hier können Sie sehen, welche Unternehmen und Länder jährlich wie viel CO2 emittieren. Unsere Arbeit soll für mehr Transparenz sorgen.
+        </p>
         
         <!-- Filter- und Suchoptionen -->
         <div class="controls">
@@ -136,6 +162,44 @@
     </footer>
 
     <script>
+        function changeLanguage() {
+            var language = document.getElementById("language").value;
+            var navMenu = document.getElementById("nav-menu");
+            var title = document.getElementById("title");
+            var welcomeText = document.getElementById("welcome-text");
+            var description = document.getElementById("description");
+            var body = document.body;
+
+            if (language === "de") {
+                navMenu.classList.remove("nav-right");
+                navMenu.classList.add("nav-left");
+                body.classList.remove("rtl");
+
+                // Texte auf Deutsch setzen
+                title.innerHTML = "CO2-Footprint";
+                welcomeText.innerHTML = "Willkommen auf unserer CO2-Footprint Website";
+                description.innerHTML = "Hier können Sie sehen, welche Unternehmen und Länder jährlich wie viel CO2 emittieren. Unsere Arbeit soll für mehr Transparenz sorgen.";
+            } else if (language === "en") {
+                navMenu.classList.remove("nav-left");
+                navMenu.classList.add("nav-right");
+                body.classList.remove("rtl");
+
+                // Texte auf Englisch setzen
+                title.innerHTML = "CO2 Footprint";
+                welcomeText.innerHTML = "Welcome to our CO2 Footprint Website";
+                description.innerHTML = "Here you can see which companies and countries emit how much CO2 annually. Our work aims to provide more transparency.";
+            } else if (language === "he") {
+                navMenu.classList.remove("nav-left");
+                navMenu.classList.add("nav-right");
+                body.classList.add("rtl");
+
+                // Texte auf Hebräisch setzen
+                title.innerHTML = "טביעת רגל פחמנית";
+                welcomeText.innerHTML = "ברוכים הבאים לאתר טביעת הרגל הפחמנית שלנו";
+                description.innerHTML = "כאן תוכלו לראות אילו חברות ומדינות פולטות כמה פחמן דו חמצני בכל שנה. העבודה שלנו נועדה להבטיח שקיפות רבה יותר.";
+            }
+        }
+
         function sortTable(n, dir) {
             var table, rows, switching, i, x, y, shouldSwitch, switchcount = 0;
             table = document.getElementById("emissions-table");
@@ -201,20 +265,20 @@
         }
 
         function searchTable() {
-            var input, filter, table, rows, td, i, j, txtValue;
+            var input, filter, table, tr, td, i, j, txtValue;
             input = document.getElementById("search");
             filter = input.value.toLowerCase();
             table = document.getElementById("emissions-table");
-            rows = table.getElementsByTagName("tr");
+            tr = table.getElementsByTagName("tr");
 
-            for (i = 1; i < rows.length; i++) {
-                rows[i].style.display = "none";
-                td = rows[i].getElementsByTagName("td");
+            for (i = 1; i < tr.length; i++) {
+                tr[i].style.display = "none";
+                td = tr[i].getElementsByTagName("td");
                 for (j = 0; j < td.length; j++) {
                     if (td[j]) {
                         txtValue = td[j].textContent || td[j].innerText;
                         if (txtValue.toLowerCase().indexOf(filter) > -1) {
-                            rows[i].style.display = "";
+                            tr[i].style.display = "";
                             break;
                         }
                     }
@@ -225,3 +289,4 @@
 
 </body>
 </html>
+
