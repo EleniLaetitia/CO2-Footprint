@@ -19,10 +19,17 @@ header {
     color: white;
     padding: 1rem;
     text-align: center;
+    position: relative;
 }
 
 header h1 {
     margin-bottom: 0.5rem;
+}
+
+.language-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
 }
 
 nav ul {
@@ -62,6 +69,17 @@ th {
     background-color: #f4f4f4;
 }
 
+.controls {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.controls label, .controls select, .controls input {
+    margin-right: 1rem;
+}
+
 footer {
     background-color: #333;
     color: white;
@@ -72,8 +90,23 @@ footer {
     width: 100%;
 }
 
+/* Dynamische Ausrichtung des Menüs */
+.nav-left {
+    text-align: left;
+}
+
+.nav-right {
+    text-align: right;
+}
+
+/* Für rechts-nach-links Sprachen wie Hebräisch */
+.rtl {
+    direction: rtl;
+}
+
 @media (max-width: 768px) {
     nav ul {
         flex-direction: column;
+        align-items: center;
     }
 }
