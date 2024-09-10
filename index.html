@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CO2-Footprint</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header mit Navigation -->
+    <header>
+        <h1>CO2-Footprint</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Startseite</a></li>
+                <li><a href="#">Über uns</a></li>
+                <li><a href="#">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hauptbereich mit Tabelle -->
+    <main>
+        <h2>CO2-Emissionen nach Land und Unternehmen</h2>
+        <table id="emissions-table">
+            <thead>
+                <tr>
+                    <th onclick="sortTable(0)">Land</th>
+                    <th onclick="sortTable(1)">Unternehmen</th>
+                    <th onclick="sortTable(2)">CO2-Ausstoß (Tonnen)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Deutschland</td>
+                    <td>BMW</td>
+                    <td>1.200.000</td>
+                </tr>
+                <tr>
+                    <td>USA</td>
+                    <td>Apple</td>
+                    <td>900.000</td>
+                </tr>
+                <tr>
+                    <td>China</td>
+                    <td>Alibaba</td>
+                    <td>1.800.000</td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+
+    <!-- Footer mit rechtlichen Hinweisen -->
+    <footer>
+        <p>&copy; 2024 CO2-Footprint. Alle Rechte vorbehalten. Impressum und Datenschutz</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
