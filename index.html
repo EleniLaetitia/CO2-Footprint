@@ -3,137 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CO2-Footprint</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #333;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-        nav ul li {
-            display: inline;
-            margin-right: 15px;
-        }
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-        }
-        main {
-            padding: 20px;
-            min-height: 400px;
-        }
-        footer {
-            background-color: #f1f1f1;
-            color: #333;
-            text-align: center;
-            padding: 10px 0;
-            position: relative;
-            bottom: 0;
-            width: 100%;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        table, th, td {
-            border: 1px solid black;
-        }
-        th, td {
-            padding: 10px;
-            text-align: left;
-        }
-        th {
-            cursor: pointer;
-        }
-        .controls {
-            margin-bottom: 20px;
-        }
-        .controls label, .controls select, .controls input {
-            margin-right: 10px;
-        }
-        .language-btn {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-        }
-        .nav-left {
-            text-align: left;
-        }
-        .nav-right {
-            text-align: right;
-        }
-        .rtl {
-            direction: rtl;
-        }
-    </style>
+    <title id="page-title">CO2-Footprint</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-
-    <!-- Button für Sprachauswahl -->
-    <div class="language-btn">
-        <label for="language">Sprache wählen:</label>
-        <select id="language" onchange="changeLanguage()">
-            <option value="de">Deutsch</option>
-            <option value="en">Englisch</option>
-            <option value="he">Hebräisch</option>
-        </select>
-    </div>
-
+<body class="ltr">
     <!-- Header mit Navigation -->
     <header>
         <h1 id="title">CO2-Footprint</h1>
         <nav id="nav-menu" class="nav-left">
             <ul>
-                <li><a href="#">Startseite</a></li>
-                <li><a href="#">Über uns</a></li>
-                <li><a href="#">Kontakt</a></li>
+                <li><a href="#" id="nav-home">Startseite</a></li>
+                <li><a href="#" id="nav-about">Über uns</a></li>
+                <li><a href="#" id="nav-contact">Kontakt</a></li>
             </ul>
         </nav>
+        <div class="language-btn">
+            <label for="language">Sprache:</label>
+            <select id="language" onchange="changeLanguage()">
+                <option value="de">Deutsch</option>
+                <option value="en">Englisch</option>
+                <option value="he">Hebräisch</option>
+            </select>
+        </div>
     </header>
 
-    <!-- Hauptbereich mit Filter- und Suchfunktion -->
+    <!-- Hauptbereich mit Willkommenstext und Tabelle -->
     <main>
         <h2 id="welcome-text">Willkommen auf unserer CO2-Footprint Website</h2>
-        <p id="description">
-            Hier können Sie sehen, welche Unternehmen und Länder jährlich wie viel CO2 emittieren. Unsere Arbeit soll für mehr Transparenz sorgen.
-        </p>
-        
-        <!-- Filter- und Suchoptionen -->
+        <p id="description">Hier können Sie sehen, welche Unternehmen und Länder jährlich wie viel CO2 emittieren. Unsere Arbeit soll für mehr Transparenz sorgen.</p>
+
+        <!-- Tabelle mit Daten -->
         <div class="controls">
-            <label for="filter">Sortieren nach:</label>
+            <label for="filter">Filter:</label>
             <select id="filter" onchange="applyFilter()">
-                <option value="none">Bitte wählen...</option>
-                <option value="country-asc">Land alphabetisch A-Z</option>
-                <option value="country-desc">Land alphabetisch Z-A</option>
-                <option value="company-asc">Unternehmen alphabetisch A-Z</option>
-                <option value="company-desc">Unternehmen alphabetisch Z-A</option>
+                <option value="country-asc">Land A-Z</option>
+                <option value="country-desc">Land Z-A</option>
+                <option value="company-asc">Unternehmen A-Z</option>
+                <option value="company-desc">Unternehmen Z-A</option>
                 <option value="co2-asc">CO2-Ausstoß aufsteigend</option>
                 <option value="co2-desc">CO2-Ausstoß absteigend</option>
             </select>
-            <label for="search">Suche:</label>
-            <input type="text" id="search" onkeyup="searchTable()" placeholder="Nach Land oder Unternehmen suchen...">
+
+            <input type="text" id="search" onkeyup="searchTable()" placeholder="Suchen...">
         </div>
 
-        <!-- Tabelle mit CO2-Emissionen -->
-        <h3>CO2-Emissionen nach Land und Unternehmen</h3>
         <table id="emissions-table">
             <thead>
                 <tr>
-                    <th>Land</th>
-                    <th>Unternehmen</th>
-                    <th>CO2-Ausstoß (Tonnen)</th>
+                    <th onclick="sortTable(0)" id="table-country">Land</th>
+                    <th onclick="sortTable(1)" id="table-company">Unternehmen</th>
+                    <th onclick="sortTable(2)" id="table-co2">CO2-Ausstoß (Tonnen)</th>
                 </tr>
             </thead>
             <tbody>
@@ -158,135 +77,9 @@
 
     <!-- Footer mit rechtlichen Hinweisen -->
     <footer>
-        <p>&copy; 2024 CO2-Footprint. Alle Rechte vorbehalten. <a href="#">Impressum</a> | <a href="#">Datenschutz</a></p>
+        <p id="footer-text">&copy; 2024 CO2-Footprint. Alle Rechte vorbehalten. Impressum und Datenschutz</p>
     </footer>
 
-    <script>
-        function changeLanguage() {
-            var language = document.getElementById("language").value;
-            var navMenu = document.getElementById("nav-menu");
-            var title = document.getElementById("title");
-            var welcomeText = document.getElementById("welcome-text");
-            var description = document.getElementById("description");
-            var body = document.body;
-
-            if (language === "de") {
-                navMenu.classList.remove("nav-right");
-                navMenu.classList.add("nav-left");
-                body.classList.remove("rtl");
-
-                // Texte auf Deutsch setzen
-                title.innerHTML = "CO2-Footprint";
-                welcomeText.innerHTML = "Willkommen auf unserer CO2-Footprint Website";
-                description.innerHTML = "Hier können Sie sehen, welche Unternehmen und Länder jährlich wie viel CO2 emittieren. Unsere Arbeit soll für mehr Transparenz sorgen.";
-            } else if (language === "en") {
-                navMenu.classList.remove("nav-left");
-                navMenu.classList.add("nav-right");
-                body.classList.remove("rtl");
-
-                // Texte auf Englisch setzen
-                title.innerHTML = "CO2 Footprint";
-                welcomeText.innerHTML = "Welcome to our CO2 Footprint Website";
-                description.innerHTML = "Here you can see which companies and countries emit how much CO2 annually. Our work aims to provide more transparency.";
-            } else if (language === "he") {
-                navMenu.classList.remove("nav-left");
-                navMenu.classList.add("nav-right");
-                body.classList.add("rtl");
-
-                // Texte auf Hebräisch setzen
-                title.innerHTML = "טביעת רגל פחמנית";
-                welcomeText.innerHTML = "ברוכים הבאים לאתר טביעת הרגל הפחמנית שלנו";
-                description.innerHTML = "כאן תוכלו לראות אילו חברות ומדינות פולטות כמה פחמן דו חמצני בכל שנה. העבודה שלנו נועדה להבטיח שקיפות רבה יותר.";
-            }
-        }
-
-        function sortTable(n, dir) {
-            var table, rows, switching, i, x, y, shouldSwitch, switchcount = 0;
-            table = document.getElementById("emissions-table");
-            switching = true;
-            dir = dir || "asc"; // Default sort direction is ascending
-
-            while (switching) {
-                switching = false;
-                rows = table.rows;
-                for (i = 1; i < (rows.length - 1); i++) {
-                    shouldSwitch = false;
-                    x = rows[i].getElementsByTagName("TD")[n];
-                    y = rows[i + 1].getElementsByTagName("TD")[n];
-                    if (dir == "asc") {
-                        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-                            shouldSwitch = true;
-                            break;
-                        }
-                    } else if (dir == "desc") {
-                        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-                            shouldSwitch = true;
-                            break;
-                        }
-                    }
-                }
-                if (shouldSwitch) {
-                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-                    switching = true;
-                    switchcount++;
-                } else {
-                    if (switchcount == 0 && dir == "asc") {
-                        dir = "desc";
-                        switching = true;
-                    }
-                }
-            }
-        }
-
-        function applyFilter() {
-            var filter = document.getElementById("filter").value;
-            switch (filter) {
-                case "country-asc":
-                    sortTable(0, "asc");
-                    break;
-                case "country-desc":
-                    sortTable(0, "desc");
-                    break;
-                case "company-asc":
-                    sortTable(1, "asc");
-                    break;
-                case "company-desc":
-                    sortTable(1, "desc");
-                    break;
-                case "co2-asc":
-                    sortTable(2, "asc");
-                    break;
-                case "co2-desc":
-                    sortTable(2, "desc");
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        function searchTable() {
-            var input, filter, table, tr, td, i, j, txtValue;
-            input = document.getElementById("search");
-            filter = input.value.toLowerCase();
-            table = document.getElementById("emissions-table");
-            tr = table.getElementsByTagName("tr");
-
-            for (i = 1; i < tr.length; i++) {
-                tr[i].style.display = "none";
-                td = tr[i].getElementsByTagName("td");
-                for (j = 0; j < td.length; j++) {
-                    if (td[j]) {
-                        txtValue = td[j].textContent || td[j].innerText;
-                        if (txtValue.toLowerCase().indexOf(filter) > -1) {
-                            tr[i].style.display = "";
-                            break;
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-
+    <script src="script.js"></script>
 </body>
 </html>
-
