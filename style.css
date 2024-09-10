@@ -102,6 +102,12 @@ footer {
 /* Für rechts-nach-links Sprachen wie Hebräisch */
 .rtl {
     direction: rtl;
+    text-align: right;
+}
+
+.ltr {
+    direction: ltr;
+    text-align: left;
 }
 
 @media (max-width: 768px) {
