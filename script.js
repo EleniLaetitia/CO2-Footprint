@@ -78,7 +78,7 @@ function changeLanguage() {
 // Funktion zum Sortieren der Tabelle nach Spalten
 function sortTable(n) {
     const table = document.getElementById("emissions-table");
-    let rows = Array.from(table.rows).slice(1);
+    const rows = Array.from(table.rows).slice(1);
     let asc = true;
 
     rows.sort((row1, row2) => {
