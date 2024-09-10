@@ -75,11 +75,17 @@ th {
     margin-bottom: 1rem;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    align-items: center;
 }
 
-.controls label, .controls select, .controls input {
+.filter-group {
+    display: flex;
+    align-items: center;
     margin-right: 1rem;
+}
+
+.filter-group label {
+    margin-right: 0.5rem;
 }
 
 footer {
