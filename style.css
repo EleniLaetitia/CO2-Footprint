@@ -147,7 +147,7 @@ footer {
     width: 100%;
 }
 
-/* RTL Support for Arabic and Hebrew */
+/* RTL Support for Hebrew */
 body[dir="rtl"] {
     text-align: right;
 }
