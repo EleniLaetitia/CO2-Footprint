@@ -7,24 +7,23 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Header mit Logo, Überschrift und Sprachauswahl -->
+    <!-- Header mit Logo, Titel und Sprachauswahl -->
     <header>
         <div class="header-container">
-            <img src="images/Logo CO2 Footprint.png" alt="CO2 Footprint Logo" class="logo">
+            <img src="images/Logo CO2 Footprint.png" alt="CO2-Footprint Logo" class="logo">
             <h1>CO2-Footprint</h1>
             <div class="language-select">
                 <label for="language">Sprache:</label>
-                <select id="language" onchange="changeLanguage()">
+                <select id="language">
                     <option value="de">Deutsch</option>
-                    <option value="en">Englisch</option>
-                    <option value="ar">Arabisch</option>
-                    <option value="he">Hebräisch</option>
+                    <option value="en">English</option>
+                    <option value="ar">العربية</option>
+                    <option value="he">עברית</option>
                 </select>
             </div>
         </div>
-        <!-- Navigation unterhalb des Headers -->
         <nav>
-            <ul id="nav-menu">
+            <ul>
                 <li><a href="#">Startseite</a></li>
                 <li><a href="#">Über uns</a></li>
                 <li><a href="#">Kontakt</a></li>
@@ -32,36 +31,11 @@
         </nav>
     </header>
 
-    <!-- Hauptbereich mit Willkommensnachricht und Tabelle -->
+    <!-- Hauptinhalt -->
     <main>
-        <h2>Willkommen auf unserer CO2-Footprint Website</h2>
+        <h2>Willkommen auf unserer CO2-Footprint Website.</h2>
         <p>Hier können Sie sehen, welche Unternehmen und Länder jährlich wie viel CO2 emittieren. Unsere Arbeit soll für mehr Transparenz sorgen.</p>
-        <table id="emissions-table">
-            <thead>
-                <tr>
-                    <th>Land</th>
-                    <th>Unternehmen</th>
-                    <th>CO2-Ausstoß (Tonnen)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Deutschland</td>
-                    <td>BMW</td>
-                    <td>1.200.000</td>
-                </tr>
-                <tr>
-                    <td>USA</td>
-                    <td>Apple</td>
-                    <td>900.000</td>
-                </tr>
-                <tr>
-                    <td>China</td>
-                    <td>Alibaba</td>
-                    <td>1.800.000</td>
-                </tr>
-            </tbody>
-        </table>
+        <!-- Filter und Tabelle werden hier platziert -->
     </main>
 
     <!-- Footer mit rechtlichen Hinweisen -->
