@@ -27,23 +27,28 @@
                 <div class="bar"></div>
             </div>
         </div>
-        <!-- Navigationsleiste -->
-        <nav id="nav-menu">
+    </header>
+
+    <!-- Navigation und Sidebar Menü -->
+    <aside id="sidebar">
+        <div class="menu-icon" id="menu-icon">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <nav id="sidebar-menu" class="hidden">
             <ul>
-                <li><a href="#home">Startseite</a></li>
-                <li><a href="#about">Über uns</a></li>
-                <li><a href="#contact">Kontakt</a></li>
                 <li><a href="#co2-info">Infos über CO2</a></li>
                 <li><a href="#environment">Umwelt</a></li>
                 <li><a href="#research">Forschung</a></li>
             </ul>
         </nav>
-    </header>
+    </aside>
 
     <!-- Hauptinhalt -->
     <main>
-        <h2>Willkommen auf unserer CO2-Footprint Website.</h2>
-        <p>Hier können Sie sehen, welche Unternehmen und Länder jährlich wie viel CO2 emittieren. Unsere Arbeit soll für mehr Transparenz sorgen.</p>
+        <h2 id="welcome">Willkommen auf unserer CO2-Footprint Website.</h2>
+        <p id="intro">Hier können Sie sehen, welche Unternehmen und Länder jährlich wie viel CO2 emittieren. Unsere Arbeit soll für mehr Transparenz sorgen.</p>
         
         <!-- Suchfeld und Filteroptionen -->
         <div class="filter-container">
@@ -62,27 +67,27 @@
         <table id="data-table">
             <thead>
                 <tr>
-                    <th data-key="country">Land</th>
-                    <th data-key="company">Unternehmen</th>
-                    <th data-key="co2">CO2 Ausstoß (in Tonnen)</th>
+                    <th data-key="country" id="country-header">Land</th>
+                    <th data-key="company" id="company-header">Unternehmen</th>
+                    <th data-key="co2" id="co2-header">CO2 Ausstoß (in Tonnen)</th>
                 </tr>
             </thead>
             <tbody>
                 <!-- Beispielzeilen -->
                 <tr>
-                    <td>Deutschland</td>
-                    <td>BMW</td>
-                    <td>5000</td>
+                    <td id="country-germany">Deutschland</td>
+                    <td id="company-bmw">BMW</td>
+                    <td id="co2-bmw">5000</td>
                 </tr>
                 <tr>
-                    <td>USA</td>
-                    <td>Amazon</td>
-                    <td>7000</td>
+                    <td id="country-usa">USA</td>
+                    <td id="company-amazon">Amazon</td>
+                    <td id="co2-amazon">7000</td>
                 </tr>
                 <tr>
-                    <td>Brasilien</td>
-                    <td>Petronas</td>
-                    <td>3000</td>
+                    <td id="country-brazil">Brasilien</td>
+                    <td id="company-petronas">Petronas</td>
+                    <td id="co2-petronas">3000</td>
                 </tr>
                 <!-- Weitere Zeilen hier hinzufügen -->
             </tbody>
@@ -91,7 +96,7 @@
 
     <!-- Footer mit rechtlichen Hinweisen -->
     <footer>
-        <p>&copy; 2024 CO2-Footprint. Alle Rechte vorbehalten. <a href="#impressum">Impressum</a> und <a href="#datenschutz">Datenschutz</a></p>
+        <p id="footer-text">&copy; 2024 CO2-Footprint. Alle Rechte vorbehalten. <a href="#impressum">Impressum</a> und <a href="#datenschutz">Datenschutz</a></p>
     </footer>
 
     <script src="script.js"></script>
