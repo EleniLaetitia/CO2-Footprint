@@ -7,8 +7,6 @@
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    margin: 0;
-    padding: 0;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -76,6 +74,16 @@ main {
     text-align: center;
 }
 
+.filter-container {
+    margin-bottom: 1rem;
+}
+
+.filter-container input,
+.filter-container select {
+    padding: 0.5rem;
+    margin-right: 0.5rem;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -93,12 +101,10 @@ footer {
     color: white;
     text-align: center;
     padding: 1rem;
-    position: relative;
-    bottom: 0;
     width: 100%;
 }
 
-/* RTL Support for Arabic and Hebrew */
+/* RTL Support for Hebrew */
 body[dir="rtl"] {
     text-align: right;
 }
