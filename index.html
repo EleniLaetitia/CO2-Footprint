@@ -10,24 +10,17 @@
     <header>
         <div class="header-container">
             <img src="Logo CO2 Footprint.png" alt="CO2-Footprint Logo" class="logo">
-            <h1 id="header-title">CO2-Footprint</h1>
-            <div class="language-select">
-                <label id="language-label" for="language">Sprache:</label>
-                <select id="language">
-                    <option value="de">Deutsch</option>
-                    <option value="en">English</option>
-                    <option value="he">עברית</option>
-                </select>
+            <nav>
+                <ul>
+                    <li><a id="nav-home" href="#home">Startseite</a></li>
+                    <li><a id="nav-about" href="#about">Über uns</a></li>
+                    <li><a id="nav-contact" href="#contact">Kontakt</a></li>
+                </ul>
+            </nav>
+            <div class="menu-container">
+                <button id="menu-toggle" class="menu-icon" aria-label="Menü öffnen">☰</button>
             </div>
-            <button id="menu-toggle" class="menu-icon" aria-label="Menü öffnen">☰</button>
         </div>
-        <nav id="nav-menu">
-            <ul>
-                <li><a id="nav-home" href="#home">Startseite</a></li>
-                <li><a id="nav-about" href="#about">Über uns</a></li>
-                <li><a id="nav-contact" href="#contact">Kontakt</a></li>
-            </ul>
-        </nav>
         <div id="sidebar" class="sidebar">
             <a id="sidebar-info" href="#info">Infos über CO2</a>
             <a id="sidebar-environment" href="#environment">Umwelt</a>
@@ -38,7 +31,7 @@
     <main>
         <h2 id="welcome">Willkommen auf unserer CO2-Footprint Website.</h2>
         <p id="intro">Hier können Sie sehen, welche Unternehmen und Länder jährlich wie viel CO2 emittieren. Unsere Arbeit soll für mehr Transparenz sorgen.</p>
-        
+
         <div class="filter-container">
             <input type="text" id="search" placeholder="Suche...">
             <select id="sort">
