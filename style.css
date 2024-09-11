@@ -10,16 +10,15 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     min-height: 100vh;
-    transition: direction 0.3s ease;
 }
 
 header {
     background-color: #333;
     color: white;
     padding: 1rem 0;
-    width: 100%;
+    position: relative;
 }
 
 .header-container {
@@ -72,43 +71,35 @@ nav ul li a {
     font-weight: bold;
 }
 
-aside {
-    width: 200px;
-    background-color: #444;
-    color: white;
-    padding: 1rem;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    transition: transform 0.3s ease;
+.sidebar-menu {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
 }
 
-#sidebar-menu {
-    display: flex;
-    flex-direction: column;
-}
-
-#sidebar-toggle {
+#menu-toggle {
     background: none;
     border: none;
     color: white;
-    font-size: 1.5rem;
+    font-size: 24px;
     cursor: pointer;
-    margin-bottom: 1rem;
 }
 
-.sidebar-links {
-    display: flex;
-    flex-direction: column;
+.sidebar {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 3rem;
+    background-color: #444;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-.sidebar-links a {
+.sidebar a {
     color: white;
     text-decoration: none;
+    display: block;
     margin: 0.5rem 0;
 }
 
@@ -116,7 +107,6 @@ main {
     flex-grow: 1;
     padding: 2rem;
     text-align: center;
-    margin-left: 220px; /* Platz für das Sidebar-Menü */
 }
 
 table {
@@ -141,18 +131,17 @@ footer {
     width: 100%;
 }
 
-/* RTL Support for Arabic and Hebrew */
+/* RTL Support for Hebrew */
 body[dir="rtl"] {
     text-align: right;
-    margin-left: 0;
 }
 
-body[dir="rtl"] aside {
-    transform: translateX(-100%);
+body[dir="rtl"] nav ul {
+    justify-content: flex-end;
 }
 
-body[dir="rtl"] main {
-    margin-left: 0;
+body[dir="rtl"] .header-container {
+    flex-direction: row-reverse;
 }
 
 @media (max-width: 768px) {
@@ -163,15 +152,5 @@ body[dir="rtl"] main {
     nav ul {
         flex-direction: column;
         align-items: center;
-    }
-
-    #sidebar-menu {
-        width: 100%;
-        position: relative;
-        height: auto;
-    }
-
-    aside {
-        display: none; /* Versteckt das Sidebar-Menü auf kleinen Bildschirmen */
     }
 }
