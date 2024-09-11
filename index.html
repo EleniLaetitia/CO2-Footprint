@@ -20,6 +20,10 @@
                     <option value="he">עברית</option>
                 </select>
             </div>
+            <!-- Sidebar Menü Icon -->
+            <div class="menu-toggle">
+                <button id="menu-toggle" aria-label="Menü öffnen">☰</button>
+            </div>
         </div>
         <!-- Navigationsleiste -->
         <nav id="nav-menu">
@@ -27,16 +31,14 @@
                 <li><a id="nav-home" href="#home">Startseite</a></li>
                 <li><a id="nav-about" href="#about">Über uns</a></li>
                 <li><a id="nav-contact" href="#contact">Kontakt</a></li>
+                <li><a id="sidebar-toggle" href="#sidebar" aria-label="Menü öffnen">☰</a></li>
             </ul>
         </nav>
-        <!-- Sidebar Menü Icon -->
-        <div class="sidebar-menu">
-            <button id="menu-toggle" aria-label="Menü öffnen">☰</button>
-            <div id="sidebar" class="sidebar">
-                <a id="sidebar-info" href="#info">Infos über CO2</a>
-                <a id="sidebar-environment" href="#environment">Umwelt</a>
-                <a id="sidebar-research" href="#research">Forschung</a>
-            </div>
+        <!-- Sidebar Menü -->
+        <div id="sidebar" class="sidebar">
+            <a id="sidebar-info" href="#info">Infos über CO2</a>
+            <a id="sidebar-environment" href="#environment">Umwelt</a>
+            <a id="sidebar-research" href="#research">Forschung</a>
         </div>
     </header>
 
@@ -49,12 +51,12 @@
         <div class="filter-container">
             <input type="text" id="search" placeholder="Suche...">
             <select id="sort">
-                <option value="country-asc">Land A-Z</option>
-                <option value="country-desc">Land Z-A</option>
-                <option value="company-asc">Unternehmen A-Z</option>
-                <option value="company-desc">Unternehmen Z-A</option>
-                <option value="co2-asc">CO2 Ausstoß Aufsteigend</option>
-                <option value="co2-desc">CO2 Ausstoß Absteigend</option>
+                <option value="country-asc" id="sort-country-asc">Land A-Z</option>
+                <option value="country-desc" id="sort-country-desc">Land Z-A</option>
+                <option value="company-asc" id="sort-company-asc">Unternehmen A-Z</option>
+                <option value="company-desc" id="sort-company-desc">Unternehmen Z-A</option>
+                <option value="co2-asc" id="sort-co2-asc">CO2 Ausstoß Aufsteigend</option>
+                <option value="co2-desc" id="sort-co2-desc">CO2 Ausstoß Absteigend</option>
             </select>
         </div>
 
@@ -68,22 +70,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Deutschland</td>
-                    <td>BMW</td>
-                    <td>5000</td>
-                </tr>
-                <tr>
-                    <td>USA</td>
-                    <td>Amazon</td>
-                    <td>7000</td>
-                </tr>
-                <tr>
-                    <td>Brasilien</td>
-                    <td>Petronas</td>
-                    <td>3000</td>
-                </tr>
-                <!-- Weitere Zeilen hier hinzufügen -->
+                <!-- Tabelleinträge werden hier durch JavaScript dynamisch hinzugefügt -->
             </tbody>
         </table>
     </main>
