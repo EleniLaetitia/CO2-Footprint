@@ -59,7 +59,42 @@ function sortTable() {
     const sortValue = document.getElementById('sort').value;
     const table = document.getElementById('data-table');
     const rows = Array.from(table.querySelectorAll('tbody tr'));
-    
+
     rows.sort((a, b) => {
         const aCells = a.getElementsByTagName('td');
-        const bCells = b.getElementsByTagName
+        const bCells = b.getElementsByTagName('td');
+        
+        let aValue, bValue;
+
+        switch (sortValue) {
+            case 'country-asc':
+                aValue = aCells[0].textContent;
+                bValue = bCells[0].textContent;
+                return aValue.localeCompare(bValue);
+            case 'country-desc':
+                aValue = aCells[0].textContent;
+                bValue = bCells[0].textContent;
+                return bValue.localeCompare(aValue);
+            case 'company-asc':
+                aValue = aCells[1].textContent;
+                bValue = bCells[1].textContent;
+                return aValue.localeCompare(bValue);
+            case 'company-desc':
+                aValue = aCells[1].textContent;
+                bValue = bCells[1].textContent;
+                return bValue.localeCompare(aValue);
+            case 'co2-asc':
+                aValue = parseFloat(aCells[2].textContent);
+                bValue = parseFloat(bCells[2].textContent);
+                return aValue - bValue;
+            case 'co2-desc':
+                aValue = parseFloat(aCells[2].textContent);
+                bValue = parseFloat(bCells[2].textContent);
+                return bValue - aValue;
+            default:
+                return 0;
+        }
+    });
+
+    rows.forEach(row => table.querySelector('tbody').appendChild(row));
+}
