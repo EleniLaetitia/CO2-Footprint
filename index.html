@@ -17,17 +17,16 @@
                 <select id="language">
                     <option value="de">Deutsch</option>
                     <option value="en">English</option>
-                    <option value="ar">العربية</option>
                     <option value="he">עברית</option>
                 </select>
             </div>
         </div>
         <!-- Navigationsleiste -->
-        <nav>
+        <nav id="nav-menu">
             <ul>
-                <li><a href="#">Startseite</a></li>
-                <li><a href="#">Über uns</a></li>
-                <li><a href="#">Kontakt</a></li>
+                <li><a href="#home">Startseite</a></li>
+                <li><a href="#about">Über uns</a></li>
+                <li><a href="#contact">Kontakt</a></li>
             </ul>
         </nav>
     </header>
@@ -36,12 +35,54 @@
     <main>
         <h2>Willkommen auf unserer CO2-Footprint Website.</h2>
         <p>Hier können Sie sehen, welche Unternehmen und Länder jährlich wie viel CO2 emittieren. Unsere Arbeit soll für mehr Transparenz sorgen.</p>
-        <!-- Filter und Tabelle werden hier platziert -->
+        
+        <!-- Suchfeld und Filteroptionen -->
+        <div class="filter-container">
+            <input type="text" id="search" placeholder="Suche...">
+            <select id="sort">
+                <option value="country-asc">Land A-Z</option>
+                <option value="country-desc">Land Z-A</option>
+                <option value="company-asc">Unternehmen A-Z</option>
+                <option value="company-desc">Unternehmen Z-A</option>
+                <option value="co2-asc">CO2 Ausstoß Aufsteigend</option>
+                <option value="co2-desc">CO2 Ausstoß Absteigend</option>
+            </select>
+        </div>
+
+        <!-- Tabelle -->
+        <table id="data-table">
+            <thead>
+                <tr>
+                    <th>Land</th>
+                    <th>Unternehmen</th>
+                    <th>CO2 Ausstoß (in Tonnen)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Beispielzeilen, können später dynamisch geladen werden -->
+                <tr>
+                    <td>Deutschland</td>
+                    <td>Unternehmen A</td>
+                    <td>5000</td>
+                </tr>
+                <tr>
+                    <td>USA</td>
+                    <td>Unternehmen B</td>
+                    <td>7000</td>
+                </tr>
+                <tr>
+                    <td>Israel</td>
+                    <td>Unternehmen C</td>
+                    <td>3000</td>
+                </tr>
+                <!-- Weitere Zeilen hier hinzufügen -->
+            </tbody>
+        </table>
     </main>
 
     <!-- Footer mit rechtlichen Hinweisen -->
     <footer>
-        <p>&copy; 2024 CO2-Footprint. Alle Rechte vorbehalten. Impressum und Datenschutz</p>
+        <p>&copy; 2024 CO2-Footprint. Alle Rechte vorbehalten. <a href="#impressum">Impressum</a> und <a href="#datenschutz">Datenschutz</a></p>
     </footer>
 
     <script src="script.js"></script>
