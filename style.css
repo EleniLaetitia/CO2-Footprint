@@ -1,4 +1,3 @@
-/* Global Styles */
 * {
     margin: 0;
     padding: 0;
@@ -13,7 +12,6 @@ body {
     min-height: 100vh;
 }
 
-/* Header Styles */
 header {
     background-color: #333;
     color: white;
@@ -21,7 +19,6 @@ header {
     position: relative;
 }
 
-/* Header Container Styles */
 .header-container {
     display: flex;
     justify-content: space-between;
@@ -32,11 +29,6 @@ header {
 .logo {
     width: 50px;
     height: 50px;
-}
-
-/* Move menu icon to the right of the logo */
-.header-container #menu-toggle {
-    order: 1; /* Moves it to the right */
 }
 
 h1 {
@@ -54,7 +46,6 @@ h1 {
     margin-right: 0.5rem;
 }
 
-/* Navigation Styles */
 nav {
     background-color: #444;
     padding: 0.5rem 0;
@@ -63,7 +54,7 @@ nav {
 nav ul {
     list-style: none;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     margin: 0;
     padding: 0;
 }
@@ -78,26 +69,15 @@ nav ul li a {
     font-weight: bold;
 }
 
-/* Sidebar Styles */
+.menu-toggle {
+    display: none;
+}
+
 .sidebar-menu {
-    position: absolute;
-    top: 1rem;
-    right: 1rem; /* Move to the right */
-}
-
-#menu-toggle {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 24px;
-    cursor: pointer;
-}
-
-.sidebar {
     display: none;
     position: absolute;
     top: 3rem;
-    right: 0; /* Move to the right */
+    left: 0;
     background-color: #444;
     padding: 1rem;
     border-radius: 0.5rem;
@@ -111,14 +91,12 @@ nav ul li a {
     margin: 0.5rem 0;
 }
 
-/* Main Content Styles */
 main {
     flex-grow: 1;
     padding: 2rem;
     text-align: center;
 }
 
-/* Table Styles */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -131,7 +109,6 @@ table, th, td {
     text-align: left;
 }
 
-/* Footer Styles */
 footer {
     background-color: #333;
     color: white;
@@ -154,9 +131,11 @@ body[dir="rtl"] .header-container {
     flex-direction: row-reverse;
 }
 
-body[dir="rtl"] .sidebar-menu {
-    right: auto;
-    left: 1rem;
+.menu-toggle {
+    display: block;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
 }
 
 @media (max-width: 768px) {
@@ -167,5 +146,12 @@ body[dir="rtl"] .sidebar-menu {
     nav ul {
         flex-direction: column;
         align-items: center;
+    }
+
+    .menu-toggle {
+        display: block;
+        position: relative;
+        top: auto;
+        right: auto;
     }
 }
