@@ -27,7 +27,6 @@ function changeLanguage() {
                 { country: 'Deutschland', company: 'BMW', co2: '5000' },
                 { country: 'USA', company: 'Amazon', co2: '7000' },
                 { country: 'Brasilien', company: 'Petronas', co2: '3000' }
-                // Weitere Zeilen hier hinzufügen
             ]
         },
         en: {
@@ -54,7 +53,6 @@ function changeLanguage() {
                 { country: 'Germany', company: 'BMW', co2: '5000' },
                 { country: 'USA', company: 'Amazon', co2: '7000' },
                 { country: 'Brazil', company: 'Petronas', co2: '3000' }
-                // Further rows can be added here
             ]
         },
         he: {
@@ -70,18 +68,17 @@ function changeLanguage() {
             sortCountryDesc: 'מדינה ב-א',
             sortCompanyAsc: 'חברה א-ב',
             sortCompanyDesc: 'חברה ב-א',
-            sortCo2Asc: 'פליטת CO2 עולים',
-            sortCo2Desc: 'פליטת CO2 יורדים',
+            sortCo2Asc: 'פליטת CO2 עולה',
+            sortCo2Desc: 'פליטת CO2 יורדת',
             countryHeader: 'מדינה',
             companyHeader: 'חברה',
             co2Header: 'פליטת CO2 (בטון)',
-            footerText: '&copy; 2024 טביעת רגל פחמנית. כל הזכויות שמורות. <a href="#impressum">הדפסת</a> ו-<a href="#datenschutz">מדיניות פרטיות</a>',
+            footerText: '&copy; 2024 טביעת רגל פחמנית. כל הזכויות שמורות. <a href="#impressum">הדפסה</a> ו-<a href="#datenschutz">מדיניות פרטיות</a>',
             sidebarLinks: ['מידע על CO2', 'סביבה', 'מחקר'],
             tableData: [
                 { country: 'גרמניה', company: 'BMW', co2: '5000' },
                 { country: 'ארה"ב', company: 'Amazon', co2: '7000' },
                 { country: 'ברזיל', company: 'Petronas', co2: '3000' }
-                // פריטי טבלה נוספים כאן
             ]
         }
     };
@@ -173,6 +170,11 @@ document.getElementById('sort').addEventListener('change', function () {
 // Sidebar Menü Toggle
 document.getElementById('menu-toggle').addEventListener('click', function () {
     const sidebar = document.getElementById('sidebar');
-    const isVisible = sidebar.style.display === 'block';
-    sidebar.style.display = isVisible ? 'none' : 'block';
+    sidebar.style.display = sidebar.style.display === 'block' ? 'none' : 'block';
+});
+
+// Sidebar Menü Toggle für den Link
+document.getElementById('sidebar-toggle').addEventListener('click', function () {
+    const sidebar = document.getElementById('sidebar');
+    sidebar.style.display = sidebar.style.display === 'block' ? 'none' : 'block';
 });
