@@ -1,8 +1,21 @@
-// Funktion zur Sprachumschaltung
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('language').addEventListener('change', changeLanguage);
+    document.getElementById('menu-icon').addEventListener('click', () => {
+        const sidebar = document.getElementById('sidebar');
+        sidebar.classList.toggle('hidden');
+        document.body.style.marginLeft = sidebar.classList.contains('hidden') ? '0' : '250px';
+    });
+
+    document.getElementById('close-sidebar').addEventListener('click', () => {
+        const sidebar = document.getElementById('sidebar');
+        sidebar.classList.add('hidden');
+        document.body.style.marginLeft = '0';
+    });
+});
+
 function changeLanguage() {
     const language = document.getElementById('language').value;
-    
-    // Elemente, die übersetzt werden müssen
+
     const translations = {
         de: {
             welcome: "Willkommen auf unserer CO2-Footprint Website.",
@@ -14,60 +27,38 @@ function changeLanguage() {
             footerText: "&copy; 2024 CO2-Footprint. Alle Rechte vorbehalten. <a href='#impressum'>Impressum</a> und <a href='#datenschutz'>Datenschutz</a>"
         },
         en: {
-            welcome: "Welcome to our CO2-Footprint website.",
-            intro: "Here you can see which companies and countries emit how much CO2 annually. Our work aims to provide more transparency.",
+            welcome: "Welcome to our CO2 Footprint Website.",
+            intro: "Here you can see how much CO2 companies and countries emit annually. Our work aims to increase transparency.",
             searchPlaceholder: "Search...",
             countryHeader: "Country",
             companyHeader: "Company",
-            co2Header: "CO2 Emissions (in tons)",
-            footerText: "&copy; 2024 CO2-Footprint. All rights reserved. <a href='#impressum'>Imprint</a> and <a href='#datenschutz'>Privacy Policy</a>"
+            co2Header: "CO2 Emission (in tons)",
+            footerText: "&copy; 2024 CO2-Footprint. All rights reserved. <a href='#impressum'>Impressum</a> and <a href='#datenschutz'>Privacy Policy</a>"
         },
         he: {
-            welcome: "ברוכים הבאים לאתר CO2-Footprint שלנו.",
-            intro: "כאן תוכלו לראות אילו חברות ומדינות פולטות כמה CO2 מדי שנה. העבודה שלנו מיועדת לספק שקיפות רבה יותר.",
+            welcome: "ברוכים הבאים לאתר טביעת הרגל הפחמנית",
+            intro: "כאן תוכלו לראות כמה פחמן דו חמצני פולטות חברות ומדינות בכל שנה. העבודה שלנו מכוונת לשקיפות מוגברת.",
             searchPlaceholder: "חיפוש...",
             countryHeader: "מדינה",
             companyHeader: "חברה",
-            co2Header: "פליטת CO2 (בטון)",
-            footerText: "&copy; 2024 CO2-Footprint. כל הזכויות שמורות. <a href='#impressum'>אימפרסום</a> ו-<a href='#datenschutz'>מדיניות פרטיות</a>"
+            co2Header: "פלט CO2 (בטון)",
+            footerText: "&copy; 2024 CO2-Footprint. כל הזכויות שמורות. <a href='#impressum'>טביעת רגל</a> ו-<a href='#datenschutz'>מדיניות פרטיות</a>"
         }
     };
 
-    const translate = translations[language];
+    const translation = translations[language];
 
-    // Text in den Elementen ändern
-    document.getElementById('welcome').textContent = translate.welcome;
-    document.getElementById('intro').textContent = translate.intro;
-    document.getElementById('search').placeholder = translate.searchPlaceholder;
-    document.getElementById('country-header').textContent = translate.countryHeader;
-    document.getElementById('company-header').textContent = translate.companyHeader;
-    document.getElementById('co2-header').textContent = translate.co2Header;
-    document.getElementById('footer-text').innerHTML = translate.footerText;
+    document.getElementById('welcome').textContent = translation.welcome;
+    document.getElementById('intro').textContent = translation.intro;
+    document.getElementById('search').placeholder = translation.searchPlaceholder;
+    document.getElementById('country-header').textContent = translation.countryHeader;
+    document.getElementById('company-header').textContent = translation.companyHeader;
+    document.getElementById('co2-header').textContent = translation.co2Header;
+    document.getElementById('footer-text').innerHTML = translation.footerText;
 
-    // RTL für Hebräisch setzen
     if (language === 'he') {
         document.body.setAttribute('dir', 'rtl');
-        document.getElementById('sidebar').style.left = '0';
-        document.getElementById('menu-icon').style.display = 'flex';
-        document.getElementById('sidebar-menu').classList.remove('hidden');
     } else {
-        document.body.removeAttribute('dir');
-        document.getElementById('sidebar').style.left = '-250px';
-        document.getElementById('menu-icon').style.display = 'none';
-        document.getElementById('sidebar-menu').classList.add('hidden');
+        document.body.setAttribute('dir', 'ltr');
     }
 }
-
-// Sidebar Menü anzeigen
-document.getElementById('menu-icon').addEventListener('click', function() {
-    const sidebarMenu = document.getElementById('sidebar-menu');
-    const isVisible = !sidebarMenu.classList.contains('hidden');
-    sidebarMenu.classList.toggle('hidden', isVisible);
-    document.getElementById('sidebar').style.left = isVisible ? '-250px' : '0';
-});
-
-// Hamburger Menü anzeigen
-document.getElementById('hamburger-menu').addEventListener('click', function() {
-    const navMenu = document.querySelector('nav ul');
-    navMenu.classList.toggle('show');
-});
