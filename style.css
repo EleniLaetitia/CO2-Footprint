@@ -15,38 +15,28 @@ body {
 header {
     background-color: #333;
     color: white;
-    padding: 1rem;
+    padding: 1rem 0;
+    text-align: center;
 }
 
 .header-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* Zentriert die gesamte Navigationsleiste */
     align-items: center;
+    position: relative;
 }
 
 .logo {
+    position: absolute;
+    left: 1rem;
     width: 50px;
     height: auto;
-}
-
-.menu-container {
-    display: flex;
-    justify-content: flex-end;
-}
-
-.menu-icon {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 40px; /* Vergrößertes Menü-Icon */
-    cursor: pointer;
 }
 
 nav ul {
     list-style: none;
     display: flex;
-    justify-content: center; /* Zentriert die Navigationseinträge */
-    flex-grow: 1;
+    justify-content: center; /* Zentriert die Navigationslinks */
 }
 
 nav ul li {
@@ -57,7 +47,20 @@ nav ul li a {
     color: white;
     text-decoration: none;
     font-weight: bold;
-    font-size: 1.2rem; /* Etwas größere Schriftgröße */
+    font-size: 1.2rem;
+}
+
+.menu-container {
+    position: absolute;
+    right: 1rem;
+}
+
+.menu-icon {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 40px; /* Vergrößertes Menü-Icon */
+    cursor: pointer;
 }
 
 .sidebar {
@@ -126,7 +129,7 @@ body[dir="rtl"] .sidebar {
 @media (max-width: 768px) {
     .header-container {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
     }
 
     nav ul {
