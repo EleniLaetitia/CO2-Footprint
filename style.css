@@ -7,36 +7,29 @@
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
 }
 
 header {
     background-color: #333;
     color: white;
     padding: 1rem 0;
-    text-align: center;
 }
 
 .header-container {
     display: flex;
-    justify-content: center; /* Zentriert die gesamte Navigationsleiste */
+    justify-content: space-between;
     align-items: center;
-    position: relative;
 }
 
 .logo {
-    position: absolute;
-    left: 1rem;
     width: 50px;
-    height: auto;
 }
 
 nav ul {
     list-style: none;
     display: flex;
-    justify-content: center; /* Zentriert die Navigationslinks */
+    justify-content: center; /* Zentriert die Navigation */
+    flex-grow: 1;
 }
 
 nav ul li {
@@ -46,32 +39,33 @@ nav ul li {
 nav ul li a {
     color: white;
     text-decoration: none;
-    font-weight: bold;
     font-size: 1.2rem;
 }
 
 .menu-container {
-    position: absolute;
-    right: 1rem;
+    margin-left: auto;
 }
 
 .menu-icon {
     background: none;
     border: none;
     color: white;
-    font-size: 40px; /* Vergrößertes Menü-Icon */
+    font-size: 40px; /* Größeres Menü-Icon */
     cursor: pointer;
+}
+
+.language-select {
+    margin-left: 20px;
 }
 
 .sidebar {
     display: none;
     position: absolute;
     top: 3rem;
-    left: 0;
+    right: 0;
     background-color: #444;
     padding: 1rem;
     border-radius: 0.5rem;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .sidebar a {
@@ -82,7 +76,6 @@ nav ul li a {
 }
 
 main {
-    flex-grow: 1;
     padding: 2rem;
     text-align: center;
 }
@@ -104,13 +97,12 @@ footer {
     color: white;
     text-align: center;
     padding: 1rem;
-    position: relative;
-    width: 100%;
+    margin-top: auto;
 }
 
 /* RTL Support for Hebrew */
 body[dir="rtl"] {
-    text-align: right;
+    direction: rtl;
 }
 
 body[dir="rtl"] nav ul {
@@ -122,22 +114,6 @@ body[dir="rtl"] .header-container {
 }
 
 body[dir="rtl"] .sidebar {
-    left: auto;
-    right: 0;
-}
-
-@media (max-width: 768px) {
-    .header-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .menu-icon {
-        display: block;
-    }
+    right: auto;
+    left: 0;
 }
