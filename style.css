@@ -7,8 +7,6 @@
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    margin: 0;
-    padding: 0;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -73,8 +71,8 @@ nav ul li a {
 
 .sidebar-menu {
     position: absolute;
-    left: 1rem;
     top: 1rem;
+    left: 1rem;
 }
 
 #menu-toggle {
@@ -88,8 +86,8 @@ nav ul li a {
 .sidebar {
     display: none;
     position: absolute;
-    left: 0;
     top: 3rem;
+    left: 0;
     background-color: #444;
     padding: 1rem;
     border-radius: 0.5rem;
@@ -127,7 +125,6 @@ footer {
     text-align: center;
     padding: 1rem;
     position: relative;
-    bottom: 0;
     width: 100%;
 }
 
