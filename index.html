@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CO2-Footprint</title>
+    <title id="page-title">CO2-Footprint</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Header mit Logo, Titel und Sprachauswahl -->
     <header>
         <div class="header-container">
             <img src="Logo CO2 Footprint.png" alt="CO2-Footprint Logo" class="logo">
@@ -20,12 +19,10 @@
                     <option value="he">עברית</option>
                 </select>
             </div>
-            <!-- Sidebar Menü Icon -->
             <div class="menu-toggle">
                 <button id="menu-toggle" aria-label="Menü öffnen">☰</button>
             </div>
         </div>
-        <!-- Navigationsleiste -->
         <nav id="nav-menu">
             <ul>
                 <li><a id="nav-home" href="#home">Startseite</a></li>
@@ -34,7 +31,6 @@
                 <li><a id="sidebar-toggle" href="#sidebar" aria-label="Menü öffnen">☰</a></li>
             </ul>
         </nav>
-        <!-- Sidebar Menü -->
         <div id="sidebar" class="sidebar">
             <a id="sidebar-info" href="#info">Infos über CO2</a>
             <a id="sidebar-environment" href="#environment">Umwelt</a>
@@ -42,12 +38,10 @@
         </div>
     </header>
 
-    <!-- Hauptinhalt -->
     <main>
         <h2 id="welcome">Willkommen auf unserer CO2-Footprint Website.</h2>
         <p id="intro">Hier können Sie sehen, welche Unternehmen und Länder jährlich wie viel CO2 emittieren. Unsere Arbeit soll für mehr Transparenz sorgen.</p>
         
-        <!-- Suchfeld und Filteroptionen -->
         <div class="filter-container">
             <input type="text" id="search" placeholder="Suche...">
             <select id="sort">
@@ -60,7 +54,6 @@
             </select>
         </div>
 
-        <!-- Tabelle -->
         <table id="data-table">
             <thead>
                 <tr>
@@ -75,7 +68,6 @@
         </table>
     </main>
 
-    <!-- Footer mit rechtlichen Hinweisen -->
     <footer>
         <p id="footer-text">&copy; 2024 CO2-Footprint. Alle Rechte vorbehalten. <a href="#impressum">Impressum</a> und <a href="#datenschutz">Datenschutz</a></p>
     </footer>
@@ -83,3 +75,163 @@
     <script src="script.js"></script>
 </body>
 </html>
+CSS
+css
+Code kopieren
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 1rem 0;
+    position: relative;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+}
+
+h1 {
+    text-align: center;
+    flex-grow: 1;
+    margin: 0;
+}
+
+.language-select {
+    display: flex;
+    align-items: center;
+}
+
+.language-select label {
+    margin-right: 0.5rem;
+}
+
+nav {
+    background-color: #444;
+    padding: 0.5rem 0;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 1rem;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.menu-toggle {
+    display: none;
+}
+
+.sidebar {
+    display: none;
+    position: absolute;
+    top: 3rem;
+    left: 0;
+    background-color: #444;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.sidebar a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    margin: 0.5rem 0;
+}
+
+main {
+    flex-grow: 1;
+    padding: 2rem;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+}
+
+table, th, td {
+    border: 1px solid #333;
+    padding: 0.75rem;
+    text-align: left;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    position: relative;
+    width: 100%;
+}
+
+/* RTL Support for Hebrew */
+body[dir="rtl"] {
+    text-align: right;
+}
+
+body[dir="rtl"] nav ul {
+    justify-content: flex-end;
+}
+
+body[dir="rtl"] .header-container {
+    flex-direction: row-reverse;
+}
+
+.menu-toggle {
+    display: block;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+}
+
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .menu-toggle {
+        display: block;
+        position: relative;
+        top: auto;
+        right: auto;
+    }
+}
