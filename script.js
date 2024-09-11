@@ -69,29 +69,30 @@ function changeLanguage() {
     };
 
     // Übersetzungen anwenden
-    document.title = translations[language].pageTitle;
-    document.getElementById('header-title').textContent = translations[language].headerTitle;
-    document.getElementById('language-label').textContent = translations[language].languageLabel;
-    document.getElementById('nav-home').textContent = translations[language].navHome;
-    document.getElementById('nav-about').textContent = translations[language].navAbout;
-    document.getElementById('nav-contact').textContent = translations[language].navContact;
-    document.getElementById('welcome').textContent = translations[language].welcome;
-    document.getElementById('intro').textContent = translations[language].intro;
-    document.getElementById('sort-country-asc').textContent = translations[language].sortCountryAsc;
-    document.getElementById('sort-country-desc').textContent = translations[language].sortCountryDesc;
-    document.getElementById('sort-company-asc').textContent = translations[language].sortCompanyAsc;
-    document.getElementById('sort-company-desc').textContent = translations[language].sortCompanyDesc;
-    document.getElementById('sort-co2-asc').textContent = translations[language].sortCo2Asc;
-    document.getElementById('sort-co2-desc').textContent = translations[language].sortCo2Desc;
-    document.getElementById('country-header').textContent = translations[language].countryHeader;
-    document.getElementById('company-header').textContent = translations[language].companyHeader;
-    document.getElementById('co2-header').textContent = translations[language].co2Header;
-    document.getElementById('footer-text').innerHTML = translations[language].footerText;
+    const t = translations[language];
+    document.title = t.pageTitle;
+    document.getElementById('header-title').textContent = t.headerTitle;
+    document.getElementById('language-label').textContent = t.languageLabel;
+    document.getElementById('nav-home').textContent = t.navHome;
+    document.getElementById('nav-about').textContent = t.navAbout;
+    document.getElementById('nav-contact').textContent = t.navContact;
+    document.getElementById('welcome').textContent = t.welcome;
+    document.getElementById('intro').textContent = t.intro;
+    document.getElementById('sort-country-asc').textContent = t.sortCountryAsc;
+    document.getElementById('sort-country-desc').textContent = t.sortCountryDesc;
+    document.getElementById('sort-company-asc').textContent = t.sortCompanyAsc;
+    document.getElementById('sort-company-desc').textContent = t.sortCompanyDesc;
+    document.getElementById('sort-co2-asc').textContent = t.sortCo2Asc;
+    document.getElementById('sort-co2-desc').textContent = t.sortCo2Desc;
+    document.getElementById('country-header').textContent = t.countryHeader;
+    document.getElementById('company-header').textContent = t.companyHeader;
+    document.getElementById('co2-header').textContent = t.co2Header;
+    document.getElementById('footer-text').innerHTML = t.footerText;
 
     // Sidebar Menü Links
     const sidebarLinks = document.querySelectorAll('#sidebar a');
     sidebarLinks.forEach((link, index) => {
-        link.textContent = translations[language].sidebarLinks[index];
+        link.textContent = t.sidebarLinks[index];
     });
 
     // RTL für Hebräisch einstellen
