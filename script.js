@@ -69,7 +69,7 @@ function changeLanguage() {
     };
 
     // Übersetzungen anwenden
-    document.getElementById('page-title').textContent = translations[language].pageTitle;
+    document.title = translations[language].pageTitle;
     document.getElementById('header-title').textContent = translations[language].headerTitle;
     document.getElementById('language-label').textContent = translations[language].languageLabel;
     document.getElementById('nav-home').textContent = translations[language].navHome;
@@ -89,7 +89,7 @@ function changeLanguage() {
     document.getElementById('footer-text').innerHTML = translations[language].footerText;
 
     // Sidebar Menü Links
-    const sidebarLinks = document.querySelectorAll('#sidebar-menu .sidebar-links a');
+    const sidebarLinks = document.querySelectorAll('#sidebar a');
     sidebarLinks.forEach((link, index) => {
         link.textContent = translations[language].sidebarLinks[index];
     });
@@ -103,3 +103,44 @@ document.getElementById('language').addEventListener('change', changeLanguage);
 
 // Initiale Sprachumschaltung
 changeLanguage();
+
+// Funktion für die Such- und Filterfunktion
+document.getElementById('search').addEventListener('input', function () {
+    const searchTerm = this.value.toLowerCase();
+    const rows = document.querySelectorAll('#data-table tbody tr');
+
+    rows.forEach(row => {
+        const cells = row.querySelectorAll('td');
+        const matches = Array.from(cells).some(cell => cell.textContent.toLowerCase().includes(searchTerm));
+        row.style.display = matches ? '' : 'none';
+    });
+});
+
+document.getElementById('sort').addEventListener('change', function () {
+    const sortValue = this.value;
+    const table = document.getElementById('data-table');
+    const rows = Array.from(table.querySelectorAll('tbody tr'));
+
+    rows.sort((a, b) => {
+        const cellA = a.querySelectorAll('td')[sortValue.includes('country') ? 0 : sortValue.includes('company') ? 1 : 2];
+        const cellB = b.querySelectorAll('td')[sortValue.includes('country') ? 0 : sortValue.includes('company') ? 1 : 2];
+        const aText = cellA.textContent.trim();
+        const bText = cellB.textContent.trim();
+        
+        if (sortValue.includes('asc')) {
+            return aText.localeCompare(bText);
+        } else {
+            return bText.localeCompare(aText);
+        }
+    });
+
+    const tbody = table.querySelector('tbody');
+    rows.forEach(row => tbody.appendChild(row));
+});
+
+// Sidebar Menü Toggle
+document.getElementById('menu-toggle').addEventListener('click', function () {
+    const sidebar = document.getElementById('sidebar');
+    const isVisible = sidebar.style.display === 'block';
+    sidebar.style.display = isVisible ? 'none' : 'block';
+});
