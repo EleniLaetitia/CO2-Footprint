@@ -13,6 +13,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    transition: margin-left 0.3s;
 }
 
 header {
@@ -63,31 +64,84 @@ h1 {
     margin: 3px 0;
 }
 
-/* Navigationsleiste */
-nav {
-    background-color: #444;
-    padding: 0.5rem 0;
+/* Sidebar Menü */
+aside {
+    width: 250px;
+    background-color: #333;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: -250px;
+    height: 100%;
+    overflow: auto;
+    transition: left 0.3s;
 }
 
-nav ul {
+aside #menu-icon {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    margin: 1rem;
+}
+
+aside #menu-icon .bar {
+    width: 30px;
+    height: 3px;
+    background-color: white;
+    margin: 5px 0;
+}
+
+aside nav ul {
     list-style: none;
-    display: flex;
-    justify-content: center;
-    margin: 0;
     padding: 0;
 }
 
-nav ul li {
-    margin: 0 1rem;
+aside nav ul li {
+    padding: 1rem;
 }
 
-nav ul li a {
+aside nav ul li a {
     color: white;
     text-decoration: none;
-    font-weight: bold;
+    display: block;
 }
 
-/* Hamburger Menü anzeigen bei kleinem Bildschirm */
+/* Hauptinhalt */
+main {
+    flex-grow: 1;
+    padding: 2rem;
+    text-align: center;
+    margin-left: 250px; /* Sidebar space */
+}
+
+/* Filter Container */
+.filter-container {
+    margin: 1rem 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+}
+
+table, th, td {
+    border: 1px solid #333;
+    padding: 0.75rem;
+    text-align: left;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Responsive Styles */
 @media (max-width: 768px) {
     .header-container {
         flex-direction: column;
@@ -117,34 +171,22 @@ nav ul li a {
         margin: 0;
         padding: 1rem;
     }
+
+    aside {
+        width: 200px;
+    }
+
+    aside #menu-icon {
+        display: flex;
+    }
+
+    main {
+        margin-left: 0;
+    }
 }
 
-main {
-    flex-grow: 1;
-    padding: 2rem;
-    text-align: center;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 2rem 0;
-}
-
-table, th, td {
-    border: 1px solid #333;
-    padding: 0.75rem;
-    text-align: left;
-}
-
-footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 1rem;
-    position: relative;
-    bottom: 0;
-    width: 100%;
+.hidden {
+    display: none;
 }
 
 /* RTL Support for Hebrew */
@@ -152,10 +194,16 @@ body[dir="rtl"] {
     text-align: right;
 }
 
-body[dir="rtl"] nav ul {
-    justify-content: flex-end;
+body[dir="rtl"] aside {
+    left: 0;
 }
 
-body[dir="rtl"] .header-container {
-    flex-direction: row-reverse;
+body[dir="rtl"] aside #menu-icon {
+    display: flex;
+    flex-direction: column;
+}
+
+body[dir="rtl"] main {
+    margin-left: 0;
+    margin-right: 250px;
 }
