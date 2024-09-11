@@ -67,3 +67,46 @@ function changeLanguage() {
             sortCo2Desc: 'פליטת CO2 יורדים',
             countryHeader: 'מדינה',
             companyHeader: 'חברה',
+            co2Header: 'פליטת CO2 (בטון)',
+            footerText: '&copy; 2024 טביעת רגל פחמנית. כל הזכויות שמורות. <a href="#impressum">אימפרסום</a> ו-<a href="#datenschutz">מדיניות פרטיות</a>',
+            sidebarCo2: 'מידע על CO2',
+            sidebarEnvironment: 'סביבה',
+            sidebarResearch: 'מחקר'
+        }
+    };
+
+    const texts = translations[language] || translations.de; // Fallback to German
+
+    document.getElementById('page-title').textContent = texts.pageTitle;
+    document.getElementById('header-title').textContent = texts.headerTitle;
+    document.getElementById('language-label').textContent = texts.languageLabel;
+    document.getElementById('nav-home').textContent = texts.navHome;
+    document.getElementById('nav-about').textContent = texts.navAbout;
+    document.getElementById('nav-contact').textContent = texts.navContact;
+    document.getElementById('welcome').textContent = texts.welcome;
+    document.getElementById('intro').textContent = texts.intro;
+    document.getElementById('sort-country-asc').textContent = texts.sortCountryAsc;
+    document.getElementById('sort-country-desc').textContent = texts.sortCountryDesc;
+    document.getElementById('sort-company-asc').textContent = texts.sortCompanyAsc;
+    document.getElementById('sort-company-desc').textContent = texts.sortCompanyDesc;
+    document.getElementById('sort-co2-asc').textContent = texts.sortCo2Asc;
+    document.getElementById('sort-co2-desc').textContent = texts.sortCo2Desc;
+    document.getElementById('country-header').textContent = texts.countryHeader;
+    document.getElementById('company-header').textContent = texts.companyHeader;
+    document.getElementById('co2-header').textContent = texts.co2Header;
+    document.getElementById('footer-text').innerHTML = texts.footerText;
+
+    // Sidebar links
+    document.querySelector('#sidebar-menu a[href="#co2"]').textContent = texts.sidebarCo2;
+    document.querySelector('#sidebar-menu a[href="#environment"]').textContent = texts.sidebarEnvironment;
+    document.querySelector('#sidebar-menu a[href="#research"]').textContent = texts.sidebarResearch;
+
+    // Layout für RTL-Sprachen
+    document.body.style.direction = language === 'he' ? 'rtl' : 'ltr';
+}
+
+// Event-Listener für Sprachauswahl
+document.getElementById('language').addEventListener('change', changeLanguage);
+
+// Initiale Spracheinstellung
+changeLanguage();
