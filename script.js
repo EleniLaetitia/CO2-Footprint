@@ -1,9 +1,11 @@
-// Funktion zur Sprachumschaltung
+document.getElementById('language').addEventListener('change', changeLanguage);
+document.getElementById('search').addEventListener('input', filterTable);
+document.getElementById('sort').addEventListener('change', sortTable);
+
 function changeLanguage() {
     const language = document.getElementById('language').value;
     const navMenu = document.getElementById('nav-menu');
     
-    // Text für Navigation ändern
     const navLinks = navMenu.getElementsByTagName('a');
     if (language === 'de') {
         navLinks[0].textContent = 'Startseite';
@@ -13,18 +15,13 @@ function changeLanguage() {
         navLinks[0].textContent = 'Home';
         navLinks[1].textContent = 'About Us';
         navLinks[2].textContent = 'Contact';
-    } else if (language === 'ar') {
-        navLinks[0].textContent = 'الصفحة الرئيسية';
-        navLinks[1].textContent = 'معلومات عنا';
-        navLinks[2].textContent = 'اتصال';
     } else if (language === 'he') {
         navLinks[0].textContent = 'דף הבית';
         navLinks[1].textContent = 'עלינו';
         navLinks[2].textContent = 'צור קשר';
     }
 
-    // RTL für Arabisch und Hebräisch setzen
-    if (language === 'ar' || language === 'he') {
+    if (language === 'he') {
         document.body.style.direction = 'rtl';
         navMenu.style.justifyContent = 'flex-end';
     } else {
@@ -32,7 +29,6 @@ function changeLanguage() {
         navMenu.style.justifyContent = 'flex-start';
     }
 
-    // Überschrift und Text ändern
     const heading = document.querySelector('main h2');
     const paragraph = document.querySelector('main p');
 
@@ -42,11 +38,28 @@ function changeLanguage() {
     } else if (language === 'en') {
         heading.textContent = 'Welcome to our CO2 Footprint Website';
         paragraph.textContent = 'Here you can see how much CO2 companies and countries emit annually. Our work is aimed at increasing transparency.';
-    } else if (language === 'ar') {
-        heading.textContent = 'مرحبًا بكم في موقع CO2 Footprint';
-        paragraph.textContent = 'هنا يمكنك أن ترى كمية انبعاثات ثاني أكسيد الكربون التي تصدرها الشركات والدول سنويًا. هدفنا هو زيادة الشفافية.';
     } else if (language === 'he') {
         heading.textContent = 'ברוכים הבאים לאתר טביעת הרגל הפחמנית';
         paragraph.textContent = 'כאן תוכלו לראות כמה פחמן דו חמצני פולטות חברות ומדינות בכל שנה. העבודה שלנו מכוונת לשקיפות מוגברת.';
     }
 }
+
+function filterTable() {
+    const query = document.getElementById('search').value.toLowerCase();
+    const rows = document.querySelectorAll('#data-table tbody tr');
+
+    rows.forEach(row => {
+        const cells = row.getElementsByTagName('td');
+        const match = Array.from(cells).some(cell => cell.textContent.toLowerCase().includes(query));
+        row.style.display = match ? '' : 'none';
+    });
+}
+
+function sortTable() {
+    const sortValue = document.getElementById('sort').value;
+    const table = document.getElementById('data-table');
+    const rows = Array.from(table.querySelectorAll('tbody tr'));
+    
+    rows.sort((a, b) => {
+        const aCells = a.getElementsByTagName('td');
+        const bCells = b.getElementsByTagName
