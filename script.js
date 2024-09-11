@@ -82,7 +82,8 @@ function changeLanguage() {
     document.getElementById('sort-country-desc').textContent = t.sortCountryDesc;
     document.getElementById('sort-company-asc').textContent = t.sortCompanyAsc;
     document.getElementById('sort-company-desc').textContent = t.sortCompanyDesc;
-    document.getElementById('sort-co2-asc').textContent = t.sortCo2Asc;
+    document.getElementById('sort-co2-asc').textContent = t.sortCo
+     document.getElementById('sort-co2-asc').textContent = t.sortCo2Asc;
     document.getElementById('sort-co2-desc').textContent = t.sortCo2Desc;
     document.getElementById('country-header').textContent = t.countryHeader;
     document.getElementById('company-header').textContent = t.companyHeader;
