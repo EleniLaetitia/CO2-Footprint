@@ -3,60 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="page-title">CO2-Footprint</title>
+    <title>CO2-Footprint</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="ltr">
-    <!-- Header mit Navigation -->
+<body>
+    <!-- Header mit Logo, Überschrift und Sprachauswahl -->
     <header>
-        <div class="logo-container">
+        <div class="header-container">
             <img src="images/Logo CO2 Footprint.png" alt="CO2 Footprint Logo" class="logo">
-        </div>
-        <h1 id="title">CO2-Footprint</h1>
-        <nav id="nav-menu" class="nav-left">
-            <ul>
-                <li><a href="#" id="nav-home">Startseite</a></li>
-                <li><a href="#" id="nav-about">Über uns</a></li>
-                <li><a href="#" id="nav-contact">Kontakt</a></li>
-            </ul>
-        </nav>
-        <div class="language-btn">
-            <label for="language">Sprache:</label>
-            <select id="language" onchange="changeLanguage()">
-                <option value="de">Deutsch</option>
-                <option value="en">Englisch</option>
-                <option value="he">Hebräisch</option>
-            </select>
-        </div>
-    </header>
-
-    <!-- Hauptbereich mit Willkommenstext und Tabelle -->
-    <main>
-        <h2 id="welcome-text">Willkommen auf unserer CO2-Footprint Website</h2>
-        <p id="description">Hier können Sie sehen, welche Unternehmen und Länder jährlich wie viel CO2 emittieren. Unsere Arbeit soll für mehr Transparenz sorgen.</p>
-
-        <!-- Tabelle mit Daten -->
-        <div class="controls">
-            <div class="filter-group">
-                <label for="filter">Filter:</label>
-                <select id="filter" onchange="applyFilter()">
-                    <option value="country-asc">Land A-Z</option>
-                    <option value="country-desc">Land Z-A</option>
-                    <option value="company-asc">Unternehmen A-Z</option>
-                    <option value="company-desc">Unternehmen Z-A</option>
-                    <option value="co2-asc">CO2-Ausstoß aufsteigend</option>
-                    <option value="co2-desc">CO2-Ausstoß absteigend</option>
+            <h1>CO2-Footprint</h1>
+            <div class="language-select">
+                <label for="language">Sprache:</label>
+                <select id="language" onchange="changeLanguage()">
+                    <option value="de">Deutsch</option>
+                    <option value="en">Englisch</option>
+                    <option value="ar">Arabisch</option>
+                    <option value="he">Hebräisch</option>
                 </select>
             </div>
-            <input type="text" id="search" onkeyup="searchTable()" placeholder="Suchen...">
         </div>
+        <!-- Navigation unterhalb des Headers -->
+        <nav>
+            <ul id="nav-menu">
+                <li><a href="#">Startseite</a></li>
+                <li><a href="#">Über uns</a></li>
+                <li><a href="#">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
 
+    <!-- Hauptbereich mit Willkommensnachricht und Tabelle -->
+    <main>
+        <h2>Willkommen auf unserer CO2-Footprint Website</h2>
+        <p>Hier können Sie sehen, welche Unternehmen und Länder jährlich wie viel CO2 emittieren. Unsere Arbeit soll für mehr Transparenz sorgen.</p>
         <table id="emissions-table">
             <thead>
                 <tr>
-                    <th onclick="sortTable(0)" id="table-country">Land</th>
-                    <th onclick="sortTable(1)" id="table-company">Unternehmen</th>
-                    <th onclick="sortTable(2)" id="table-co2">CO2-Ausstoß (Tonnen)</th>
+                    <th>Land</th>
+                    <th>Unternehmen</th>
+                    <th>CO2-Ausstoß (Tonnen)</th>
                 </tr>
             </thead>
             <tbody>
@@ -81,7 +66,7 @@
 
     <!-- Footer mit rechtlichen Hinweisen -->
     <footer>
-        <p id="footer-text">&copy; 2024 CO2-Footprint. Alle Rechte vorbehalten. Impressum und Datenschutz</p>
+        <p>&copy; 2024 CO2-Footprint. Alle Rechte vorbehalten. Impressum und Datenschutz</p>
     </footer>
 
     <script src="script.js"></script>
