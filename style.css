@@ -10,6 +10,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    transition: direction 0.3s; /* Für einen sanften Wechsel der Richtung */
 }
 
 header {
@@ -94,6 +95,10 @@ table, th, td {
     border: 1px solid #333;
     padding: 0.75rem;
     text-align: left;
+}
+
+th {
+    background-color: #f4f4f4;
 }
 
 footer {
