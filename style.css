@@ -1,3 +1,4 @@
+/* Allgemeine Stile */
 * {
     margin: 0;
     padding: 0;
@@ -7,16 +8,18 @@
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
+    margin: 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    transition: direction 0.3s; /* Für einen sanften Wechsel der Richtung */
 }
 
 header {
     background-color: #333;
     color: white;
     padding: 1rem 0;
+    position: relative;
 }
 
 .header-container {
@@ -46,6 +49,21 @@ h1 {
     margin-right: 0.5rem;
 }
 
+/* Hamburger Menü */
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger-menu .bar {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 3px 0;
+}
+
+/* Navigationsleiste */
 nav {
     background-color: #444;
     padding: 0.5rem 0;
@@ -69,20 +87,42 @@ nav ul li a {
     font-weight: bold;
 }
 
+/* Hamburger Menü anzeigen bei kleinem Bildschirm */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .hamburger-menu {
+        display: flex;
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        align-items: flex-start;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #444;
+    }
+
+    nav ul.show {
+        display: flex;
+    }
+
+    nav ul li {
+        margin: 0;
+        padding: 1rem;
+    }
+}
+
 main {
     flex-grow: 1;
     padding: 2rem;
     text-align: center;
-}
-
-.filter-container {
-    margin-bottom: 1rem;
-}
-
-.filter-container input,
-.filter-container select {
-    padding: 0.5rem;
-    margin-right: 0.5rem;
 }
 
 table {
@@ -97,19 +137,17 @@ table, th, td {
     text-align: left;
 }
 
-th {
-    background-color: #f4f4f4;
-}
-
 footer {
     background-color: #333;
     color: white;
     text-align: center;
     padding: 1rem;
+    position: relative;
+    bottom: 0;
     width: 100%;
 }
 
-/* RTL Support for Hebrew */
+/* RTL Support for Arabic and Hebrew */
 body[dir="rtl"] {
     text-align: right;
 }
@@ -120,15 +158,4 @@ body[dir="rtl"] nav ul {
 
 body[dir="rtl"] .header-container {
     flex-direction: row-reverse;
-}
-
-@media (max-width: 768px) {
-    .header-container {
-        flex-direction: column;
-    }
-
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-    }
 }
