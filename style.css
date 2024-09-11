@@ -73,7 +73,7 @@ nav ul li a {
     display: none;
 }
 
-.sidebar-menu {
+.sidebar {
     display: none;
     position: absolute;
     top: 3rem;
