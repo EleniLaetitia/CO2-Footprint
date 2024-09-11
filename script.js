@@ -2,7 +2,6 @@
 function changeLanguage() {
     const language = document.getElementById('language').value;
 
-    // Textübersetzungen
     const translations = {
         de: {
             pageTitle: 'CO2-Footprint',
@@ -23,9 +22,7 @@ function changeLanguage() {
             companyHeader: 'Unternehmen',
             co2Header: 'CO2 Ausstoß (in Tonnen)',
             footerText: '&copy; 2024 CO2-Footprint. Alle Rechte vorbehalten. <a href="#impressum">Impressum</a> und <a href="#datenschutz">Datenschutz</a>',
-            sidebarCo2: 'Infos über CO2',
-            sidebarEnvironment: 'Umwelt',
-            sidebarResearch: 'Forschung'
+            sidebarLinks: ['Infos über CO2', 'Umwelt', 'Forschung']
         },
         en: {
             pageTitle: 'CO2 Footprint',
@@ -45,10 +42,8 @@ function changeLanguage() {
             countryHeader: 'Country',
             companyHeader: 'Company',
             co2Header: 'CO2 Emission (in tons)',
-            footerText: '&copy; 2024 CO2 Footprint. All rights reserved. <a href="#impressum">Impressum</a> and <a href="#datenschutz">Privacy Policy</a>',
-            sidebarCo2: 'CO2 Information',
-            sidebarEnvironment: 'Environment',
-            sidebarResearch: 'Research'
+            footerText: '&copy; 2024 CO2 Footprint. All rights reserved. <a href="#impressum">Imprint</a> and <a href="#datenschutz">Privacy Policy</a>',
+            sidebarLinks: ['CO2 Information', 'Environment', 'Research']
         },
         he: {
             pageTitle: 'טביעת רגל פחמנית',
@@ -68,45 +63,43 @@ function changeLanguage() {
             countryHeader: 'מדינה',
             companyHeader: 'חברה',
             co2Header: 'פליטת CO2 (בטון)',
-            footerText: '&copy; 2024 טביעת רגל פחמנית. כל הזכויות שמורות. <a href="#impressum">אימפרסום</a> ו-<a href="#datenschutz">מדיניות פרטיות</a>',
-            sidebarCo2: 'מידע על CO2',
-            sidebarEnvironment: 'סביבה',
-            sidebarResearch: 'מחקר'
+            footerText: '&copy; 2024 טביעת רגל פחמנית. כל הזכויות שמורות. <a href="#impressum">הדפסת</a> ו-<a href="#datenschutz">מדיניות פרטיות</a>',
+            sidebarLinks: ['מידע על CO2', 'סביבה', 'מחקר']
         }
     };
 
-    const texts = translations[language] || translations.de; // Fallback to German
+    // Übersetzungen anwenden
+    document.getElementById('page-title').textContent = translations[language].pageTitle;
+    document.getElementById('header-title').textContent = translations[language].headerTitle;
+    document.getElementById('language-label').textContent = translations[language].languageLabel;
+    document.getElementById('nav-home').textContent = translations[language].navHome;
+    document.getElementById('nav-about').textContent = translations[language].navAbout;
+    document.getElementById('nav-contact').textContent = translations[language].navContact;
+    document.getElementById('welcome').textContent = translations[language].welcome;
+    document.getElementById('intro').textContent = translations[language].intro;
+    document.getElementById('sort-country-asc').textContent = translations[language].sortCountryAsc;
+    document.getElementById('sort-country-desc').textContent = translations[language].sortCountryDesc;
+    document.getElementById('sort-company-asc').textContent = translations[language].sortCompanyAsc;
+    document.getElementById('sort-company-desc').textContent = translations[language].sortCompanyDesc;
+    document.getElementById('sort-co2-asc').textContent = translations[language].sortCo2Asc;
+    document.getElementById('sort-co2-desc').textContent = translations[language].sortCo2Desc;
+    document.getElementById('country-header').textContent = translations[language].countryHeader;
+    document.getElementById('company-header').textContent = translations[language].companyHeader;
+    document.getElementById('co2-header').textContent = translations[language].co2Header;
+    document.getElementById('footer-text').innerHTML = translations[language].footerText;
 
-    document.getElementById('page-title').textContent = texts.pageTitle;
-    document.getElementById('header-title').textContent = texts.headerTitle;
-    document.getElementById('language-label').textContent = texts.languageLabel;
-    document.getElementById('nav-home').textContent = texts.navHome;
-    document.getElementById('nav-about').textContent = texts.navAbout;
-    document.getElementById('nav-contact').textContent = texts.navContact;
-    document.getElementById('welcome').textContent = texts.welcome;
-    document.getElementById('intro').textContent = texts.intro;
-    document.getElementById('sort-country-asc').textContent = texts.sortCountryAsc;
-    document.getElementById('sort-country-desc').textContent = texts.sortCountryDesc;
-    document.getElementById('sort-company-asc').textContent = texts.sortCompanyAsc;
-    document.getElementById('sort-company-desc').textContent = texts.sortCompanyDesc;
-    document.getElementById('sort-co2-asc').textContent = texts.sortCo2Asc;
-    document.getElementById('sort-co2-desc').textContent = texts.sortCo2Desc;
-    document.getElementById('country-header').textContent = texts.countryHeader;
-    document.getElementById('company-header').textContent = texts.companyHeader;
-    document.getElementById('co2-header').textContent = texts.co2Header;
-    document.getElementById('footer-text').innerHTML = texts.footerText;
+    // Sidebar Menü Links
+    const sidebarLinks = document.querySelectorAll('#sidebar-menu .sidebar-links a');
+    sidebarLinks.forEach((link, index) => {
+        link.textContent = translations[language].sidebarLinks[index];
+    });
 
-    // Sidebar links
-    document.querySelector('#sidebar-menu a[href="#co2"]').textContent = texts.sidebarCo2;
-    document.querySelector('#sidebar-menu a[href="#environment"]').textContent = texts.sidebarEnvironment;
-    document.querySelector('#sidebar-menu a[href="#research"]').textContent = texts.sidebarResearch;
-
-    // Layout für RTL-Sprachen
-    document.body.style.direction = language === 'he' ? 'rtl' : 'ltr';
+    // RTL für Hebräisch einstellen
+    document.body.setAttribute('dir', language === 'he' ? 'rtl' : 'ltr');
 }
 
-// Event-Listener für Sprachauswahl
+// Event Listener für Sprachauswahl
 document.getElementById('language').addEventListener('change', changeLanguage);
 
-// Initiale Spracheinstellung
+// Initiale Sprachumschaltung
 changeLanguage();
