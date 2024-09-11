@@ -22,7 +22,13 @@ function changeLanguage() {
             companyHeader: 'Unternehmen',
             co2Header: 'CO2 Ausstoß (in Tonnen)',
             footerText: '&copy; 2024 CO2-Footprint. Alle Rechte vorbehalten. <a href="#impressum">Impressum</a> und <a href="#datenschutz">Datenschutz</a>',
-            sidebarLinks: ['Infos über CO2', 'Umwelt', 'Forschung']
+            sidebarLinks: ['Infos über CO2', 'Umwelt', 'Forschung'],
+            tableData: [
+                { country: 'Deutschland', company: 'BMW', co2: '5000' },
+                { country: 'USA', company: 'Amazon', co2: '7000' },
+                { country: 'Brasilien', company: 'Petronas', co2: '3000' }
+                // Weitere Zeilen hier hinzufügen
+            ]
         },
         en: {
             pageTitle: 'CO2 Footprint',
@@ -43,7 +49,13 @@ function changeLanguage() {
             companyHeader: 'Company',
             co2Header: 'CO2 Emission (in tons)',
             footerText: '&copy; 2024 CO2 Footprint. All rights reserved. <a href="#impressum">Imprint</a> and <a href="#datenschutz">Privacy Policy</a>',
-            sidebarLinks: ['CO2 Information', 'Environment', 'Research']
+            sidebarLinks: ['CO2 Information', 'Environment', 'Research'],
+            tableData: [
+                { country: 'Germany', company: 'BMW', co2: '5000' },
+                { country: 'USA', company: 'Amazon', co2: '7000' },
+                { country: 'Brazil', company: 'Petronas', co2: '3000' }
+                // Further rows can be added here
+            ]
         },
         he: {
             pageTitle: 'טביעת רגל פחמנית',
@@ -64,7 +76,13 @@ function changeLanguage() {
             companyHeader: 'חברה',
             co2Header: 'פליטת CO2 (בטון)',
             footerText: '&copy; 2024 טביעת רגל פחמנית. כל הזכויות שמורות. <a href="#impressum">הדפסת</a> ו-<a href="#datenschutz">מדיניות פרטיות</a>',
-            sidebarLinks: ['מידע על CO2', 'סביבה', 'מחקר']
+            sidebarLinks: ['מידע על CO2', 'סביבה', 'מחקר'],
+            tableData: [
+                { country: 'גרמניה', company: 'BMW', co2: '5000' },
+                { country: 'ארה"ב', company: 'Amazon', co2: '7000' },
+                { country: 'ברזיל', company: 'Petronas', co2: '3000' }
+                // פריטי טבלה נוספים כאן
+            ]
         }
     };
 
@@ -82,8 +100,7 @@ function changeLanguage() {
     document.getElementById('sort-country-desc').textContent = t.sortCountryDesc;
     document.getElementById('sort-company-asc').textContent = t.sortCompanyAsc;
     document.getElementById('sort-company-desc').textContent = t.sortCompanyDesc;
-    document.getElementById('sort-co2-asc').textContent = t.sortCo
-     document.getElementById('sort-co2-asc').textContent = t.sortCo2Asc;
+    document.getElementById('sort-co2-asc').textContent = t.sortCo2Asc;
     document.getElementById('sort-co2-desc').textContent = t.sortCo2Desc;
     document.getElementById('country-header').textContent = t.countryHeader;
     document.getElementById('company-header').textContent = t.companyHeader;
@@ -94,6 +111,19 @@ function changeLanguage() {
     const sidebarLinks = document.querySelectorAll('#sidebar a');
     sidebarLinks.forEach((link, index) => {
         link.textContent = t.sidebarLinks[index];
+    });
+
+    // Tabelle mit Daten füllen
+    const tableBody = document.querySelector('#data-table tbody');
+    tableBody.innerHTML = '';
+    t.tableData.forEach(row => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+            <td>${row.country}</td>
+            <td>${row.company}</td>
+            <td>${row.co2}</td>
+        `;
+        tableBody.appendChild(tr);
     });
 
     // RTL für Hebräisch einstellen
