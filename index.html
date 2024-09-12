@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Header mit Logo und Navigation -->
+    <!-- Header mit Logo, Navigation und Sprachauswahl -->
     <header>
         <div class="header-container">
             <img src="Logo CO2 Footprint.png" alt="CO2-Footprint Logo" class="logo">
@@ -21,12 +21,14 @@
                 </select>
             </div>
         </div>
-        <!-- Navigation -->
+        <!-- Navigationsleiste -->
         <nav>
             <ul id="nav-menu">
                 <li><a href="#home" id="nav-home">Startseite</a></li>
                 <li><a href="#about" id="nav-about">Über uns</a></li>
                 <li><a href="#contact" id="nav-contact">Kontakt</a></li>
+                <li class="menu-item"><a href="#research">Forschung</a></li>
+                <li class="menu-item"><a href="#environment">Umwelt</a></li>
             </ul>
         </nav>
     </header>
@@ -36,7 +38,7 @@
         <h2 id="welcome-message">Willkommen auf unserer CO2-Footprint Website. Diese Seite soll für mehr Transparenz sorgen.</h2>
     </section>
 
-    <!-- Tabelle mit Such- und Filterfunktion -->
+    <!-- Suchfeld und Filteroptionen -->
     <div class="filter-container">
         <input type="text" id="search" placeholder="Suche...">
         <select id="sort">
@@ -46,6 +48,8 @@
             <option value="co2-desc">Höchster CO2-Ausstoß</option>
         </select>
     </div>
+
+    <!-- Tabelle -->
     <table id="data-table">
         <thead>
             <tr>
@@ -72,15 +76,6 @@
             </tr>
         </tbody>
     </table>
-
-    <!-- Sidebar Menü -->
-    <div class="sidebar-menu">
-        <button id="menu-toggle">☰ Menü</button>
-        <div id="sidebar" class="sidebar">
-            <a href="#research">Forschung</a>
-            <a href="#environment">Umwelt</a>
-        </div>
-    </div>
 
     <!-- Footer -->
     <footer>
