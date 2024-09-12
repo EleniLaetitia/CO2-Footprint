@@ -10,35 +10,40 @@
 <body>
     <header>
         <div class="logo">
-            <img src="logo.png" alt="Logo">
-            <h1>CO2-Footprint</h1>
+            <img src="Logo CO2 Footprint.png" alt="Logo">
+            <h1 id="site-title">CO2-Footprint</h1>
         </div>
         <nav>
-            <ul>
-                <li><a href="#">Startseite</a></li>
-                <li><a href="#">Über uns</a></li>
-                <li><a href="#">Kontakt</a></li>
+            <ul id="nav-menu">
+                <li><a href="#" class="nav-link" data-key="home">Startseite</a></li>
+                <li><a href="#" class="nav-link" data-key="about">Über uns</a></li>
+                <li><a href="#" class="nav-link" data-key="contact">Kontakt</a></li>
             </ul>
             <button id="menu-toggle">☰</button>
             <div id="side-menu">
                 <ul>
-                    <li><a href="#">Infos über CO2</a></li>
-                    <li><a href="#">Umwelt</a></li>
-                    <li><a href="#">Forschung</a></li>
+                    <li><a href="#" class="local-link" data-key="co2-info">Infos über CO2</a></li>
+                    <li><a href="#" class="local-link" data-key="environment">Umwelt</a></li>
+                    <li><a href="#" class="local-link" data-key="research">Forschung</a></li>
                 </ul>
             </div>
         </nav>
+        <div class="language-selector">
+            <button data-lang="de">Deutsch</button>
+            <button data-lang="en">English</button>
+            <button data-lang="he">עברית</button>
+        </div>
     </header>
     <main>
         <section>
-            <h2>CO2-Emissionsdaten</h2>
+            <h2 id="data-title">CO2-Emissionsdaten</h2>
             <input type="text" id="search" placeholder="Suche...">
             <table id="data-table">
                 <thead>
                     <tr>
-                        <th>Land</th>
-                        <th>Unternehmen</th>
-                        <th>CO2-Emissionen (in Tonnen)</th>
+                        <th data-key="country">Land</th>
+                        <th data-key="company">Unternehmen</th>
+                        <th data-key="co2">CO2-Emissionen (in Tonnen)</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -62,7 +67,7 @@
         </section>
     </main>
     <footer>
-        <p>&copy; 2024 Non-Profit-Organisation. Alle Rechte vorbehalten.</p>
+        <p id="footer-text">&copy; 2024 Non-Profit-Organisation. Alle Rechte vorbehalten.</p>
     </footer>
 </body>
 </html>
