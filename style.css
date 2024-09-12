@@ -19,10 +19,10 @@ header {
 
 .header-container {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
+    justify-content: space-between;
 }
 
 .logo {
@@ -31,13 +31,22 @@ header {
 
 h1 {
     margin: 0;
+    font-size: 1.5rem;
+}
+
+.language-select {
+    color: white;
+}
+
+nav {
+    background-color: #222;
 }
 
 nav ul {
     list-style: none;
     display: flex;
     justify-content: center;
-    margin: 1rem 0;
+    padding: 0;
 }
 
 nav ul li {
@@ -47,12 +56,53 @@ nav ul li {
 nav ul li a {
     color: white;
     text-decoration: none;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
-.language-select {
-    margin-left: 20px;
+.filter-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px auto;
+    padding: 0 1rem;
+    max-width: 1200px;
+}
+
+#search {
+    margin-right: 10px;
+    padding: 5px;
+}
+
+#sort {
+    padding: 5px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px auto;
+    max-width: 1200px;
+}
+
+table, th, td {
+    border: 1px solid #333;
+    padding: 0.75rem;
+    text-align: left;
+}
+
+footer {
+    background-color: #333;
     color: white;
+    text-align: center;
+    padding: 1rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+#welcome-message {
+    font-size: 1rem;
+    text-align: center;
+    margin: 20px 0;
 }
 
 .sidebar-menu {
@@ -80,49 +130,14 @@ nav ul li a {
     display: block;
 }
 
-.filter-container {
-    display: flex;
-    justify-content: space-between;
-    margin: 20px 0;
-    padding: 0 1rem;
-    max-width: 1200px;
-    margin: 20px auto;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-}
-
-table, th, td {
-    border: 1px solid #333;
-    padding: 0.75rem;
-    text-align: left;
-}
-
-footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 1rem;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
-
 /* Responsives Design */
 @media (max-width: 768px) {
-    nav ul {
+    .filter-container {
         flex-direction: column;
         align-items: center;
     }
 
-    .header-container {
-        flex-direction: column;
-    }
-
-    .filter-container {
+    nav ul {
         flex-direction: column;
         align-items: center;
     }
