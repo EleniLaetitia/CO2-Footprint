@@ -7,22 +7,30 @@
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
+    margin: 0;
+    padding: 0;
 }
 
 header {
     background-color: #333;
     color: white;
-    padding: 1rem 0;
+    padding: 1rem;
 }
 
 .header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .logo {
     height: 50px;
+}
+
+h1 {
+    margin: 0;
 }
 
 nav ul {
@@ -44,6 +52,7 @@ nav ul li a {
 
 .language-select {
     margin-left: 20px;
+    color: white;
 }
 
 .sidebar-menu {
@@ -75,6 +84,9 @@ nav ul li a {
     display: flex;
     justify-content: space-between;
     margin: 20px 0;
+    padding: 0 1rem;
+    max-width: 1200px;
+    margin: 20px auto;
 }
 
 table {
@@ -94,6 +106,9 @@ footer {
     color: white;
     text-align: center;
     padding: 1rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
 /* Responsives Design */
