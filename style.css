@@ -7,113 +7,94 @@
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-}
-
-header {
-    background-color: #333;
-    color: white;
-    padding: 1rem 0;
+    direction: ltr;
 }
 
 .header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 1rem;
 }
 
 .logo {
-    width: 50px;
+    width: 150px;
+    height: auto;
 }
 
-nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center; /* Zentriert die Navigation */
+.centered-title {
+    text-align: center;
     flex-grow: 1;
 }
 
-nav ul li {
-    margin: 0 1rem;
-}
-
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.2rem;
-}
-
-.menu-container {
+.language-select {
     margin-left: auto;
 }
 
-.menu-icon {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 40px; /* Größeres Menü-Icon */
-    cursor: pointer;
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    padding: 1rem;
+    background-color: #f8f9fa;
 }
 
-.language-select {
-    margin-left: 20px;
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+.sidebar-menu {
+    position: relative;
+}
+
+.menu-icon {
+    font-size: 30px;
+    cursor: pointer;
 }
 
 .sidebar {
     display: none;
     position: absolute;
-    top: 3rem;
+    top: 40px;
     right: 0;
-    background-color: #444;
-    padding: 1rem;
-    border-radius: 0.5rem;
+    background-color: #333;
+    padding: 10px;
+    width: 200px;
 }
 
 .sidebar a {
     color: white;
     text-decoration: none;
     display: block;
-    margin: 0.5rem 0;
+    margin-bottom: 10px;
 }
 
-main {
-    padding: 2rem;
-    text-align: center;
+.filter-container {
+    margin: 1rem 0;
 }
 
-table {
+#data-table {
     width: 100%;
     border-collapse: collapse;
-    margin: 2rem 0;
 }
 
-table, th, td {
-    border: 1px solid #333;
-    padding: 0.75rem;
-    text-align: left;
+#data-table th, #data-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+#data-table th {
+    background-color: #f4f4f4;
 }
 
 footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
+    margin-top: 2rem;
     padding: 1rem;
-    margin-top: auto;
-}
-
-/* RTL Support for Hebrew */
-body[dir="rtl"] {
-    direction: rtl;
-}
-
-body[dir="rtl"] nav ul {
-    justify-content: flex-end;
-}
-
-body[dir="rtl"] .header-container {
-    flex-direction: row-reverse;
-}
-
-body[dir="rtl"] .sidebar {
-    right: auto;
-    left: 0;
+    background-color: #f8f9fa;
+    text-align: center;
 }
