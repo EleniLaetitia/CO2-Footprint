@@ -4,69 +4,144 @@ function changeLanguage() {
 
     const translations = {
         de: {
+            pageTitle: 'CO2-Footprint',
             headerTitle: 'CO2-Footprint',
             languageLabel: 'Sprache:',
             navHome: 'Startseite',
             navAbout: 'Über uns',
             navContact: 'Kontakt',
-            welcome: 'Willkommen auf unserer CO2-Footprint Website. Diese Seite soll für mehr Transparenz sorgen.',
+            welcome: 'Willkommen auf unserer CO2-Footprint Website.',
+            intro: 'Hier können Sie sehen, welche Unternehmen und Länder jährlich wie viel CO2 emittieren. Unsere Arbeit soll für mehr Transparenz sorgen.',
+            sortCountryAsc: 'Land A-Z',
+            sortCountryDesc: 'Land Z-A',
+            sortCompanyAsc: 'Unternehmen A-Z',
+            sortCompanyDesc: 'Unternehmen Z-A',
+            sortCo2Asc: 'CO2 Ausstoß Aufsteigend',
+            sortCo2Desc: 'CO2 Ausstoß Absteigend',
+            countryHeader: 'Land',
+            companyHeader: 'Unternehmen',
+            co2Header: 'CO2 Ausstoß (in Tonnen)',
             footerText: '&copy; 2024 CO2-Footprint. Alle Rechte vorbehalten. <a href="#impressum">Impressum</a> und <a href="#datenschutz">Datenschutz</a>',
-            sidebarLinks: ['Forschung', 'Umwelt']
+            sidebarLinks: ['Infos über CO2', 'Umwelt', 'Forschung']
         },
         en: {
+            pageTitle: 'CO2 Footprint',
             headerTitle: 'CO2 Footprint',
             languageLabel: 'Language:',
             navHome: 'Home',
             navAbout: 'About Us',
             navContact: 'Contact',
-            welcome: 'Welcome to our CO2 Footprint Website. This page aims to provide more transparency.',
-            footerText: '&copy; 2024 CO2 Footprint. All rights reserved. <a href="#impressum">Impressum</a> and <a href="#datenschutz">Privacy</a>',
-            sidebarLinks: ['Research', 'Environment']
+            welcome: 'Welcome to our CO2 Footprint Website.',
+            intro: 'Here you can see how much CO2 companies and countries emit annually. Our work is aimed at increasing transparency.',
+            sortCountryAsc: 'Country A-Z',
+            sortCountryDesc: 'Country Z-A',
+            sortCompanyAsc: 'Company A-Z',
+            sortCompanyDesc: 'Company Z-A',
+            sortCo2Asc: 'CO2 Emission Ascending',
+            sortCo2Desc: 'CO2 Emission Descending',
+            countryHeader: 'Country',
+            companyHeader: 'Company',
+            co2Header: 'CO2 Emission (in tons)',
+            footerText: '&copy; 2024 CO2 Footprint. All rights reserved. <a href="#impressum">Imprint</a> and <a href="#datenschutz">Privacy Policy</a>',
+            sidebarLinks: ['CO2 Information', 'Environment', 'Research']
         },
         he: {
+            pageTitle: 'טביעת רגל פחמנית',
             headerTitle: 'טביעת רגל פחמנית',
             languageLabel: 'שפה:',
             navHome: 'דף הבית',
             navAbout: 'עלינו',
             navContact: 'צור קשר',
-            welcome: 'ברוכים הבאים לאתר טביעת רגל פחמנית. עמוד זה מיועד לספק שקיפות רבה יותר.',
-            footerText: '&copy; 2024 טביעת רגל פחמנית. כל הזכויות שמורות. <a href="#impressum">Impressum</a> ו<a href="#datenschutz">פרטיות</a>',
-            sidebarLinks: ['מחקר', 'סביבה']
+            welcome: 'ברוכים הבאים לאתר טביעת הרגל הפחמנית שלנו.',
+            intro: 'כאן תוכלו לראות כמה פחמן דו חמצני פולטות חברות ומדינות בכל שנה. העבודה שלנו מכוונת לשקיפות מוגברת.',
+            sortCountryAsc: 'מדינה א-ב',
+            sortCountryDesc: 'מדינה ב-א',
+            sortCompanyAsc: 'חברה א-ב',
+            sortCompanyDesc: 'חברה ב-א',
+            sortCo2Asc: 'פליטת CO2 עולים',
+            sortCo2Desc: 'פליטת CO2 יורדים',
+            countryHeader: 'מדינה',
+            companyHeader: 'חברה',
+            co2Header: 'פליטת CO2 (בטון)',
+            footerText: '&copy; 2024 טביעת רגל פחמנית. כל הזכויות שמורות. <a href="#impressum">הדפסת</a> ו-<a href="#datenschutz">מדיניות פרטיות</a>',
+            sidebarLinks: ['מידע על CO2', 'סביבה', 'מחקר']
         }
     };
 
-    const selectedTranslation = translations[language];
+    // Übersetzungen anwenden
+    const t = translations[language];
+    document.title = t.pageTitle;
+    document.getElementById('header-title').textContent = t.headerTitle;
+    document.getElementById('language-label').textContent = t.languageLabel;
+    document.getElementById('nav-home').textContent = t.navHome;
+    document.getElementById('nav-about').textContent = t.navAbout;
+    document.getElementById('nav-contact').textContent = t.navContact;
+    document.getElementById('welcome').textContent = t.welcome;
+    document.getElementById('intro').textContent = t.intro;
+    document.getElementById('sort-country-asc').textContent = t.sortCountryAsc;
+    document.getElementById('sort-country-desc').textContent = t.sortCountryDesc;
+    document.getElementById('sort-company-asc').textContent = t.sortCompanyAsc;
+    document.getElementById('sort-company-desc').textContent = t.sortCompanyDesc;
+    document.getElementById('sort-co2-asc').textContent = t.sortCo2Asc;
+    document.getElementById('sort-co2-desc').textContent = t.sortCo2Desc;
+    document.getElementById('country-header').textContent = t.countryHeader;
+    document.getElementById('company-header').textContent = t.companyHeader;
+    document.getElementById('co2-header').textContent = t.co2Header;
+    document.getElementById('footer-text').innerHTML = t.footerText;
 
-    // Texte aktualisieren
-    document.getElementById('header-title').innerText = selectedTranslation.headerTitle;
-    document.querySelector('.language-select label').innerText = selectedTranslation.languageLabel;
-    document.getElementById('nav-home').innerText = selectedTranslation.navHome;
-    document.getElementById('nav-about').innerText = selectedTranslation.navAbout;
-    document.getElementById('nav-contact').innerText = selectedTranslation.navContact;
-    document.getElementById('welcome-message').innerText = selectedTranslation.welcome;
-    document.querySelector('footer p').innerHTML = selectedTranslation.footerText;
+    // Sidebar Menü Links
+    const sidebarLinks = document.querySelectorAll('#sidebar a');
+    sidebarLinks.forEach((link, index) => {
+        link.textContent = t.sidebarLinks[index];
+    });
 
-    // Sidebar Links aktualisieren
-    const sidebarLinks = document.querySelectorAll('.sidebar a');
-    sidebarLinks[0].innerText = selectedTranslation.sidebarLinks[0];
-    sidebarLinks[1].innerText = selectedTranslation.sidebarLinks[1];
-
-    // Layout für RTL anpassen
-    if (language === 'he') {
-        document.body.setAttribute('dir', 'rtl');
-    } else {
-        document.body.removeAttribute('dir');
-    }
+    // RTL für Hebräisch einstellen
+    document.body.setAttribute('dir', language === 'he' ? 'rtl' : 'ltr');
 }
 
-// Event Listener für die Sprachumschaltung
+// Event Listener für Sprachauswahl
 document.getElementById('language').addEventListener('change', changeLanguage);
 
-// Funktion zum Umschalten des Sidebar-Menüs
-document.querySelector('.menu-item').addEventListener('click', function () {
-    const sidebar = document.querySelector('.sidebar');
-    sidebar.classList.toggle('open');
+// Initiale Sprachumschaltung
+changeLanguage();
+
+// Funktion für die Such- und Filterfunktion
+document.getElementById('search').addEventListener('input', function () {
+    const searchTerm = this.value.toLowerCase();
+    const rows = document.querySelectorAll('#data-table tbody tr');
+
+    rows.forEach(row => {
+        const cells = row.querySelectorAll('td');
+        const matches = Array.from(cells).some(cell => cell.textContent.toLowerCase().includes(searchTerm));
+        row.style.display = matches ? '' : 'none';
+    });
 });
 
-// Initiale Sprachänderung anwenden
-changeLanguage();
+document.getElementById('sort').addEventListener('change', function () {
+    const sortValue = this.value;
+    const table = document.getElementById('data-table');
+    const rows = Array.from(table.querySelectorAll('tbody tr'));
+
+    rows.sort((a, b) => {
+        const cellA = a.querySelectorAll('td')[sortValue.includes('country') ? 0 : sortValue.includes('company') ? 1 : 2];
+        const cellB = b.querySelectorAll('td')[sortValue.includes('country') ? 0 : sortValue.includes('company') ? 1 : 2];
+        const aText = cellA.textContent.trim();
+        const bText = cellB.textContent.trim();
+        
+        if (sortValue.includes('asc')) {
+            return aText.localeCompare(bText);
+        } else {
+            return bText.localeCompare(aText);
+        }
+    });
+
+    const tbody = table.querySelector('tbody');
+    rows.forEach(row => tbody.appendChild(row));
+});
+
+// Sidebar Menü Toggle
+document.getElementById('menu-toggle').addEventListener('click', function () {
+    const sidebar = document.getElementById('sidebar');
+    const isVisible = sidebar.style.display === 'block';
+    sidebar.style.display = isVisible ? 'none' : 'block';
+});
