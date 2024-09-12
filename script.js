@@ -5,58 +5,68 @@ function changeLanguage() {
     const translations = {
         de: {
             headerTitle: 'CO2-Footprint',
-            welcomeMessage: 'Willkommen auf unserer CO2-Footprint Website. Diese Seite soll für mehr Transparenz sorgen.',
+            languageLabel: 'Sprache:',
             navHome: 'Startseite',
             navAbout: 'Über uns',
             navContact: 'Kontakt',
-            footerText: '&copy; 2024 CO2-Footprint. Alle Rechte vorbehalten. <a href="#impressum">Impressum</a> und <a href="#datenschutz">Datenschutz</a>'
+            welcome: 'Willkommen auf unserer CO2-Footprint Website. Diese Seite soll für mehr Transparenz sorgen.',
+            footerText: '&copy; 2024 CO2-Footprint. Alle Rechte vorbehalten. <a href="#impressum">Impressum</a> und <a href="#datenschutz">Datenschutz</a>',
+            sidebarLinks: ['Forschung', 'Umwelt']
         },
         en: {
             headerTitle: 'CO2 Footprint',
-            welcomeMessage: 'Welcome to our CO2 Footprint Website. This page is designed for more transparency.',
+            languageLabel: 'Language:',
             navHome: 'Home',
             navAbout: 'About Us',
             navContact: 'Contact',
-            footerText: '&copy; 2024 CO2 Footprint. All rights reserved. <a href="#impressum">Legal Notice</a> and <a href="#datenschutz">Privacy Policy</a>'
+            welcome: 'Welcome to our CO2 Footprint Website. This page aims to provide more transparency.',
+            footerText: '&copy; 2024 CO2 Footprint. All rights reserved. <a href="#impressum">Impressum</a> and <a href="#datenschutz">Privacy</a>',
+            sidebarLinks: ['Research', 'Environment']
         },
         he: {
             headerTitle: 'טביעת רגל פחמנית',
-            welcomeMessage: 'ברוכים הבאים לאתר טביעת רגל פחמנית. אתר זה מיועד לשקיפות רבה יותר.',
+            languageLabel: 'שפה:',
             navHome: 'דף הבית',
             navAbout: 'עלינו',
             navContact: 'צור קשר',
-            footerText: '&copy; 2024 טביעת רגל פחמנית. כל הזכויות שמורות. <a href="#impressum">פרטי משפטי</a> ו<a href="#datenschutz">מדיניות פרטיות</a>'
+            welcome: 'ברוכים הבאים לאתר טביעת רגל פחמנית. עמוד זה מיועד לספק שקיפות רבה יותר.',
+            footerText: '&copy; 2024 טביעת רגל פחמנית. כל הזכויות שמורות. <a href="#impressum">Impressum</a> ו<a href="#datenschutz">פרטיות</a>',
+            sidebarLinks: ['מחקר', 'סביבה']
         }
     };
 
     const selectedTranslation = translations[language];
 
+    // Texte aktualisieren
     document.getElementById('header-title').innerText = selectedTranslation.headerTitle;
-    document.getElementById('welcome-message').innerText = selectedTranslation.welcomeMessage;
+    document.querySelector('.language-select label').innerText = selectedTranslation.languageLabel;
     document.getElementById('nav-home').innerText = selectedTranslation.navHome;
     document.getElementById('nav-about').innerText = selectedTranslation.navAbout;
     document.getElementById('nav-contact').innerText = selectedTranslation.navContact;
+    document.getElementById('welcome-message').innerText = selectedTranslation.welcome;
     document.querySelector('footer p').innerHTML = selectedTranslation.footerText;
 
-    document.body.setAttribute('dir', language === 'he' ? 'rtl' : 'ltr');
+    // Sidebar Links aktualisieren
+    const sidebarLinks = document.querySelectorAll('.sidebar a');
+    sidebarLinks[0].innerText = selectedTranslation.sidebarLinks[0];
+    sidebarLinks[1].innerText = selectedTranslation.sidebarLinks[1];
+
+    // Layout für RTL anpassen
+    if (language === 'he') {
+        document.body.setAttribute('dir', 'rtl');
+    } else {
+        document.body.removeAttribute('dir');
+    }
 }
 
+// Event Listener für die Sprachumschaltung
 document.getElementById('language').addEventListener('change', changeLanguage);
 
-// Sidebar Menü Toggle
-document.getElementById('menu-toggle').addEventListener('click', function () {
-    document.getElementById('sidebar').classList.toggle('open');
+// Funktion zum Umschalten des Sidebar-Menüs
+document.querySelector('.menu-item').addEventListener('click', function () {
+    const sidebar = document.querySelector('.sidebar');
+    sidebar.classList.toggle('open');
 });
 
-// Such- und Filterfunktion
-const table = document.querySelector('#data-table tbody');
-const searchInput = document.getElementById('search');
-const sortSelect = document.getElementById('sort');
-
-// Suchfunktion
-searchInput.addEventListener('input', function () {
-    const searchTerm = searchInput.value.toLowerCase();
-    for (let row of table.rows) {
-        const country = row.cells[0].textContent.toLowerCase();
-        const company = row.cells[1].textContent.toLowerCase();
-        row.style.display = (country.includes(searchTerm) || company.includes(searchTerm)) ? '' : '
+// Initiale Sprachänderung anwenden
+changeLanguage();
