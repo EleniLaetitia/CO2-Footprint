@@ -52,7 +52,8 @@ function changeLanguage() {
 
     const selectedTranslation = translations[language];
 
-    document.getElementById('page-title').innerText = selectedTranslation.pageTitle;
+    document.title = selectedTranslation.pageTitle;
+    document.getElementById('header-title').innerText = selectedTranslation.headerTitle;
     document.getElementById('language-label').innerText = selectedTranslation.languageLabel;
     document.getElementById('nav-home').innerText = selectedTranslation.navHome;
     document.getElementById('nav-about').innerText = selectedTranslation.navAbout;
@@ -68,6 +69,7 @@ function changeLanguage() {
     document.getElementById('sidebar-environment').innerText = selectedTranslation.sidebarLinks[1];
     document.getElementById('sidebar-research').innerText = selectedTranslation.sidebarLinks[2];
 
+    // Sprachrichtung für Hebräisch
     if (language === 'he') {
         document.body.setAttribute('dir', 'rtl');
     } else {
@@ -77,7 +79,54 @@ function changeLanguage() {
 
 document.getElementById('language').addEventListener('change', changeLanguage);
 
+// Menü öffnen und schließen
 document.getElementById('menu-toggle').addEventListener('click', function () {
-    const sidebar = document.getElementById('sidebar');
-    sidebar.style.display = sidebar.style.display === 'block' ? 'none' : 'block';
+    document.getElementById('sidebar').classList.toggle('open');
+});
+
+// Such- und Filterfunktion
+const table = document.getElementById('data-table').getElementsByTagName('tbody')[0];
+const searchInput = document.getElementById('search');
+const sortSelect = document.getElementById('sort');
+
+// Suche
+searchInput.addEventListener('input', function () {
+    const searchTerm = searchInput.value.toLowerCase();
+    for (let row of table.rows) {
+        const country = row.cells[0].textContent.toLowerCase();
+        const company = row.cells[1].textContent.toLowerCase();
+        row.style.display = (country.includes(searchTerm) || company.includes(searchTerm)) ? '' : 'none';
+    }
+});
+
+// Sortieren
+sortSelect.addEventListener('change', function () {
+    const rowsArray = Array.from(table.rows);
+    const sortValue = sortSelect.value;
+    let columnIndex, order;
+
+    if (sortValue.includes('country')) {
+        columnIndex = 0;
+    } else if (sortValue.includes('company')) {
+        columnIndex = 1;
+    } else {
+        columnIndex = 2;
+    }
+
+    order = sortValue.includes('asc') ? 1 : -1;
+
+    rowsArray.sort(function (rowA, rowB) {
+        const cellA = rowA.cells[columnIndex].textContent;
+        const cellB = rowB.cells[columnIndex].textContent;
+
+        if (columnIndex === 2) {
+            return (parseInt(cellA) - parseInt(cellB)) * order;
+        }
+
+        return cellA.localeCompare(cellB) * order;
+    });
+
+    rowsArray.forEach(function (row) {
+        table.appendChild(row);
+    });
 });
