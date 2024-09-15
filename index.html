@@ -4,70 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CO2-Footprint</title>
-    <link rel="stylesheet" href="styles.css">
-    <script defer src="scripts.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Header mit Logo, Menü und Sprachwahl -->
     <header>
         <div class="logo">
-            <img src="Logo CO2 Footprint.png" alt="Logo">
-            <h1 id="site-title">CO2-Footprint</h1>
+            <img src="path/to/logo.png" alt="Logo">
         </div>
-        <nav>
-            <ul id="nav-menu">
-                <li><a href="#" class="nav-link" data-key="home">Startseite</a></li>
-                <li><a href="#" class="nav-link" data-key="about">Über uns</a></li>
-                <li><a href="#" class="nav-link" data-key="contact">Kontakt</a></li>
+        <div class="menu">
+            <ul>
+                <li><a href="#">Umwelt</a></li>
+                <li><a href="#">Forschung</a></li>
+                <li><a href="#">Über CO2</a></li>
             </ul>
-            <button id="menu-toggle">☰</button>
-            <div id="side-menu">
-                <ul>
-                    <li><a href="#" class="local-link" data-key="co2-info">Infos über CO2</a></li>
-                    <li><a href="#" class="local-link" data-key="environment">Umwelt</a></li>
-                    <li><a href="#" class="local-link" data-key="research">Forschung</a></li>
-                </ul>
-            </div>
-        </nav>
-        <div class="language-selector">
-            <button data-lang="de">Deutsch</button>
-            <button data-lang="en">English</button>
-            <button data-lang="he">עברית</button>
+        </div>
+        <div class="language-switch">
+            <select id="languageSelect" onchange="changeLanguage()">
+                <option value="de">Deutsch</option>
+                <option value="en">English</option>
+                <option value="he">עברית</option>
+            </select>
         </div>
     </header>
+
+    <!-- Überschrift und Begrüßungstext -->
+    <div class="welcome">
+        <h1 id="title">CO2-Footprint</h1>
+        <p id="welcomeText">Willkommen auf unserer CO2-Footprint Website. Diese Seite soll zu mehr Transparenz führen.</p>
+    </div>
+
+    <!-- Contentbereich mit Tabelle -->
     <main>
-        <section>
-            <h2 id="data-title">CO2-Emissionsdaten</h2>
-            <input type="text" id="search" placeholder="Suche...">
-            <table id="data-table">
-                <thead>
-                    <tr>
-                        <th data-key="country">Land</th>
-                        <th data-key="company">Unternehmen</th>
-                        <th data-key="co2">CO2-Emissionen (in Tonnen)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Deutschland</td>
-                        <td>BMW</td>
-                        <td>123456</td>
-                    </tr>
-                    <tr>
-                        <td>USA</td>
-                        <td>Amazon</td>
-                        <td>234567</td>
-                    </tr>
-                    <tr>
-                        <td>Brasilien</td>
-                        <td>Petronas</td>
-                        <td>345678</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
+        <h2>CO2-Emissionen</h2>
+        <input type="text" id="searchInput" placeholder="Suche...">
+        <table id="emissionsTable">
+            <thead>
+                <tr>
+                    <th>Land</th>
+                    <th>Unternehmen</th>
+                    <th>CO2-Ausstoß (Tonnen)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Deutschland</td>
+                    <td>BMW</td>
+                    <td>1.200.000</td>
+                </tr>
+                <tr>
+                    <td>USA</td>
+                    <td>Amazon</td>
+                    <td>900.000</td>
+                </tr>
+                <tr>
+                    <td>Brasilien</td>
+                    <td>Petronas</td>
+                    <td>1.500.000</td>
+                </tr>
+            </tbody>
+        </table>
     </main>
+
+    <!-- Footer mit rechtlichem Hinweis -->
     <footer>
-        <p id="footer-text">&copy; 2024 Non-Profit-Organisation. Alle Rechte vorbehalten.</p>
+        <p>&copy; 2024 CO2-Footprint. Alle Rechte vorbehalten. Impressum und Datenschutz</p>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
