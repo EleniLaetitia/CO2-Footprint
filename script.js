@@ -98,13 +98,17 @@ function filterTable() {
     const table = document.getElementById('emissionsTable');
     const rows = Array.from(table.querySelectorAll('tbody tr'));
 
-    // Filtern der Zeilen basierend auf der Suche
-    const filteredRows = rows.filter(row => {
-        const country = row.cells[0].textContent.toLowerCase();
-        const company = row.cells[1].textContent.toLowerCase();
-        const emission = row.cells[2].textContent.replace('.', '').replace(',', ''); // Umwandeln der Emissionen in eine vergleichbare Form
-        return country.includes(searchInput) || company.includes(searchInput) || emission.includes(searchInput);
-    });
+    let filteredRows = rows;
+
+    // Wenn es eine Suchanfrage gibt, filtern
+    if (searchInput) {
+        filteredRows = rows.filter(row => {
+            const country = row.cells[0].textContent.toLowerCase();
+            const company = row.cells[1].textContent.toLowerCase();
+            const emission = row.cells[2].textContent.replace('.', '').replace(',', ''); // Umwandeln der Emissionen in eine vergleichbare Form
+            return country.includes(searchInput) || company.includes(searchInput) || emission.includes(searchInput);
+        });
+    }
 
     // Sortieren der gefilterten Zeilen basierend auf der Auswahl
     if (filterValue === 'az') {
