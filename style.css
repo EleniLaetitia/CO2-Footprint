@@ -22,19 +22,34 @@ header {
     height: 50px;
 }
 
-.menu ul {
+.global-nav ul {
     list-style: none;
     display: flex;
     gap: 1rem;
 }
 
-.menu ul li a {
+.global-nav ul li a {
     color: white;
     text-decoration: none;
 }
 
 .language-switch {
     margin-right: 1rem;
+}
+
+.local-menu ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    background-color: #f4f4f4;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+.local-menu ul li a {
+    text-decoration: none;
+    color: #333;
 }
 
 .welcome {
@@ -58,6 +73,10 @@ table, th, td {
     text-align: left;
 }
 
+th {
+    cursor: pointer;
+}
+
 input {
     margin-bottom: 1rem;
     padding: 0.5rem;
@@ -75,7 +94,10 @@ footer {
 }
 
 @media (max-width: 768px) {
-    .menu ul {
+    .global-nav ul {
+        flex-direction: column;
+    }
+    .local-menu ul {
         flex-direction: column;
     }
 }
@@ -84,6 +106,6 @@ body.rtl {
     direction: rtl;
 }
 
-body.rtl header {
+body.rtl header, body.rtl .local-menu {
     flex-direction: row-reverse;
 }
