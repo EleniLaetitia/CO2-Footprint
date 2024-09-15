@@ -19,6 +19,7 @@
                 <li><a href="#">Kontakt</a></li>
             </ul>
         </nav>
+        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
         <div class="language-switch">
             <select id="languageSelect" onchange="changeLanguage()">
                 <option value="de">Deutsch</option>
@@ -28,12 +29,12 @@
         </div>
     </header>
 
-    <!-- Menü mit lokalen Links -->
-    <nav class="local-menu">
+    <!-- Verstecktes Menü mit lokalen Links -->
+    <nav class="local-menu" id="localMenu" style="display: none;">
         <ul>
+            <li><a href="#">Über CO2</a></li>
             <li><a href="#">Umwelt</a></li>
             <li><a href="#">Forschung</a></li>
-            <li><a href="#">Über CO2</a></li>
         </ul>
     </nav>
 
@@ -43,7 +44,7 @@
             <h1 id="title">CO2-Footprint</h1>
             <p id="welcomeText">Willkommen auf unserer CO2-Footprint Website. Diese Seite soll zu mehr Transparenz führen.</p>
         </div>
-        <h2>CO2-Emissionen</h2>
+        <h2 id="tableTitle">CO2-Emissionen</h2>
         <input type="text" id="searchInput" placeholder="Suche..." oninput="filterTable()">
         <table id="emissionsTable">
             <thead>
