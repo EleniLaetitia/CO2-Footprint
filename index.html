@@ -7,90 +7,75 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Header mit Logo, Titel und Sprachauswahl -->
+    <!-- Header mit Logo, globaler Navigation und Sprachwahl -->
     <header>
-        <div class="header-container">
-            <img src="Logo CO2 Footprint.png" alt="CO2-Footprint Logo" class="logo">
-            <h1 id="header-title">CO2-Footprint</h1>
-            <div class="language-select">
-                <label id="language-label" for="language">Sprache:</label>
-                <select id="language">
-                    <option value="de">Deutsch</option>
-                    <option value="en">English</option>
-                    <option value="he">עברית</option>
-                </select>
-            </div>
+        <div class="logo">
+            <img src="Logo CO2 Footprint.png" alt="CO2-Footprint Logo">
         </div>
-        <!-- Navigationsleiste -->
-        <nav id="nav-menu">
+        <nav class="global-nav">
             <ul>
-                <li><a id="nav-home" href="#home">Startseite</a></li>
-                <li><a id="nav-about" href="#about">Über uns</a></li>
-                <li><a id="nav-contact" href="#contact">Kontakt</a></li>
+                <li><a href="#">Startseite</a></li>
+                <li><a href="#">Über uns</a></li>
+                <li><a href="#">Kontakt</a></li>
             </ul>
         </nav>
-        <!-- Sidebar Menü Icon -->
-        <div class="sidebar-menu">
-            <button id="menu-toggle" aria-label="Menü öffnen">☰</button>
-            <div id="sidebar" class="sidebar">
-                <a id="sidebar-info" href="#info">Infos über CO2</a>
-                <a id="sidebar-environment" href="#environment">Umwelt</a>
-                <a id="sidebar-research" href="#research">Forschung</a>
-            </div>
+        <div class="language-switch">
+            <select id="languageSelect" onchange="changeLanguage()">
+                <option value="de">Deutsch</option>
+                <option value="en">English</option>
+                <option value="he">עברית</option>
+            </select>
         </div>
     </header>
 
-    <!-- Hauptinhalt -->
-    <main>
-        <h2 id="welcome">Willkommen auf unserer CO2-Footprint Website.</h2>
-        <p id="intro">Hier können Sie sehen, welche Unternehmen und Länder jährlich wie viel CO2 emittieren. Unsere Arbeit soll für mehr Transparenz sorgen.</p>
-        
-        <!-- Suchfeld und Filteroptionen -->
-        <div class="filter-container">
-            <input type="text" id="search" placeholder="Suche...">
-            <select id="sort">
-                <option value="country-asc" id="sort-country-asc">Land A-Z</option>
-                <option value="country-desc" id="sort-country-desc">Land Z-A</option>
-                <option value="company-asc" id="sort-company-asc">Unternehmen A-Z</option>
-                <option value="company-desc" id="sort-company-desc">Unternehmen Z-A</option>
-                <option value="co2-asc" id="sort-co2-asc">CO2 Ausstoß Aufsteigend</option>
-                <option value="co2-desc" id="sort-co2-desc">CO2 Ausstoß Absteigend</option>
-            </select>
-        </div>
+    <!-- Menü mit lokalen Links -->
+    <nav class="local-menu">
+        <ul>
+            <li><a href="#">Umwelt</a></li>
+            <li><a href="#">Forschung</a></li>
+            <li><a href="#">Über CO2</a></li>
+        </ul>
+    </nav>
 
-        <!-- Tabelle -->
-        <table id="data-table">
+    <!-- Hauptinhalt: Begrüßungstext und Tabelle -->
+    <main>
+        <div class="welcome">
+            <h1 id="title">CO2-Footprint</h1>
+            <p id="welcomeText">Willkommen auf unserer CO2-Footprint Website. Diese Seite soll zu mehr Transparenz führen.</p>
+        </div>
+        <h2>CO2-Emissionen</h2>
+        <input type="text" id="searchInput" placeholder="Suche..." oninput="filterTable()">
+        <table id="emissionsTable">
             <thead>
                 <tr>
-                    <th id="country-header">Land</th>
-                    <th id="company-header">Unternehmen</th>
-                    <th id="co2-header">CO2 Ausstoß (in Tonnen)</th>
+                    <th onclick="sortTable(0)">Land</th>
+                    <th onclick="sortTable(1)">Unternehmen</th>
+                    <th onclick="sortTable(2)">CO2-Ausstoß (Tonnen)</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>Deutschland</td>
                     <td>BMW</td>
-                    <td>5000</td>
+                    <td>1.200.000</td>
                 </tr>
                 <tr>
                     <td>USA</td>
                     <td>Amazon</td>
-                    <td>7000</td>
+                    <td>900.000</td>
                 </tr>
                 <tr>
                     <td>Brasilien</td>
                     <td>Petronas</td>
-                    <td>3000</td>
+                    <td>1.500.000</td>
                 </tr>
-                <!-- Weitere Zeilen hier hinzufügen -->
             </tbody>
         </table>
     </main>
 
-    <!-- Footer mit rechtlichen Hinweisen -->
+    <!-- Footer mit rechtlichem Hinweis -->
     <footer>
-        <p id="footer-text">&copy; 2024 CO2-Footprint. Alle Rechte vorbehalten. <a href="#impressum">Impressum</a> und <a href="#datenschutz">Datenschutz</a></p>
+        <p>&copy; 2024 CO2-Footprint. Alle Rechte vorbehalten. Impressum und Datenschutz</p>
     </footer>
 
     <script src="script.js"></script>
