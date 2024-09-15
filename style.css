@@ -83,7 +83,7 @@ th {
     cursor: pointer;
 }
 
-input {
+input, select {
     margin-bottom: 1rem;
     padding: 0.5rem;
     width: 100%;
