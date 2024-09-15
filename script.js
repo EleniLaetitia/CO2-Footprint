@@ -4,15 +4,28 @@ function changeLanguage() {
     if (lang === 'de') {
         document.getElementById('title').innerText = 'CO2-Footprint';
         document.getElementById('welcomeText').innerText = 'Willkommen auf unserer CO2-Footprint Website. Diese Seite soll zu mehr Transparenz führen.';
+        document.getElementById('tableTitle').innerText = 'CO2-Emissionen';
         document.body.classList.remove('rtl');
     } else if (lang === 'en') {
         document.getElementById('title').innerText = 'CO2-Footprint';
         document.getElementById('welcomeText').innerText = 'Welcome to our CO2-Footprint website. This site aims to provide more transparency.';
+        document.getElementById('tableTitle').innerText = 'CO2 Emissions';
         document.body.classList.remove('rtl');
     } else if (lang === 'he') {
         document.getElementById('title').innerText = 'טביעת רגל פחמנית';
         document.getElementById('welcomeText').innerText = 'ברוכים הבאים לאתר טביעת רגל פחמנית שלנו. אתר זה נועד להגביר את השקיפות.';
+        document.getElementById('tableTitle').innerText = 'פליטת פחמן';
         document.body.classList.add('rtl');
+    }
+}
+
+// Menü umschalten
+function toggleMenu() {
+    const menu = document.getElementById('localMenu');
+    if (menu.style.display === 'none') {
+        menu.style.display = 'block';
+    } else {
+        menu.style.display = 'none';
     }
 }
 
@@ -47,10 +60,3 @@ function sortTable(n) {
 
     rows.forEach(row => table.appendChild(row));
 }
-
-// Eingabefelder absichern
-document.querySelectorAll('input').forEach(input => {
-    input.addEventListener('input', (e) => {
-        e.target.value = e.target.value.replace(/<\/?[^>]+(>|$)/g, "");
-    });
-});
