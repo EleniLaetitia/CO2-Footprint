@@ -14,9 +14,9 @@
         </div>
         <nav class="global-nav">
             <ul>
-                <li><a href="#">Startseite</a></li>
-                <li><a href="#">Über uns</a></li>
-                <li><a href="#">Kontakt</a></li>
+                <li><a href="#" id="homeLink">Startseite</a></li>
+                <li><a href="#" id="aboutLink">Über uns</a></li>
+                <li><a href="#" id="contactLink">Kontakt</a></li>
             </ul>
         </nav>
         <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
@@ -32,9 +32,9 @@
     <!-- Verstecktes Menü mit lokalen Links -->
     <nav class="local-menu" id="localMenu" style="display: none;">
         <ul>
-            <li><a href="#">Über CO2</a></li>
-            <li><a href="#">Umwelt</a></li>
-            <li><a href="#">Forschung</a></li>
+            <li><a href="#" id="co2Link">Über CO2</a></li>
+            <li><a href="#" id="environmentLink">Umwelt</a></li>
+            <li><a href="#" id="researchLink">Forschung</a></li>
         </ul>
     </nav>
 
@@ -45,27 +45,34 @@
             <p id="welcomeText">Willkommen auf unserer CO2-Footprint Website. Diese Seite soll zu mehr Transparenz führen.</p>
         </div>
         <h2 id="tableTitle">CO2-Emissionen</h2>
+        <label for="filterSelect" id="filterLabel">Filter nach Land:</label>
+        <select id="filterSelect" onchange="filterByCountry()">
+            <option value="all">Alle</option>
+            <option value="de">Deutschland</option>
+            <option value="us">USA</option>
+            <option value="br">Brasilien</option>
+        </select>
         <input type="text" id="searchInput" placeholder="Suche..." oninput="filterTable()">
         <table id="emissionsTable">
             <thead>
                 <tr>
-                    <th onclick="sortTable(0)">Land</th>
-                    <th onclick="sortTable(1)">Unternehmen</th>
-                    <th onclick="sortTable(2)">CO2-Ausstoß (Tonnen)</th>
+                    <th onclick="sortTable(0)" id="countryColumn">Land</th>
+                    <th onclick="sortTable(1)" id="companyColumn">Unternehmen</th>
+                    <th onclick="sortTable(2)" id="emissionColumn">CO2-Ausstoß (in Tonnen)</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr data-country="de">
                     <td>Deutschland</td>
                     <td>BMW</td>
                     <td>1.200.000</td>
                 </tr>
-                <tr>
+                <tr data-country="us">
                     <td>USA</td>
                     <td>Amazon</td>
                     <td>900.000</td>
                 </tr>
-                <tr>
+                <tr data-country="br">
                     <td>Brasilien</td>
                     <td>Petronas</td>
                     <td>1.500.000</td>
@@ -76,7 +83,7 @@
 
     <!-- Footer mit rechtlichem Hinweis -->
     <footer>
-        <p>&copy; 2024 CO2-Footprint. Alle Rechte vorbehalten. Impressum und Datenschutz</p>
+        <p id="footerText">&copy; 2024 CO2-Footprint. Alle Rechte vorbehalten. Impressum und Datenschutz</p>
     </footer>
 
     <script src="script.js"></script>
