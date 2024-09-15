@@ -28,7 +28,9 @@ function changeLanguage() {
             footerText: '© 2024 CO2-Footprint. Alle Rechte vorbehalten. Impressum und Datenschutz',
             countryHeader: 'Land',
             companyHeader: 'Unternehmen',
-            emissionHeader: 'CO2-Ausstoß (in Tonnen)'
+            emissionHeader: 'CO2-Ausstoß (in Tonnen)',
+            germany: 'Deutschland',
+            brazil: 'Brasilien'
         },
         en: {
             title: 'CO2-Footprint',
@@ -44,7 +46,9 @@ function changeLanguage() {
             footerText: '© 2024 CO2-Footprint. All rights reserved. Legal Notice and Privacy Policy',
             countryHeader: 'Country',
             companyHeader: 'Company',
-            emissionHeader: 'CO2 Emissions (in tons)'
+            emissionHeader: 'CO2 Emissions (in tons)',
+            germany: 'Germany',
+            brazil: 'Brazil'
         },
         he: {
             title: 'טביעת רגל פחמנית',
@@ -60,7 +64,9 @@ function changeLanguage() {
             footerText: '© 2024 טביעת רגל פחמנית. כל הזכויות שמורות. הודעות משפטיות ומדיניות פרטיות',
             countryHeader: 'מדינה',
             companyHeader: 'חברה',
-            emissionHeader: 'פליטות פחמן (בטון)'
+            emissionHeader: 'פליטות פחמן (בטון)',
+            germany: 'גרמניה',
+            brazil: 'ברזיל'
         }
     };
 
@@ -80,6 +86,17 @@ function changeLanguage() {
     document.getElementById('countryColumn').innerText = trans.countryHeader;
     document.getElementById('companyColumn').innerText = trans.companyHeader;
     document.getElementById('emissionColumn').innerText = trans.emissionHeader;
+
+    // Übersetzungen für Länderbezeichnungen
+    const rows = document.querySelectorAll('#emissionsTable tbody tr');
+    rows.forEach(row => {
+        const countryCell = row.cells[0];
+        if (countryCell.textContent === 'Deutschland') {
+            countryCell.textContent = trans.germany;
+        } else if (countryCell.textContent === 'Brasilien') {
+            countryCell.textContent = trans.brazil;
+        }
+    });
 
     if (lang === 'he') {
         document.body.classList.add('rtl');
