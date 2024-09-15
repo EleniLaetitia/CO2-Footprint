@@ -16,9 +16,9 @@ function changeLanguage() {
     }
 }
 
-// Suchfunktion für die Tabelle
-document.getElementById('searchInput').addEventListener('input', function() {
-    const searchTerm = this.value.toLowerCase();
+// Such- und Filterfunktion für die Tabelle
+function filterTable() {
+    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
     const rows = document.querySelectorAll('#emissionsTable tbody tr');
     rows.forEach(row => {
         const country = row.cells[0].innerText.toLowerCase();
@@ -28,5 +28,29 @@ document.getElementById('searchInput').addEventListener('input', function() {
         } else {
             row.style.display = 'none';
         }
+    });
+}
+
+// Tabelle nach Spalten sortieren
+function sortTable(n) {
+    const table = document.getElementById('emissionsTable');
+    let rows = Array.from(table.rows).slice(1);
+    let asc = true;
+
+    rows.sort((row1, row2) => {
+        const cell1 = row1.cells[n].innerText.toLowerCase();
+        const cell2 = row2.cells[n].innerText.toLowerCase();
+        return asc ? (cell1 > cell2 ? 1 : -1) : (cell1 < cell2 ? 1 : -1);
+    });
+
+    asc = !asc;
+
+    rows.forEach(row => table.appendChild(row));
+}
+
+// Eingabefelder absichern
+document.querySelectorAll('input').forEach(input => {
+    input.addEventListener('input', (e) => {
+        e.target.value = e.target.value.replace(/<\/?[^>]+(>|$)/g, "");
     });
 });
