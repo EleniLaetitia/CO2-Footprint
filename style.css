@@ -1,114 +1,89 @@
-body {
-    font-family: Arial, sans-serif;
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    direction: ltr;
 }
 
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
-    background: #333;
-    color: #fff;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
+    background-color: #333;
+    color: white;
+    padding: 1rem;
 }
 
 .logo img {
     height: 50px;
-    margin-right: 10px;
 }
 
-#site-title {
-    margin: 0;
-}
-
-nav {
-    display: flex;
-    align-items: center;
-}
-
-#nav-menu {
+.menu ul {
     list-style: none;
     display: flex;
-    margin: 0;
-    padding: 0;
+    gap: 1rem;
 }
 
-#nav-menu li {
-    margin: 0 15px;
-}
-
-.nav-link {
-    color: #fff;
+.menu ul li a {
+    color: white;
     text-decoration: none;
 }
 
-#menu-toggle {
-    display: none;
-    background: #333;
-    color: #fff;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    font-size: 1.5em;
+.language-switch {
+    margin-right: 1rem;
 }
 
-#side-menu {
-    display: none;
-}
-
-.language-selector {
-    margin-left: auto;
-}
-
-.language-selector button {
-    background: #555;
-    color: #fff;
-    border: none;
-    padding: 5px 10px;
-    margin: 0 5px;
-    cursor: pointer;
+.welcome {
+    text-align: center;
+    margin: 2rem 0;
 }
 
 main {
-    padding: 20px;
+    padding: 1rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+table, th, td {
+    border: 1px solid #333;
+    padding: 0.5rem;
+    text-align: left;
+}
+
+input {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    width: 100%;
 }
 
 footer {
-    padding: 10px;
-    background: #333;
-    color: #fff;
     text-align: center;
+    padding: 1rem;
+    background-color: #333;
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
 }
 
 @media (max-width: 768px) {
-    #nav-menu {
-        display: none;
-    }
-    
-    #menu-toggle {
-        display: block;
-    }
-
-    #side-menu.active {
-        display: block;
+    .menu ul {
+        flex-direction: column;
     }
 }
 
-[data-dir="rtl"] {
+body.rtl {
     direction: rtl;
 }
 
-[data-dir="rtl"] #nav-menu,
-[data-dir="rtl"] #side-menu {
-    float: right;
-}
-
-[data-dir="rtl"] .language-selector {
-    text-align: right;
+body.rtl header {
+    flex-direction: row-reverse;
 }
