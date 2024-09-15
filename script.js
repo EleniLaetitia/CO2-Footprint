@@ -1,73 +1,32 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const menuToggle = document.getElementById('menu-toggle');
-    const sideMenu = document.getElementById('side-menu');
-    const languageButtons = document.querySelectorAll('.language-selector button');
-    const translations = {
-        de: {
-            home: "Startseite",
-            about: "Über uns",
-            contact: "Kontakt",
-            co2-info: "Infos über CO2",
-            environment: "Umwelt",
-            research: "Forschung",
-            data-title: "CO2-Emissionsdaten",
-            footer-text: "&copy; 2024 Non-Profit-Organisation. Alle Rechte vorbehalten."
-        },
-        en: {
-            home: "Home",
-            about: "About Us",
-            contact: "Contact",
-            co2-info: "CO2 Info",
-            environment: "Environment",
-            research: "Research",
-            data-title: "CO2 Emissions Data",
-            footer-text: "&copy; 2024 Non-Profit Organization. All rights reserved."
-        },
-        he: {
-            home: "דף הבית",
-            about: "אודות",
-            contact: "צור קשר",
-            co2-info: "מידע על CO2",
-            environment: "סביבה",
-            research: "מחקר",
-            data-title: "נתוני פליטת CO2",
-            footer-text: "&copy; 2024 ארגון ללא מטרות רווח. כל הזכויות שמורות."
+// Sprache ändern
+function changeLanguage() {
+    const lang = document.getElementById('languageSelect').value;
+    if (lang === 'de') {
+        document.getElementById('title').innerText = 'CO2-Footprint';
+        document.getElementById('welcomeText').innerText = 'Willkommen auf unserer CO2-Footprint Website. Diese Seite soll zu mehr Transparenz führen.';
+        document.body.classList.remove('rtl');
+    } else if (lang === 'en') {
+        document.getElementById('title').innerText = 'CO2-Footprint';
+        document.getElementById('welcomeText').innerText = 'Welcome to our CO2-Footprint website. This site aims to provide more transparency.';
+        document.body.classList.remove('rtl');
+    } else if (lang === 'he') {
+        document.getElementById('title').innerText = 'טביעת רגל פחמנית';
+        document.getElementById('welcomeText').innerText = 'ברוכים הבאים לאתר טביעת רגל פחמנית שלנו. אתר זה נועד להגביר את השקיפות.';
+        document.body.classList.add('rtl');
+    }
+}
+
+// Suchfunktion für die Tabelle
+document.getElementById('searchInput').addEventListener('input', function() {
+    const searchTerm = this.value.toLowerCase();
+    const rows = document.querySelectorAll('#emissionsTable tbody tr');
+    rows.forEach(row => {
+        const country = row.cells[0].innerText.toLowerCase();
+        const company = row.cells[1].innerText.toLowerCase();
+        if (country.includes(searchTerm) || company.includes(searchTerm)) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
         }
-    };
-
-    menuToggle.addEventListener('click', () => {
-        sideMenu.classList.toggle('active');
-    });
-
-    languageButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const lang = button.getAttribute('data-lang');
-            document.documentElement.setAttribute('lang', lang);
-            document.documentElement.setAttribute('data-dir', lang === 'he' ? 'rtl' : 'ltr');
-            
-            Object.keys(translations[lang]).forEach(key => {
-                const elements = document.querySelectorAll(`[data-key="${key}"]`);
-                elements.forEach(el => el.textContent = translations[lang][key]);
-            });
-        });
-    });
-
-    const searchInput = document.getElementById('search');
-    const table = document.getElementById('data-table');
-
-    searchInput.addEventListener('input', () => {
-        const filter = searchInput.value.toLowerCase();
-        const rows = table.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
-
-        Array.from(rows).forEach(row => {
-            const cells = row.getElementsByTagName('td');
-            const text = Array.from(cells).map(cell => cell.textContent.toLowerCase()).join(' ');
-
-            if (text.includes(filter)) {
-                row.style.display = '';
-            } else {
-                row.style.display = 'none';
-            }
-        });
     });
 });
