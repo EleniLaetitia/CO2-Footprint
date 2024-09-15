@@ -44,6 +44,10 @@ header {
     margin-right: 1rem;
 }
 
+.local-menu {
+    display: none;
+}
+
 .local-menu ul {
     list-style: none;
     display: flex;
@@ -103,6 +107,18 @@ footer {
     .global-nav ul {
         flex-direction: column;
     }
+    
+    .local-menu {
+        display: block;
+    }
+    
+    header {
+        flex-direction: column;
+    }
+    
+    .menu-icon {
+        order: -1;
+    }
 }
 
 body.rtl {
@@ -111,4 +127,12 @@ body.rtl {
 
 body.rtl header, body.rtl .local-menu {
     flex-direction: row-reverse;
+}
+
+body.rtl .global-nav ul {
+    flex-direction: column;
+}
+
+body.rtl .menu-icon {
+    order: 0;
 }
