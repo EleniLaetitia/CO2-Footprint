@@ -12,48 +12,84 @@ function toggleMenu() {
 function changeLanguage() {
     const lang = document.getElementById('languageSelect').value;
 
-    if (lang === 'de') {
-        document.getElementById('title').innerText = 'CO2-Footprint';
-        document.getElementById('welcomeText').innerText = 'Willkommen auf unserer CO2-Footprint Website. Diese Seite soll zu mehr Transparenz führen.';
-        document.getElementById('homeLink').innerText = 'Startseite';
-        document.getElementById('aboutLink').innerText = 'Über uns';
-        document.getElementById('contactLink').innerText = 'Kontakt';
-        document.getElementById('co2Link').innerText = 'Über CO2';
-        document.getElementById('environmentLink').innerText = 'Umwelt';
-        document.getElementById('researchLink').innerText = 'Forschung';
-        document.getElementById('tableTitle').innerText = 'CO2-Emissionen';
-        document.getElementById('filterLabel').innerText = 'Sortieren nach:';
-        document.getElementById('footerText').innerText = '© 2024 CO2-Footprint. Alle Rechte vorbehalten. Impressum und Datenschutz';
-        document.body.classList.remove('rtl');
-    } else if (lang === 'en') {
-        document.getElementById('title').innerText = 'CO2-Footprint';
-        document.getElementById('welcomeText').innerText = 'Welcome to our CO2-Footprint website. This site aims to provide more transparency.';
-        document.getElementById('homeLink').innerText = 'Home';
-        document.getElementById('aboutLink').innerText = 'About Us';
-        document.getElementById('contactLink').innerText = 'Contact';
-        document.getElementById('co2Link').innerText = 'About CO2';
-        document.getElementById('environmentLink').innerText = 'Environment';
-        document.getElementById('researchLink').innerText = 'Research';
-        document.getElementById('tableTitle').innerText = 'CO2 Emissions';
-        document.getElementById('filterLabel').innerText = 'Sort by:';
-        document.getElementById('footerText').innerText = '© 2024 CO2-Footprint. All rights reserved. Legal Notice and Privacy Policy';
-        document.body.classList.remove('rtl');
-    } else if (lang === 'he') {
-        document.getElementById('title').innerText = 'טביעת רגל פחמנית';
-        document.getElementById('welcomeText').innerText = 'ברוכים הבאים לאתר טביעת רגל פחמנית שלנו. אתר זה נועד להגביר את השקיפות.';
-        document.getElementById('homeLink').innerText = 'בית';
-        document.getElementById('aboutLink').innerText = 'עלינו';
-        document.getElementById('contactLink').innerText = 'צור קשר';
-        document.getElementById('co2Link').innerText = 'על CO2';
-        document.getElementById('environmentLink').innerText = 'סביבה';
-        document.getElementById('researchLink').innerText = 'מחקר';
-        document.getElementById('tableTitle').innerText = 'פליטות פחמן';
-        document.getElementById('filterLabel').innerText = 'מיין לפי:';
-        document.getElementById('footerText').innerText = '© 2024 טביעת רגל פחמנית. כל הזכויות שמורות. הודעות משפטיות ומדיניות פרטיות';
-        document.body.classList.add('rtl');
-    }
-}
+    // Übersetzungen für verschiedene Sprachen
+    const translations = {
+        de: {
+            title: 'CO2-Footprint',
+            welcomeText: 'Willkommen auf unserer CO2-Footprint Website. Diese Seite soll zu mehr Transparenz führen.',
+            homeLink: 'Startseite',
+            aboutLink: 'Über uns',
+            contactLink: 'Kontakt',
+            co2Link: 'Über CO2',
+            environmentLink: 'Umwelt',
+            researchLink: 'Forschung',
+            tableTitle: 'CO2-Emissionen',
+            filterLabel: 'Sortieren nach:',
+            footerText: '© 2024 CO2-Footprint. Alle Rechte vorbehalten. Impressum und Datenschutz',
+            countryHeader: 'Land',
+            companyHeader: 'Unternehmen',
+            emissionHeader: 'CO2-Ausstoß (in Tonnen)'
+        },
+        en: {
+            title: 'CO2-Footprint',
+            welcomeText: 'Welcome to our CO2-Footprint website. This site aims to provide more transparency.',
+            homeLink: 'Home',
+            aboutLink: 'About Us',
+            contactLink: 'Contact',
+            co2Link: 'About CO2',
+            environmentLink: 'Environment',
+            researchLink: 'Research',
+            tableTitle: 'CO2 Emissions',
+            filterLabel: 'Sort by:',
+            footerText: '© 2024 CO2-Footprint. All rights reserved. Legal Notice and Privacy Policy',
+            countryHeader: 'Country',
+            companyHeader: 'Company',
+            emissionHeader: 'CO2 Emissions (in tons)'
+        },
+        he: {
+            title: 'טביעת רגל פחמנית',
+            welcomeText: 'ברוכים הבאים לאתר טביעת רגל פחמנית שלנו. אתר זה נועד להגביר את השקיפות.',
+            homeLink: 'בית',
+            aboutLink: 'עלינו',
+            contactLink: 'צור קשר',
+            co2Link: 'על CO2',
+            environmentLink: 'סביבה',
+            researchLink: 'מחקר',
+            tableTitle: 'פליטות פחמן',
+            filterLabel: 'מיין לפי:',
+            footerText: '© 2024 טביעת רגל פחמנית. כל הזכויות שמורות. הודעות משפטיות ומדיניות פרטיות',
+            countryHeader: 'מדינה',
+            companyHeader: 'חברה',
+            emissionHeader: 'פליטות פחמן (בטון)'
+        }
+    };
 
+    const trans = translations[lang];
+
+    document.getElementById('title').innerText = trans.title;
+    document.getElementById('welcomeText').innerText = trans.welcomeText;
+    document.getElementById('homeLink').innerText = trans.homeLink;
+    document.getElementById('aboutLink').innerText = trans.aboutLink;
+    document.getElementById('contactLink').innerText = trans.contactLink;
+    document.getElementById('co2Link').innerText = trans.co2Link;
+    document.getElementById('environmentLink').innerText = trans.environmentLink;
+    document.getElementById('researchLink').innerText = trans.researchLink;
+    document.getElementById('tableTitle').innerText = trans.tableTitle;
+    document.getElementById('filterLabel').innerText = trans.filterLabel;
+    document.getElementById('footerText').innerText = trans.footerText;
+    document.getElementById('countryColumn').innerText = trans.countryHeader;
+    document.getElementById('companyColumn').innerText = trans.companyHeader;
+    document.getElementById('emissionColumn').innerText = trans.emissionHeader;
+
+    if (lang === 'he') {
+        document.body.classList.add('rtl');
+    } else {
+        document.body.classList.remove('rtl');
+    }
+
+    // Initiales Filtern der Tabelle anwenden
+    filterTable();
+}
 
 // Funktion zum Filtern und Sortieren der Tabelle
 function filterTable() {
@@ -66,7 +102,7 @@ function filterTable() {
     const filteredRows = rows.filter(row => {
         const country = row.cells[0].textContent.toLowerCase();
         const company = row.cells[1].textContent.toLowerCase();
-        const emission = row.cells[2].textContent.replace('.', '').replace(',', ''); // Umwandeln der Emissionen in eine Vergleichbare Form
+        const emission = row.cells[2].textContent.replace('.', '').replace(',', ''); // Umwandeln der Emissionen in eine vergleichbare Form
         return country.includes(searchInput) || company.includes(searchInput) || emission.includes(searchInput);
     });
 
