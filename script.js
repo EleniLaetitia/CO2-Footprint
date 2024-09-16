@@ -31,7 +31,8 @@ function changeLanguage() {
             companyHeader: 'Unternehmen',
             emissionHeader: 'CO2-Ausstoß (in Tonnen)',
             germany: 'Deutschland',
-            brazil: 'Brasilien'
+            brazil: 'Brasilien',
+            usa: 'USA'
         },
         en: {
             title: 'CO2-Footprint',
@@ -50,7 +51,8 @@ function changeLanguage() {
             companyHeader: 'Company',
             emissionHeader: 'CO2 Emissions (in tons)',
             germany: 'Germany',
-            brazil: 'Brazil'
+            brazil: 'Brazil',
+            usa: 'USA'
         },
         he: {
             title: 'טביעת רגל פחמנית',
@@ -69,7 +71,8 @@ function changeLanguage() {
             companyHeader: 'חברה',
             emissionHeader: 'פליטות CO2 (בטונות)',
             germany: 'גרמניה',
-            brazil: 'ברזיל'
+            brazil: 'ברזיל',
+            usa: 'ארצות הברית'
         }
     };
 
@@ -96,51 +99,18 @@ function changeLanguage() {
         cell.textContent = selectedLang[cell.getAttribute('data-translate')];
     });
 
-    // Handling RTL for Hebrew
-    document.body.classList.toggle('rtl', lang === 'he');
-}
-
-// Funktion zum Filtern der Tabelle
-function filterTable() {
-    const searchInput = document.getElementById('searchInput').value.toLowerCase();
-    const filter = document.getElementById('filterSelect').value;
-    const rows = document.querySelectorAll('#emissionsTable tbody tr');
-
-    // Filter basierend auf der Suchleiste
-    rows.forEach(row => {
-        const country = row.cells[0].textContent.toLowerCase();
-        const company = row.cells[1].textContent.toLowerCase();
-        if (country.includes(searchInput) || company.includes(searchInput)) {
-            row.style.display = '';
-        } else {
-            row.style.display = 'none';
-        }
-    });
-
-    // Wenn die Suchleiste leer ist, zeige alle Zeilen an
-    if (searchInput === '') {
-        rows.forEach(row => row.style.display = '');
+    // Handling RTL für Hebräisch
+    if (lang === 'he') {
+        document.body.style.direction = 'rtl';
+        document.body.style.textAlign = 'right';
+        document.querySelectorAll('header, main, footer').forEach(el => {
+            el.style.textAlign = 'right';
+        });
+    } else {
+        document.body.style.direction = 'ltr';
+        document.body.style.textAlign = 'left';
+        document.querySelectorAll('header, main, footer').forEach(el => {
+            el.style.textAlign = 'left';
+        });
     }
-
-    // Sortierung basierend auf dem Filter
-    const sortedRows = Array.from(rows).sort((a, b) => {
-        const countryA = a.cells[0].textContent.toLowerCase();
-        const countryB = b.cells[0].textContent.toLowerCase();
-        const emissionA = parseInt(a.cells[2].textContent.replace('.', '').replace(',', ''), 10);
-        const emissionB = parseInt(b.cells[2].textContent.replace('.', '').replace(',', ''), 10);
-
-        if (filter === 'az') {
-            return countryA.localeCompare(countryB);
-        } else if (filter === 'za') {
-            return countryB.localeCompare(countryA);
-        } else if (filter === 'max') {
-            return emissionB - emissionA;
-        } else if (filter === 'min') {
-            return emissionA - emissionB;
-        }
-    });
-
-    sortedRows.forEach(row => {
-        document.querySelector('#emissionsTable tbody').appendChild(row);
-    });
 }
