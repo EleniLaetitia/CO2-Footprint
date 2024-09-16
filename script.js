@@ -1,7 +1,7 @@
 // Funktion zum Umschalten des Menüs
 function toggleMenu() {
     const menu = document.getElementById('localMenu');
-    if (menu.style.display === 'none' || menu.style.display === '') {
+    if (menu.style.display === 'none') {
         menu.style.display = 'block';
     } else {
         menu.style.display = 'none';
@@ -117,67 +117,56 @@ function changeLanguage() {
     }
 }
 
-// Filter- und Suchfunktion für die Tabelle
+// Funktion zum Filtern und Suchen der Tabelle
 function filterTable() {
-    const searchInput = document.getElementById('searchInput').value.toLowerCase();
-    const filterValue = document.getElementById('filterSelect').value;
-    const table = document.getElementById('em
+    const input = document.getElementById('searchInput').value.toLowerCase();
+    const filter = document.getElementById('filterSelect').value;
+    const rows = document.querySelectorAll('#emissionsTable tbody tr');
 
-                                          // Filter- und Suchfunktion für die Tabelle
-function filterTable() {
-    const searchInput = document.getElementById('searchInput').value.toLowerCase();
-    const filterValue = document.getElementById('filterSelect').value;
-    const table = document.getElementById('emissionsTable');
-    const rows = table.querySelectorAll('tbody tr');
+    let filteredRows = Array.from(rows).filter(row => {
+        const country = row.children[0].textContent.toLowerCase();
+        const company = row.children[1].textContent.toLowerCase();
+        const emission = row.children[2].textContent.toLowerCase();
 
-    let filteredRows = [];
+        // Überprüfen, ob der Suchbegriff in einem der Zellen vorhanden ist
+        const matchesSearch = country.includes(input) || company.includes(input) || emission.includes(input);
 
-    rows.forEach(row => {
-        const country = row.querySelector('td:nth-child(1)').textContent.toLowerCase();
-        const company = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
-        const emission = row.querySelector('td:nth-child(3)').textContent.toLowerCase();
-
-        if (country.includes(searchInput) || company.includes(searchInput) || emission.includes(searchInput)) {
-            filteredRows.push(row);
-        }
+        return matchesSearch;
     });
 
-    // Wenn kein Suchbegriff eingegeben ist, zeige alle Zeilen
-    if (searchInput === '') {
-        filteredRows = Array.from(rows);
+    // Sortierung basierend auf dem Filterwert
+    if (filter === 'az') {
+        filteredRows.sort((a, b) => a.children[0].textContent.localeCompare(b.children[0].textContent));
+    } else if (filter === 'za') {
+        filteredRows.sort((a, b) => b.children[0].textContent.localeCompare(a.children[0].textContent));
+    } else if (filter === 'max') {
+        filteredRows.sort((a, b) => parseFloat(b.children[2].textContent.replace(/\./g, '').replace(/,/g, '.')) - parseFloat(a.children[2].textContent.replace(/\./g, '').replace(/,/g, '.')));
+    } else if (filter === 'min') {
+        filteredRows.sort((a, b) => parseFloat(a.children[2].textContent.replace(/\./g, '').replace(/,/g, '.')) - parseFloat(b.children[2].textContent.replace(/\./g, '').replace(/,/g, '.')));
     }
 
-    // Anwendung der Filteroptionen
-    if (filterValue === 'az') {
-        filteredRows.sort((a, b) => a.querySelector('td:nth-child(1)').textContent.localeCompare(b.querySelector('td:nth-child(1)').textContent));
-    } else if (filterValue === 'za') {
-        filteredRows.sort((a, b) => b.querySelector('td:nth-child(1)').textContent.localeCompare(a.querySelector('td:nth-child(1)').textContent));
-    } else if (filterValue === 'max') {
-        filteredRows.sort((a, b) => parseFloat(b.querySelector('td:nth-child(3)').textContent) - parseFloat(a.querySelector('td:nth-child(3)').textContent));
-    } else if (filterValue === 'min') {
-        filteredRows.sort((a, b) => parseFloat(a.querySelector('td:nth-child(3)').textContent) - parseFloat(b.querySelector('td:nth-child(3)').textContent));
-    }
-
-    // Leeren des Tabellenkörpers und Hinzufügen der gefilterten Zeilen
-    const tbody = table.querySelector('tbody');
+    // Zeige die gefilterten und sortierten Zeilen an
+    const tbody = document.querySelector('#emissionsTable tbody');
     tbody.innerHTML = '';
     filteredRows.forEach(row => tbody.appendChild(row));
+
+    // Wenn keine Suchanfrage, zeige die komplette Tabelle
+    if (input === '') {
+        resetTable();
+    }
 }
 
-// Event-Listener für die Such- und Filterfelder
-document.getElementById('searchInput').addEventListener('input', filterTable);
-document.getElementById('filterSelect').addEventListener('change', filterTable);
+// Funktion zum Zurücksetzen der Tabelle auf den ursprünglichen Zustand
+function resetTable() {
+    const rows = [
+        '<tr data-country="de" data-emission="1200000"><td>Deutschland</td><td>BMW</td><td>1.200.000</td></tr>',
+        '<tr data-country="us" data-emission="900000"><td>USA</td><td>Amazon</td><td>900.000</td></tr>',
+        '<tr data-country="br" data-emission="1500000"><td>Brasilien</td><td>Petronas</td><td>1.500.000</td></tr>'
+    ];
 
-// Menü umschalten
-document.querySelector('.menu-icon').addEventListener('click', toggleMenu);
+    const tbody = document.querySelector('#emissionsTable tbody');
+    tbody.innerHTML = rows.join('');
+}
 
-// Sprachwechsel
-document.getElementById('languageSelect').addEventListener('change', changeLanguage);
-
-// Initiales Laden der Tabelle
-document.addEventListener('DOMContentLoaded', () => {
-    // Setzen der Sprache bei Seitenaufruf
-    changeLanguage();
-    // Filtern der Tabelle bei initialem Laden
-    filterTable();
-});
+// Initiale Tabelle anzeigen
+resetTable();
