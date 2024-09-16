@@ -8,9 +8,9 @@
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* Stellt sicher, dass der Footer am unteren Ende der Seite bleibt */
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
 }
 
 header {
@@ -58,14 +58,22 @@ header {
     background-color: #333;
     color: white;
     padding: 15px;
-    display: none; /* Standardmäßig versteckt */
+    position: fixed;
+    top: 60px; /* Höhe des Headers */
+    left: 0;
+    width: 200px;
+    height: calc(100% - 60px); /* Höhe des Headers */
+    display: none;
+    overflow-y: auto;
 }
 
 .local-menu ul {
     list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+    padding: 0;
+}
+
+.local-menu ul li {
+    margin: 10px 0;
 }
 
 .local-menu ul li a {
@@ -81,7 +89,7 @@ header {
 
 main {
     padding: 20px;
-    flex: 1; /* Stellt sicher, dass der Hauptinhalt den verfügbaren Platz ausfüllt */
+    margin-left: 220px; /* Platz für das Menü */
 }
 
 table {
@@ -106,6 +114,7 @@ input, select {
     padding: 10px;
     width: 100%;
     max-width: 300px;
+    box-sizing: border-box;
 }
 
 footer {
@@ -113,7 +122,9 @@ footer {
     padding: 20px;
     background-color: #333;
     color: white;
-    margin-top: auto; /* Stellt sicher, dass der Footer am unteren Rand der Seite bleibt */
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
 @media (max-width: 768px) {
@@ -124,6 +135,10 @@ footer {
 
     .local-menu ul {
         flex-direction: column;
+    }
+
+    main {
+        margin-left: 0;
     }
 }
 
@@ -140,5 +155,5 @@ body.rtl .global-nav ul {
 }
 
 body.rtl .local-menu {
-    flex-direction: row-reverse;
+    direction: rtl;
 }
