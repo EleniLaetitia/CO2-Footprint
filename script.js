@@ -1,14 +1,14 @@
 // Funktion zum Umschalten des Menüs
 function toggleMenu() {
     const menu = document.getElementById('localMenu');
-    if (menu.style.display === 'none' || menu.style.display === '') {
+    if (menu.style.display === 'none') {
         menu.style.display = 'block';
     } else {
         menu.style.display = 'none';
     }
 }
 
-// Funktion zum Wechseln der Sprache
+// Funktion zum Wechseln der Sprache 
 function changeLanguage() {
     const lang = document.getElementById('languageSelect').value;
 
@@ -30,7 +30,11 @@ function changeLanguage() {
             companyHeader: 'Unternehmen',
             emissionHeader: 'CO2-Ausstoß (in Tonnen)',
             germany: 'Deutschland',
-            brazil: 'Brasilien'
+            brazil: 'Brasilien',
+            filterAz: 'Alphabetisch A-Z',
+            filterZa: 'Alphabetisch Z-A',
+            filterMax: 'Größter Ausstoß',
+            filterMin: 'Kleinster Ausstoß'
         },
         en: {
             title: 'CO2-Footprint',
@@ -48,85 +52,67 @@ function changeLanguage() {
             companyHeader: 'Company',
             emissionHeader: 'CO2 Emissions (in tons)',
             germany: 'Germany',
-            brazil: 'Brazil'
+            brazil: 'Brazil',
+            filterAz: 'Alphabetical A-Z',
+            filterZa: 'Alphabetical Z-A',
+            filterMax: 'Highest Emissions',
+            filterMin: 'Lowest Emissions'
         },
         he: {
             title: 'טביעת רגל פחמנית',
-            welcomeText: 'ברוכים הבאים לאתר טביעת רגל פחמנית שלנו. אתר זה נועד להגביר את השקיפות.',
-            homeLink: 'בית',
-            aboutLink: 'עלינו',
+            welcomeText: 'ברוכים הבאים לאתר טביעת הרגל הפחמנית שלנו. אתר זה נועד להוביל לשקיפות רבה יותר.',
+            homeLink: 'דף הבית',
+            aboutLink: 'אודותינו',
             contactLink: 'צור קשר',
-            co2Link: 'על CO2',
+            co2Link: 'על פליטת פחמן דו חמצני',
             environmentLink: 'סביבה',
             researchLink: 'מחקר',
-            tableTitle: 'פליטות CO2',
-            filterLabel: 'מיון לפי:',
-            footerText: '© 2024 טביעת רגל פחמנית. כל הזכויות שמורות. הודעה משפטית ומדיניות פרטיות',
-            countryHeader: 'ארץ',
+            tableTitle: 'פליטת פחמן דו חמצני',
+            filterLabel: 'מיין לפי:',
+            footerText: '© 2024 טביעת רגל פחמנית. כל הזכויות שמורות. הצהרת פרטיות ותנאי שימוש',
+            countryHeader: 'מדינה',
             companyHeader: 'חברה',
-            emissionHeader: 'פליטות CO2 (בטונות)',
+            emissionHeader: 'פליטת פחמן דו חמצני (בטון)',
             germany: 'גרמניה',
-            brazil: 'ברזיל'
+            brazil: 'ברזיל',
+            filterAz: 'אלפביתי א-ת',
+            filterZa: 'אלפביתי ת-א',
+            filterMax: 'הפליטה הגבוהה ביותר',
+            filterMin: 'הפליטה הנמוכה ביותר'
         }
     };
 
-    const selectedLang = translations[lang];
+    // Anwendung der Übersetzungen
+    const translation = translations[lang];
+    document.getElementById('title').textContent = translation.title;
+    document.getElementById('welcomeText').textContent = translation.welcomeText;
+    document.getElementById('homeLink').textContent = translation.homeLink;
+    document.getElementById('aboutLink').textContent = translation.aboutLink;
+    document.getElementById('contactLink').textContent = translation.contactLink;
+    document.getElementById('co2Link').textContent = translation.co2Link;
+    document.getElementById('environmentLink').textContent = translation.environmentLink;
+    document.getElementById('researchLink').textContent = translation.researchLink;
+    document.getElementById('tableTitle').textContent = translation.tableTitle;
+    document.getElementById('filterLabel').textContent = translation.filterLabel;
+    document.getElementById('footerText').textContent = translation.footerText;
+    document.getElementById('countryColumn').textContent = translation.countryHeader;
+    document.getElementById('companyColumn').textContent = translation.companyHeader;
+    document.getElementById('emissionColumn').textContent = translation.emissionHeader;
 
-    document.getElementById('title').textContent = selectedLang.title;
-    document.getElementById('welcomeText').textContent = selectedLang.welcomeText;
-    document.getElementById('homeLink').textContent = selectedLang.homeLink;
-    document.getElementById('aboutLink').textContent = selectedLang.aboutLink;
-    document.getElementById('contactLink').textContent = selectedLang.contactLink;
-    document.getElementById('co2Link').textContent = selectedLang.co2Link;
-    document.getElementById('environmentLink').textContent = selectedLang.environmentLink;
-    document.getElementById('researchLink').textContent = selectedLang.researchLink;
-    document.getElementById('tableTitle').textContent = selectedLang.tableTitle;
-    document.getElementById('filterLabel').textContent = selectedLang.filterLabel;
-    document.getElementById('footerText').textContent = selectedLang.footerText;
-    document.getElementById('countryColumn').textContent = selectedLang.countryHeader;
-    document.getElementById('companyColumn').textContent = selectedLang.companyHeader;
-    document.getElementById('emissionColumn').textContent = selectedLang.emissionHeader;
-
-    // Handling RTL for Hebrew
-    document.body.classList.toggle('rtl', lang === 'he');
-}
-
-// Funktion zum Filtern der Tabelle
-function filterTable() {
-    const searchInput = document.getElementById('searchInput').value.toLowerCase();
-    const filter = document.getElementById('filterSelect').value;
     const rows = document.querySelectorAll('#emissionsTable tbody tr');
+    rows[0].querySelector('td').textContent = translation.germany;
+    rows[2].querySelector('td').textContent = translation.brazil;
 
-    // Filter basierend auf der Suchleiste
-    rows.forEach(row => {
-        const country = row.cells[0].textContent.toLowerCase();
-        const company = row.cells[1].textContent.toLowerCase();
-        if (country.includes(searchInput) || company.includes(searchInput)) {
-            row.style.display = '';
-        } else {
-            row.style.display = 'none';
-        }
-    });
+    const filterSelect = document.getElementById('filterSelect');
+    filterSelect.options[0].textContent = translation.filterAz;
+    filterSelect.options[1].textContent = translation.filterZa;
+    filterSelect.options[2].textContent = translation.filterMax;
+    filterSelect.options[3].textContent = translation.filterMin;
 
-    // Sortierung basierend auf dem Filter
-    const sortedRows = Array.from(rows).sort((a, b) => {
-        const countryA = a.cells[0].textContent.toLowerCase();
-        const countryB = b.cells[0].textContent.toLowerCase();
-        const emissionA = parseInt(a.dataset.emission, 10);
-        const emissionB = parseInt(b.dataset.emission, 10);
-
-        if (filter === 'az') {
-            return countryA.localeCompare(countryB);
-        } else if (filter === 'za') {
-            return countryB.localeCompare(countryA);
-        } else if (filter === 'max') {
-            return emissionB - emissionA;
-        } else if (filter === 'min') {
-            return emissionA - emissionB;
-        }
-    });
-
-    sortedRows.forEach(row => {
-        document.querySelector('#emissionsTable tbody').appendChild(row);
-    });
+    // RTL-Unterstützung für Hebräisch
+    if (lang === 'he') {
+        document.body.classList.add('rtl');
+    } else {
+        document.body.classList.remove('rtl');
+    }
 }
