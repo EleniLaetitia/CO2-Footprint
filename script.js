@@ -25,17 +25,13 @@ function changeLanguage() {
             researchLink: 'Forschung',
             tableTitle: 'CO2-Emissionen',
             filterLabel: 'Sortieren nach:',
-            footerText: '© 2024 CO2-Footprint. Alle Rechte vorbehalten. Impressum und Datenschutz',
+            footerText: '© 2024 CO2-Footprint. Alle Rechte vorbehalten.',
+            legalText: 'Impressum und Datenschutz',
             countryHeader: 'Land',
             companyHeader: 'Unternehmen',
             emissionHeader: 'CO2-Ausstoß (in Tonnen)',
             germany: 'Deutschland',
-            brazil: 'Brasilien',
-            usa: 'USA',
-            az: 'Alphabetisch A-Z',
-            za: 'Alphabetisch Z-A',
-            max: 'Größter Ausstoß',
-            min: 'Kleinster Ausstoß'
+            brazil: 'Brasilien'
         },
         en: {
             title: 'CO2-Footprint',
@@ -48,17 +44,13 @@ function changeLanguage() {
             researchLink: 'Research',
             tableTitle: 'CO2 Emissions',
             filterLabel: 'Sort by:',
-            footerText: '© 2024 CO2-Footprint. All rights reserved. Legal Notice and Privacy Policy',
+            footerText: '© 2024 CO2-Footprint. All rights reserved.',
+            legalText: 'Legal Notice and Privacy Policy',
             countryHeader: 'Country',
             companyHeader: 'Company',
             emissionHeader: 'CO2 Emissions (in tons)',
             germany: 'Germany',
-            brazil: 'Brazil',
-            usa: 'USA',
-            az: 'Alphabetical A-Z',
-            za: 'Alphabetical Z-A',
-            max: 'Highest Emission',
-            min: 'Lowest Emission'
+            brazil: 'Brazil'
         },
         he: {
             title: 'טביעת רגל פחמנית',
@@ -71,17 +63,13 @@ function changeLanguage() {
             researchLink: 'מחקר',
             tableTitle: 'פליטות CO2',
             filterLabel: 'מיון לפי:',
-            footerText: '© 2024 טביעת רגל פחמנית. כל הזכויות שמורות. הודעה משפטית ומדיניות פרטיות',
+            footerText: '© 2024 טביעת רגל פחמנית. כל הזכויות שמורות.',
+            legalText: 'הודעה משפטית ומדיניות פרטיות',
             countryHeader: 'ארץ',
             companyHeader: 'חברה',
             emissionHeader: 'פליטות CO2 (בטונות)',
             germany: 'גרמניה',
-            brazil: 'ברזיל',
-            usa: 'ארה״ב',
-            az: 'אלפביתי א-ב',
-            za: 'אלפביתי ב-א',
-            max: 'פליטות גבוהות ביותר',
-            min: 'פליטות נמוכות ביותר'
+            brazil: 'ברזיל'
         }
     };
 
@@ -98,24 +86,10 @@ function changeLanguage() {
     document.getElementById('tableTitle').textContent = selectedLang.tableTitle;
     document.getElementById('filterLabel').textContent = selectedLang.filterLabel;
     document.getElementById('footerText').textContent = selectedLang.footerText;
+    document.getElementById('legalText').textContent = selectedLang.legalText;
     document.getElementById('countryColumn').textContent = selectedLang.countryHeader;
     document.getElementById('companyColumn').textContent = selectedLang.companyHeader;
     document.getElementById('emissionColumn').textContent = selectedLang.emissionHeader;
-
-    const filterSelect = document.getElementById('filterSelect');
-    filterSelect.innerHTML = `
-        <option value="az">${selectedLang.az}</option>
-        <option value="za">${selectedLang.za}</option>
-        <option value="max">${selectedLang.max}</option>
-        <option value="min">${selectedLang.min}</option>
-    `;
-
-    const rows = document.querySelectorAll('#emissionsTable tbody tr');
-    rows.forEach(row => {
-        const countryCell = row.cells[0];
-        const countryText = countryCell.getAttribute('data-translate');
-        countryCell.textContent = selectedLang[countryText] || countryCell.textContent;
-    });
 
     // Handling RTL for Hebrew
     document.body.classList.toggle('rtl', lang === 'he');
@@ -128,56 +102,40 @@ function filterTable() {
     const rows = document.querySelectorAll('#emissionsTable tbody tr');
 
     // Filter basierend auf der Suchleiste
-    let filteredRows = Array.from(rows).filter(row => {
+    rows.forEach(row => {
         const country = row.cells[0].textContent.toLowerCase();
         const company = row.cells[1].textContent.toLowerCase();
-        return country.includes(searchInput) || company.includes(searchInput);
+        if (country.includes(searchInput) || company.includes(searchInput)) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
+        }
     });
 
+    // Wenn die Suchleiste leer ist, zeige alle Zeilen an
+    if (searchInput === '') {
+        rows.forEach(row => row.style.display = '');
+    }
+
     // Sortierung basierend auf dem Filter
-    filteredRows.sort((a, b) => {
-        const emissionA = parseInt(a.dataset.emission, 10);
-        const emissionB = parseInt(b.dataset.emission, 10);
+    const sortedRows = Array.from(rows).sort((a, b) => {
+        const countryA = a.cells[0].textContent.toLowerCase();
+        const countryB = b.cells[0].textContent.toLowerCase();
+        const emissionA = parseInt(a.cells[2].textContent.replace('.', '').replace(',', ''), 10);
+        const emissionB = parseInt(b.cells[2].textContent.replace('.', '').replace(',', ''), 10);
 
         if (filter === 'az') {
-            return a.cells[0].textContent.localeCompare(b.cells[0].textContent);
+            return countryA.localeCompare(countryB);
         } else if (filter === 'za') {
-            return b.cells[0].textContent.localeCompare(a.cells[0].textContent);
+            return countryB.localeCompare(countryA);
         } else if (filter === 'max') {
             return emissionB - emissionA;
         } else if (filter === 'min') {
             return emissionA - emissionB;
         }
-        return 0;
     });
 
-    // Zeigt die gefilterten und sortierten Zeilen an
-    document.querySelector('#emissionsTable tbody').innerHTML = '';
-    filteredRows.forEach(row => {
+    sortedRows.forEach(row => {
         document.querySelector('#emissionsTable tbody').appendChild(row);
     });
-
-    // Wenn die Suchzeile leer ist, zeige alle Zeilen an
-    if (searchInput === '') {
-        const allRows = Array.from(rows);
-        allRows.sort((a, b) => {
-            const emissionA = parseInt(a.dataset.emission, 10);
-            const emissionB = parseInt(b.dataset.emission, 10);
-
-            if (filter === 'az') {
-                return a.cells[0].textContent.localeCompare(b.cells[0].textContent);
-            } else if (filter === 'za') {
-                return b.cells[0].textContent.localeCompare(a.cells[0].textContent);
-            } else if (filter === 'max') {
-                return emissionB - emissionA;
-            } else if (filter === 'min') {
-                return emissionA - emissionB;
-            }
-            return 0;
-        });
-        document.querySelector('#emissionsTable tbody').innerHTML = '';
-        allRows.forEach(row => {
-            document.querySelector('#emissionsTable tbody').appendChild(row);
-        });
-    }
 }
