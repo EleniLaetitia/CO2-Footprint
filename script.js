@@ -1,11 +1,7 @@
 // Funktion zum Umschalten des Menüs
 function toggleMenu() {
     const menu = document.getElementById('localMenu');
-    if (menu.style.display === 'none') {
-        menu.style.display = 'block';
-    } else {
-        menu.style.display = 'none';
-    }
+    menu.style.display = (menu.style.display === 'none' || menu.style.display === '') ? 'block' : 'none';
 }
 
 // Funktion zum Wechseln der Sprache 
@@ -124,6 +120,9 @@ function changeLanguage() {
     } else {
         document.body.classList.remove('rtl');
     }
+
+    // Tabelle zurücksetzen, wenn die Sprache gewechselt wird
+    filterTable();
 }
 
 // Funktion zum Filtern der Tabelle
