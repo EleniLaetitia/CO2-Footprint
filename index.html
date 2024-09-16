@@ -6,18 +6,20 @@
     <title>CO2-Footprint</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Einfache Styles für bessere Sichtbarkeit */
+        /* Hintergrundfarbe und allgemeine Styles */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            background-color: #004d00; /* Dunkelgrün Hintergrund */
+            color: #fff; /* Weißer Text für bessere Lesbarkeit auf dunkelgrünem Hintergrund */
         }
         header {
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding: 10px;
-            background-color: #f4f4f4;
+            background-color: #003300; /* Etwas dunkleres Grün für Header */
         }
         .logo img {
             height: 50px;
@@ -31,20 +33,24 @@
         }
         .global-nav a {
             text-decoration: none;
-            color: #333;
+            color: #fff; /* Weiß für Navigation Links */
         }
         .menu-icon {
             cursor: pointer;
             font-size: 24px;
+            color: #fff; /* Weiß für Menü-Icon */
         }
         .language-switch select {
             margin-left: 10px;
+            background-color: #003300; /* Hintergrundfarbe für Sprachwahl */
+            color: #fff; /* Weißer Text für Sprachwahl */
+            border: 1px solid #006600; /* Rahmenfarbe für Sprachwahl */
         }
         .local-menu {
             position: absolute;
             top: 60px; /* Adjust as needed */
             left: 0;
-            background-color: #fff;
+            background-color: #003300; /* Hintergrundfarbe für das Menü */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             width: 200px;
             padding: 10px;
@@ -57,12 +63,12 @@
         }
         .local-menu a {
             text-decoration: none;
-            color: #333;
+            color: #fff; /* Weißer Text für lokale Links */
             display: block;
             padding: 10px;
         }
         .local-menu a:hover {
-            background-color: #f4f4f4;
+            background-color: #005700; /* Etwas helleres Grün für Hover-Effekt */
         }
         main {
             padding: 20px;
@@ -73,6 +79,7 @@
             border-collapse: collapse;
             width: 100%;
             max-width: 800px;
+            color: #fff; /* Weißer Text für die Tabelle */
         }
         th, td {
             padding: 10px;
@@ -80,15 +87,22 @@
             text-align: left;
         }
         th {
-            background-color: #f4f4f4;
+            background-color: #003300; /* Hintergrundfarbe für Tabellenkopf */
         }
         footer {
-            background-color: #f4f4f4;
+            background-color: #003300; /* Hintergrundfarbe für Footer */
             padding: 10px;
             text-align: center;
             position: fixed;
             bottom: 0;
             width: 100%;
+        }
+        footer a {
+            color: #fff; /* Weißer Text für Footer-Links */
+            text-decoration: underline;
+        }
+        footer a:hover {
+            text-decoration: none;
         }
     </style>
 </head>
