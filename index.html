@@ -45,34 +45,34 @@
             <p id="welcomeText">Willkommen auf unserer CO2-Footprint Website. Diese Seite soll zu mehr Transparenz führen.</p>
         </div>
         <h2 id="tableTitle">CO2-Emissionen</h2>
-        <label for="filterSelect" id="filterLabel">Filter nach Land:</label>
-        <select id="filterSelect" onchange="filterByCountry()">
-            <option value="all">Alle</option>
-            <option value="de">Deutschland</option>
-            <option value="us">USA</option>
-            <option value="br">Brasilien</option>
+        <label for="filterSelect" id="filterLabel">Sortieren nach:</label>
+        <select id="filterSelect" onchange="filterTable()">
+            <option value="az">Alphabetisch A-Z</option>
+            <option value="za">Alphabetisch Z-A</option>
+            <option value="max">Größter Ausstoß</option>
+            <option value="min">Kleinster Ausstoß</option>
         </select>
         <input type="text" id="searchInput" placeholder="Suche..." oninput="filterTable()">
         <table id="emissionsTable">
             <thead>
                 <tr>
-                    <th onclick="sortTable(0)" id="countryColumn">Land</th>
-                    <th onclick="sortTable(1)" id="companyColumn">Unternehmen</th>
-                    <th onclick="sortTable(2)" id="emissionColumn">CO2-Ausstoß (in Tonnen)</th>
+                    <th id="countryColumn">Land</th>
+                    <th id="companyColumn">Unternehmen</th>
+                    <th id="emissionColumn">CO2-Ausstoß (in Tonnen)</th>
                 </tr>
             </thead>
             <tbody>
-                <tr data-country="de">
+                <tr data-country="de" data-emission="1200000">
                     <td>Deutschland</td>
                     <td>BMW</td>
                     <td>1.200.000</td>
                 </tr>
-                <tr data-country="us">
+                <tr data-country="us" data-emission="900000">
                     <td>USA</td>
                     <td>Amazon</td>
                     <td>900.000</td>
                 </tr>
-                <tr data-country="br">
+                <tr data-country="br" data-emission="1500000">
                     <td>Brasilien</td>
                     <td>Petronas</td>
                     <td>1.500.000</td>
