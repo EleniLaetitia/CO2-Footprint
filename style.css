@@ -1,159 +1,93 @@
-/* Globale Stileinstellungen */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
     font-family: Arial, sans-serif;
-    line-height: 1.6;
-    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
 }
 
-header {
+#header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    background-color: #333;
-    color: white;
-    padding: 10px 20px;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #f4f4f4;
 }
 
-.logo img {
-    height: 50px;
+#logo {
+    margin-right: 20px;
 }
 
-.global-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-}
-
-.global-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-}
-
-.menu-icon {
+#menuButton {
     cursor: pointer;
     font-size: 24px;
-    color: white;
-    padding: 0 10px;
 }
 
-.language-switch {
-    margin-left: 20px;
-}
-
-.language-switch select {
-    padding: 5px;
-    border-radius: 5px;
-}
-
-.local-menu {
-    background-color: #333;
-    color: white;
-    padding: 15px;
-    position: fixed;
-    top: 60px; /* Höhe des Headers */
-    left: 0;
-    width: 200px;
-    height: calc(100% - 60px); /* Höhe des Headers */
+#localMenu {
     display: none;
-    overflow-y: auto;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    padding: 10px;
 }
 
-.local-menu ul {
-    list-style: none;
-    padding: 0;
-}
-
-.local-menu ul li {
-    margin: 10px 0;
-}
-
-.local-menu ul li a {
-    color: white;
+#localMenu a {
+    display: block;
+    padding: 10px;
     text-decoration: none;
-    font-size: 18px;
+    color: #333;
 }
 
-.welcome {
+#localMenu a:hover {
+    background-color: #ddd;
+}
+
+#content {
+    margin: 20px;
+}
+
+#title {
     text-align: center;
-    margin: 20px 0;
+    font-size: 24px;
+    margin-bottom: 20px;
 }
 
-main {
-    padding: 20px;
-    margin-left: 220px; /* Platz für das Menü */
+#searchInput {
+    margin-bottom: 10px;
+    padding: 5px;
+    width: calc(100% - 22px);
 }
 
-table {
+#filterSelect {
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+#emissionsTable {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
-    background-color: white;
 }
 
-table, th, td {
+#emissionsTable th, #emissionsTable td {
     border: 1px solid #ddd;
     padding: 8px;
+}
+
+#emissionsTable th {
+    background-color: #f4f4f4;
     text-align: left;
 }
 
-th {
-    background-color: #f2f2f2;
-}
-
-input, select {
-    margin-top: 10px;
-    padding: 10px;
-    width: 100%;
-    max-width: 300px;
-    box-sizing: border-box;
-}
-
-footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #333;
-    color: white;
+#footer {
     position: fixed;
     bottom: 0;
     width: 100%;
+    background-color: #f4f4f4;
+    text-align: center;
+    padding: 10px;
 }
 
-@media (max-width: 768px) {
-    .global-nav ul {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .local-menu ul {
-        flex-direction: column;
-    }
-
-    main {
-        margin-left: 0;
-    }
-}
-
-body.rtl {
-    direction: rtl;
-}
-
-body.rtl header {
-    flex-direction: row-reverse;
-}
-
-body.rtl .global-nav ul {
-    flex-direction: row-reverse;
-}
-
-body.rtl .local-menu {
+.rtl {
     direction: rtl;
 }
