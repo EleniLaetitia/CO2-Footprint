@@ -6,10 +6,10 @@
 
 body {
     font-family: Arial, sans-serif;
-    direction: ltr;
-    min-height: 100vh; /* Mindestens die Höhe des Viewports */
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
+    direction: ltr;
 }
 
 header {
@@ -72,7 +72,7 @@ header {
 
 main {
     padding: 1rem;
-    flex: 1; /* Dehnt den Content-Bereich */
+    flex: 1;
 }
 
 table {
@@ -98,12 +98,12 @@ input, select {
 }
 
 footer {
-    text-align: center;
-    padding: 1rem;
     background-color: #333;
     color: white;
+    text-align: center;
+    padding: 1rem;
     width: 100%;
-    margin-top: auto; /* Footer bleibt unten */
+    margin-top: auto;
 }
 
 @media (max-width: 768px) {
