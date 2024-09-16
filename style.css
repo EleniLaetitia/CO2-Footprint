@@ -1,3 +1,4 @@
+/* Globale Stileinstellungen */
 * {
     margin: 0;
     padding: 0;
@@ -6,7 +7,10 @@
 
 body {
     font-family: Arial, sans-serif;
-    direction: ltr;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
 }
 
 header {
@@ -15,7 +19,7 @@ header {
     align-items: center;
     background-color: #333;
     color: white;
-    padding: 1rem;
+    padding: 10px 20px;
 }
 
 .logo img {
@@ -25,99 +29,98 @@ header {
 .global-nav ul {
     list-style: none;
     display: flex;
-    gap: 1rem;
+    gap: 20px;
 }
 
 .global-nav ul li a {
     color: white;
     text-decoration: none;
+    font-size: 18px;
 }
 
 .menu-icon {
     cursor: pointer;
-    font-size: 2rem;
+    font-size: 24px;
     color: white;
-    padding: 0 1rem;
+    padding: 0 10px;
 }
 
 .language-switch {
-    margin-right: 1rem;
+    margin-left: 20px;
+}
+
+.language-switch select {
+    padding: 5px;
+    border-radius: 5px;
 }
 
 .local-menu {
-    display: none;
+    background-color: #333;
+    color: white;
+    padding: 15px;
 }
 
 .local-menu ul {
     list-style: none;
     display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    background-color: #f4f4f4;
-    padding: 1rem;
+    gap: 15px;
 }
 
 .local-menu ul li a {
+    color: white;
     text-decoration: none;
-    color: #333;
+    font-size: 18px;
 }
 
 .welcome {
     text-align: center;
-    margin: 2rem 0;
+    margin: 20px 0;
 }
 
 main {
-    padding: 1rem;
+    padding: 20px;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 1rem;
+    margin-top: 20px;
+    background-color: white;
 }
 
 table, th, td {
-    border: 1px solid #333;
-    padding: 0.5rem;
+    border: 1px solid #ddd;
+    padding: 8px;
     text-align: left;
 }
 
 th {
-    cursor: pointer;
+    background-color: #f2f2f2;
 }
 
 input, select {
-    margin-bottom: 1rem;
-    padding: 0.5rem;
+    margin-top: 10px;
+    padding: 10px;
     width: 100%;
+    max-width: 300px;
 }
 
 footer {
     text-align: center;
-    padding: 1rem;
+    padding: 20px;
     background-color: #333;
     color: white;
-    position: relative;
-    bottom: 0;
-    width: 100%;
+    margin-top: 20px;
 }
 
 @media (max-width: 768px) {
     .global-nav ul {
         flex-direction: column;
+        gap: 10px;
     }
-    
-    .local-menu {
-        display: block;
-    }
-    
-    header {
+
+    .local-menu ul {
         flex-direction: column;
-    }
-    
-    .menu-icon {
-        order: -1;
     }
 }
 
@@ -125,14 +128,14 @@ body.rtl {
     direction: rtl;
 }
 
-body.rtl header, body.rtl .local-menu {
+body.rtl header {
     flex-direction: row-reverse;
 }
 
 body.rtl .global-nav ul {
-    flex-direction: column;
+    flex-direction: row-reverse;
 }
 
-body.rtl .menu-icon {
-    order: 0;
+body.rtl .local-menu {
+    flex-direction: row-reverse;
 }
