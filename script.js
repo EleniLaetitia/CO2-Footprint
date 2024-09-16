@@ -1,11 +1,7 @@
 // Funktion zum Umschalten des Menüs
 function toggleMenu() {
     const menu = document.getElementById('localMenu');
-    if (menu.style.display === 'none') {
-        menu.style.display = 'block';
-    } else {
-        menu.style.display = 'none';
-    }
+    menu.style.display = (menu.style.display === 'none') ? 'block' : 'none';
 }
 
 // Funktion zum Wechseln der Sprache 
@@ -94,7 +90,7 @@ function changeLanguage() {
     document.getElementById('researchLink').textContent = translation.researchLink;
     document.getElementById('tableTitle').textContent = translation.tableTitle;
     document.getElementById('filterLabel').textContent = translation.filterLabel;
-    document.getElementById('footerText').textContent = translation.footerText;
+    document.getElementById('footerText').innerHTML = translation.footerText;
     document.getElementById('countryColumn').textContent = translation.countryHeader;
     document.getElementById('companyColumn').textContent = translation.companyHeader;
     document.getElementById('emissionColumn').textContent = translation.emissionHeader;
@@ -116,3 +112,39 @@ function changeLanguage() {
         document.body.classList.remove('rtl');
     }
 }
+
+// Funktion zum Filtern und Sortieren der Tabelle
+function filterTable() {
+    const filter = document.getElementById('filterSelect').value;
+    const search = document.getElementById('searchInput').value.toLowerCase();
+    const rows = Array.from(document.querySelectorAll('#emissionsTable tbody tr'));
+
+    // Filter anwenden
+    rows.forEach(row => {
+        const country = row.querySelector('td').textContent.toLowerCase();
+        const company = row.querySelectorAll('td')[1].textContent.toLowerCase();
+        const emission = parseFloat(row.querySelectorAll('td')[2].textContent.replace(/\./g, '').replace(',', '.'));
+
+        const matchesSearch = country.includes(search) || company.includes(search);
+
+        row.style.display = matchesSearch ? '' : 'none';
+    });
+
+    // Tabelle sortieren
+    if (filter === 'az') {
+        rows.sort((a, b) => a.querySelector('td').textContent.localeCompare(b.querySelector('td').textContent));
+    } else if (filter === 'za') {
+        rows.sort((a, b) => b.querySelector('td').textContent.localeCompare(a.querySelector('td').textContent));
+    } else if (filter === 'max') {
+        rows.sort((a, b) => parseFloat(b.querySelectorAll('td')[2].textContent.replace(/\./g, '').replace(',', '.')) - parseFloat(a.querySelectorAll('td')[2].textContent.replace(/\./g, '').replace(',', '.')));
+    } else if (filter === 'min') {
+        rows.sort((a, b) => parseFloat(a.querySelectorAll('td')[2].textContent.replace(/\./g, '').replace(',', '.')) - parseFloat(b.querySelectorAll('td')[2].textContent.replace(/\./g, '').replace(',', '.')));
+    }
+
+    // Sortierte Reihen zur Tabelle hinzufügen
+    const tbody = document.querySelector('#emissionsTable tbody');
+    rows.forEach(row => tbody.appendChild(row));
+}
+
+// Initiale Filteranwendung
+filterTable();
