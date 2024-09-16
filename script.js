@@ -91,6 +91,11 @@ function changeLanguage() {
     document.getElementById('companyColumn').textContent = selectedLang.companyHeader;
     document.getElementById('emissionColumn').textContent = selectedLang.emissionHeader;
 
+    // Übersetzung der Länderdaten in der Tabelle
+    document.querySelectorAll('#emissionsTable td[data-translate]').forEach(cell => {
+        cell.textContent = selectedLang[cell.getAttribute('data-translate')];
+    });
+
     // Handling RTL for Hebrew
     document.body.classList.toggle('rtl', lang === 'he');
 }
