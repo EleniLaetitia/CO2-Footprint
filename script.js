@@ -59,71 +59,80 @@ function changeLanguage() {
             min: 'Lowest Emission'
         },
         he: {
-            title: 'טביעת רגל CO2',
-            welcomeText: 'ברוכים הבאים לאתר טביעת רגל CO2 שלנו. האתר הזה נועד לספק שקיפות רבה יותר.',
+            title: 'טביעת רגל פחמנית',
+            welcomeText: 'ברוכים הבאים לאתר טביעת הרגל הפחמנית שלנו. אתר זה נועד לספק שקיפות רבה יותר.',
             homeLink: 'דף הבית',
-            aboutLink: 'אודותינו',
+            aboutLink: 'עלינו',
             contactLink: 'צור קשר',
             co2Link: 'על CO2',
             environmentLink: 'סביבה',
             researchLink: 'מחקר',
-            tableTitle: 'פליטות CO2',
+            tableTitle: 'פליטת CO2',
             filterLabel: 'מיין לפי:',
-            footerText: '© 2024 טביעת רגל CO2. כל הזכויות שמורות.',
-            legalText: 'רשימה משפטית ומדיניות פרטיות',
+            footerText: '© 2024 טביעת רגל פחמנית. כל הזכויות שמורות.',
+            legalText: 'הצהרה משפטית ומדיניות פרטיות',
             countryHeader: 'מדינה',
             companyHeader: 'חברה',
-            emissionHeader: 'פליטות CO2 (בטון)',
+            emissionHeader: 'פליטת CO2 (בטונות)',
             germany: 'גרמניה',
             brazil: 'ברזיל',
             usa: 'ארצות הברית',
-            az: 'בסדר אלפביתי א-ת',
-            za: 'בסדר אלפביתי ת-א',
-            max: 'פליטה הגבוהה ביותר',
+            az: 'מ-א ועד ת',
+            za: 'מת עד א',
+            max: 'הפליטה הגבוהה ביותר',
             min: 'הפליטה הנמוכה ביותר'
         }
     };
 
-    const translation = translations[lang];
+    // Anwendung der Übersetzungen
+    const translate = translations[lang];
+    document.getElementById('title').textContent = translate.title;
+    document.getElementById('welcomeText').textContent = translate.welcomeText;
+    document.getElementById('homeLink').textContent = translate.homeLink;
+    document.getElementById('aboutLink').textContent = translate.aboutLink;
+    document.getElementById('contactLink').textContent = translate.contactLink;
+    document.getElementById('co2Link').textContent = translate.co2Link;
+    document.getElementById('environmentLink').textContent = translate.environmentLink;
+    document.getElementById('researchLink').textContent = translate.researchLink;
+    document.getElementById('tableTitle').textContent = translate.tableTitle;
+    document.getElementById('filterLabel').textContent = translate.filterLabel;
+    document.getElementById('footerText').textContent = translate.footerText;
+    document.getElementById('legalText').textContent = translate.legalText;
 
-    // Übersetzungen anwenden
-    document.getElementById('title').textContent = translation.title;
-    document.getElementById('welcomeText').textContent = translation.welcomeText;
-    document.getElementById('homeLink').textContent = translation.homeLink;
-    document.getElementById('aboutLink').textContent = translation.aboutLink;
-    document.getElementById('contactLink').textContent = translation.contactLink;
-    document.getElementById('co2Link').textContent = translation.co2Link;
-    document.getElementById('environmentLink').textContent = translation.environmentLink;
-    document.getElementById('researchLink').textContent = translation.researchLink;
-    document.getElementById('tableTitle').textContent = translation.tableTitle;
-    document.getElementById('filterLabel').textContent = translation.filterLabel;
-    document.getElementById('footerText').textContent = translation.footerText;
-    document.getElementById('legalText').textContent = translation.legalText;
-    document.getElementById('countryColumn').textContent = translation.countryHeader;
-    document.getElementById('companyColumn').textContent = translation.companyHeader;
-    document.getElementById('emissionColumn').textContent = translation.emissionHeader;
+    // Tabellen-Header
+    document.getElementById('countryColumn').textContent = translate.countryHeader;
+    document.getElementById('companyColumn').textContent = translate.companyHeader;
+    document.getElementById('emissionColumn').textContent = translate.emissionHeader;
 
-    // Tabelle anpassen
-    document.querySelectorAll('[data-translate]').forEach(td => {
-        td.textContent = translation[td.getAttribute('data-translate')];
+    // Tabelleneinträge
+    const rows = document.querySelectorAll('#emissionsTable tbody tr');
+    rows.forEach(row => {
+        const countryCell = row.cells[0];
+        const companyCell = row.cells[1];
+        countryCell.textContent = translate[countryCell.dataset.translate];
+        companyCell.textContent = translate[companyCell.dataset.translate];
     });
 
-    // Layout anpassen für RTL
-    document.body.dir = lang === 'he' ? 'rtl' : 'ltr';
+    // Anpassen der Leserichtung für Hebräisch
+    if (lang === 'he') {
+        document.body.setAttribute('dir', 'rtl');
+    } else {
+        document.body.setAttribute('dir', 'ltr');
+    }
 }
 
-// Funktion zum Filtern der Tabelle
+// Funktion zur Filterung und Suche in der Tabelle
 function filterTable() {
     const searchInput = document.getElementById('searchInput').value.toLowerCase();
     const filterValue = document.getElementById('filterSelect').value;
     const table = document.getElementById('emissionsTable');
     const rows = table.querySelectorAll('tbody tr');
 
+    // Filterung und Sortierung der Tabelleneinträge
     rows.forEach(row => {
-        const cells = row.querySelectorAll('td');
-        const country = cells[0].textContent.toLowerCase();
-        const company = cells[1].textContent.toLowerCase();
-        const emission = parseInt(cells[2].textContent.replace(/,/g, ''));
+        const country = row.cells[0].textContent.toLowerCase();
+        const company = row.cells[1].textContent.toLowerCase();
+        const emission = parseInt(row.cells[2].textContent.replace(/,/g, ''));
 
         const isVisible = 
             (country.includes(searchInput) || company.includes(searchInput)) &&
