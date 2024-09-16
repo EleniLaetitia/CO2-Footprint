@@ -1,41 +1,37 @@
-/* Basis-Stile */
+/* Grundlegende Stildefinitionen */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #e0e0e0; /* Hellerer Grauton für den Hintergrund */
+    text-align: left;
+    direction: ltr;
+    background-color: #f4f4f4;
 }
 
+/* Header-Stil */
 header {
-    background-color: #555; /* Etwas hellerer Grau für den Header */
+    background-color: #333;
     color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     padding: 10px;
+    position: relative;
 }
 
 .header-content {
     display: flex;
     align-items: center;
-    width: 100%;
+    justify-content: space-between;
 }
 
 .logo img {
-    height: 50px;
+    max-height: 50px;
 }
 
 .global-nav ul {
     list-style: none;
-    margin: 0;
     padding: 0;
+    margin: 0;
     display: flex;
-    justify-content: center; /* Zentrierung der Navigation */
-    flex: 1;
-}
-
-.global-nav li {
-    margin: 0 10px;
+    gap: 15px;
 }
 
 .global-nav a {
@@ -46,31 +42,34 @@ header {
 .menu-icon {
     font-size: 24px;
     cursor: pointer;
-    color: white;
-    margin-left: auto;
+    display: none; /* Standardmäßig verstecken */
 }
 
-.language-switch {
-    margin-left: 10px;
+.language-switch select {
+    padding: 5px;
+    border: none;
+    border-radius: 3px;
 }
 
+/* Verstecktes Menü */
 .local-menu {
     position: absolute;
-    top: 60px;
+    top: 60px; /* Unterhalb des Headers */
     left: 0;
-    background-color: #444;
+    background-color: #333;
     color: white;
-    padding: 10px;
+    width: 200px;
+    display: none;
 }
 
 .local-menu ul {
     list-style: none;
-    margin: 0;
     padding: 0;
+    margin: 0;
 }
 
 .local-menu li {
-    margin: 10px 0;
+    padding: 10px;
 }
 
 .local-menu a {
@@ -78,69 +77,73 @@ header {
     text-decoration: none;
 }
 
-/* Stile für den Hauptinhalt */
+/* Hauptinhalt-Stil */
 main {
     padding: 20px;
-    background-color: #ffffff; /* Weißer Hintergrund für den Contentbereich */
-    max-width: 1200px;
-    margin: auto;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center; /* Zentrierung des Textes */
+    text-align: center;
 }
 
-h1, h2 {
-    margin-top: 0;
+#welcomeText {
+    font-size: 18px;
+    margin: 20px 0;
+}
+
+#tableTitle {
+    margin: 20px 0;
+}
+
+#filterSelect, #searchInput {
+    margin: 10px 0;
 }
 
 table {
     width: 100%;
+    margin: 20px 0;
     border-collapse: collapse;
-    margin: 0 auto; /* Zentrierung der Tabelle */
 }
 
 th, td {
-    padding: 8px;
+    padding: 10px;
     border: 1px solid #ddd;
-    text-align: left;
 }
 
 th {
     background-color: #f4f4f4;
 }
 
-input[type="text"] {
-    padding: 5px;
-    margin: 10px 0;
-    width: calc(100% - 22px);
-    text-align: center; /* Zentrierung des Suchfeldes */
-}
-
-select {
-    padding: 5px;
-    margin: 10px 0;
-}
-
-/* Footer-Stile */
+/* Footer-Stil */
 footer {
-    background-color: #555;
+    background-color: #333;
     color: white;
-    text-align: center;
     padding: 10px;
-    position: fixed;
+    text-align: center;
+    position: absolute;
     bottom: 0;
     width: 100%;
 }
 
-/* RTL Unterstützung für Hebräisch */
-body.rtl {
+/* RTL Anpassungen für Hebräisch */
+body[dir="rtl"] {
     direction: rtl;
+    text-align: right;
 }
 
-body.rtl .global-nav ul {
-    flex-direction: row-reverse;
+header, main, footer {
+    text-align: right;
 }
 
-body.rtl .local-menu {
-    right: 0;
-    left: auto;
+/* Menü-Icon bei kleinen Bildschirmen anzeigen */
+@media (max-width: 768px) {
+    .global-nav {
+        display: none; /* Verstecke globale Navigation auf kleinen Bildschirmen */
+    }
+    
+    .menu-icon {
+        display: block; /* Menü-Icon anzeigen */
+    }
+    
+    .local-menu {
+        left: auto;
+        right: 0; /* Menü auf der rechten Seite bei kleinen Bildschirmen */
+    }
 }
