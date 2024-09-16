@@ -3,7 +3,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    text-align: left;
+    text-align: center; /* Text zentrieren */
     direction: ltr;
     background-color: #f4f4f4;
 }
@@ -14,16 +14,18 @@ header {
     color: white;
     padding: 10px;
     position: relative;
+    text-align: center; /* Header-Inhalt zentrieren */
 }
 
 .header-content {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center; /* Zentrieren des Headers */
 }
 
 .logo img {
     max-height: 50px;
+    margin-right: 20px; /* Abstand zwischen Logo und Navigation */
 }
 
 .global-nav ul {
@@ -43,12 +45,7 @@ header {
     font-size: 24px;
     cursor: pointer;
     display: none; /* Standardmäßig verstecken */
-}
-
-.language-switch select {
-    padding: 5px;
-    border: none;
-    border-radius: 3px;
+    margin-left: auto; /* Positionierung an den rechten Rand */
 }
 
 /* Verstecktes Menü */
@@ -60,6 +57,7 @@ header {
     color: white;
     width: 200px;
     display: none;
+    text-align: center; /* Menü-Inhalt zentrieren */
 }
 
 .local-menu ul {
@@ -80,7 +78,7 @@ header {
 /* Hauptinhalt-Stil */
 main {
     padding: 20px;
-    text-align: center;
+    text-align: center; /* Hauptinhalt zentrieren */
 }
 
 #welcomeText {
@@ -97,8 +95,8 @@ main {
 }
 
 table {
-    width: 100%;
-    margin: 20px 0;
+    width: 80%; /* Tabelle zentrieren und Breite anpassen */
+    margin: 20px auto; /* Tabelle zentrieren */
     border-collapse: collapse;
 }
 
@@ -116,8 +114,8 @@ footer {
     background-color: #333;
     color: white;
     padding: 10px;
-    text-align: center;
-    position: absolute;
+    text-align: center; /* Footer-Inhalt zentrieren */
+    position: relative;
     bottom: 0;
     width: 100%;
 }
