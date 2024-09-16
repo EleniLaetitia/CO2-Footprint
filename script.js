@@ -1,3 +1,13 @@
+// Funktion zum Umschalten des Menüs
+function toggleMenu() {
+    const menu = document.getElementById('localMenu');
+    if (menu.style.display === 'none' || menu.style.display === '') {
+        menu.style.display = 'block';
+    } else {
+        menu.style.display = 'none';
+    }
+}
+
 // Funktion zum Wechseln der Sprache
 function changeLanguage() {
     const lang = document.getElementById('languageSelect').value;
@@ -40,84 +50,117 @@ function changeLanguage() {
             tableTitle: 'CO2 Emissions',
             filterLabel: 'Sort by:',
             footerText: '© 2024 CO2-Footprint. All rights reserved.',
-            legalText: 'Legal Notice and Privacy Policy',
+            legalText: 'Imprint and Privacy Policy',
             countryHeader: 'Country',
             companyHeader: 'Company',
             emissionHeader: 'CO2 Emissions (in tons)',
             germany: 'Germany',
             brazil: 'Brazil',
             usa: 'USA',
-            az: 'Alphabetical A-Z',
-            za: 'Alphabetical Z-A',
+            az: 'Alphabetically A-Z',
+            za: 'Alphabetically Z-A',
             max: 'Highest Emission',
             min: 'Lowest Emission'
         },
         he: {
-            title: 'טביעת רגל פחמנית',
-            welcomeText: 'ברוכים הבאים לאתר טביעת רגל פחמנית שלנו. אתר זה נועד להגביר את השקיפות.',
-            homeLink: 'בית',
-            aboutLink: 'עלינו',
+            title: 'טביעת רגל CO2',
+            welcomeText: 'ברוכים הבאים לאתר טביעת רגל CO2 שלנו. האתר הזה נועד לספק שקיפות רבה יותר.',
+            homeLink: 'דף הבית',
+            aboutLink: 'אודותינו',
             contactLink: 'צור קשר',
             co2Link: 'על CO2',
             environmentLink: 'סביבה',
             researchLink: 'מחקר',
             tableTitle: 'פליטות CO2',
-            filterLabel: 'מיון לפי:',
-            footerText: '© 2024 טביעת רגל פחמנית. כל הזכויות שמורות.',
-            legalText: 'הודעה משפטית ומדיניות פרטיות',
-            countryHeader: 'ארץ',
+            filterLabel: 'מיין לפי:',
+            footerText: '© 2024 טביעת רגל CO2. כל הזכויות שמורות.',
+            legalText: 'רשימה משפטית ומדיניות פרטיות',
+            countryHeader: 'מדינה',
             companyHeader: 'חברה',
-            emissionHeader: 'פליטות CO2 (בטונות)',
+            emissionHeader: 'פליטות CO2 (בטון)',
             germany: 'גרמניה',
             brazil: 'ברזיל',
             usa: 'ארצות הברית',
-            az: 'אלפביתי א–ב',
-            za: 'אלפביתי ב–א',
-            max: 'הפליטה הגדולה ביותר',
-            min: 'הפליטה הקטנה ביותר'
+            az: 'בסדר אלפביתי א-ת',
+            za: 'בסדר אלפביתי ת-א',
+            max: 'פליטה הגבוהה ביותר',
+            min: 'הפליטה הנמוכה ביותר'
         }
     };
 
-    const selectedLang = translations[lang];
+    const translation = translations[lang];
 
-    document.getElementById('title').textContent = selectedLang.title;
-    document.getElementById('welcomeText').textContent = selectedLang.welcomeText;
-    document.getElementById('homeLink').textContent = selectedLang.homeLink;
-    document.getElementById('aboutLink').textContent = selectedLang.aboutLink;
-    document.getElementById('contactLink').textContent = selectedLang.contactLink;
-    document.getElementById('co2Link').textContent = selectedLang.co2Link;
-    document.getElementById('environmentLink').textContent = selectedLang.environmentLink;
-    document.getElementById('researchLink').textContent = selectedLang.researchLink;
-    document.getElementById('tableTitle').textContent = selectedLang.tableTitle;
-    document.getElementById('filterLabel').textContent = selectedLang.filterLabel;
-    document.getElementById('footerText').textContent = selectedLang.footerText;
-    document.getElementById('legalText').textContent = selectedLang.legalText;
-    document.getElementById('countryColumn').textContent = selectedLang.countryHeader;
-    document.getElementById('companyColumn').textContent = selectedLang.companyHeader;
-    document.getElementById('emissionColumn').textContent = selectedLang.emissionHeader;
+    // Übersetzungen anwenden
+    document.getElementById('title').textContent = translation.title;
+    document.getElementById('welcomeText').textContent = translation.welcomeText;
+    document.getElementById('homeLink').textContent = translation.homeLink;
+    document.getElementById('aboutLink').textContent = translation.aboutLink;
+    document.getElementById('contactLink').textContent = translation.contactLink;
+    document.getElementById('co2Link').textContent = translation.co2Link;
+    document.getElementById('environmentLink').textContent = translation.environmentLink;
+    document.getElementById('researchLink').textContent = translation.researchLink;
+    document.getElementById('tableTitle').textContent = translation.tableTitle;
+    document.getElementById('filterLabel').textContent = translation.filterLabel;
+    document.getElementById('footerText').textContent = translation.footerText;
+    document.getElementById('legalText').textContent = translation.legalText;
+    document.getElementById('countryColumn').textContent = translation.countryHeader;
+    document.getElementById('companyColumn').textContent = translation.companyHeader;
+    document.getElementById('emissionColumn').textContent = translation.emissionHeader;
 
-    // Übersetzung der Länderdaten in der Tabelle
-    document.querySelectorAll('#emissionsTable td[data-translate]').forEach(cell => {
-        cell.textContent = selectedLang[cell.getAttribute('data-translate')];
+    // Tabelle anpassen
+    document.querySelectorAll('[data-translate]').forEach(td => {
+        td.textContent = translation[td.getAttribute('data-translate')];
     });
 
-    // Übersetzung der Filteroptionen
-    document.querySelectorAll('#filterSelect option').forEach(option => {
-        option.textContent = selectedLang[option.value];
+    // Layout anpassen für RTL
+    document.body.dir = lang === 'he' ? 'rtl' : 'ltr';
+}
+
+// Funktion zum Filtern der Tabelle
+function filterTable() {
+    const searchInput = document.getElementById('searchInput').value.toLowerCase();
+    const filterValue = document.getElementById('filterSelect').value;
+    const table = document.getElementById('emissionsTable');
+    const rows = table.querySelectorAll('tbody tr');
+
+    rows.forEach(row => {
+        const cells = row.querySelectorAll('td');
+        const country = cells[0].textContent.toLowerCase();
+        const company = cells[1].textContent.toLowerCase();
+        const emission = parseInt(cells[2].textContent.replace('.', '').replace(',', ''), 10);
+        const matchesSearch = country.includes(searchInput) || company.includes(searchInput);
+
+        row.style.display = matchesSearch ? '' : 'none';
     });
 
-    // Handling RTL für Hebräisch
-    if (lang === 'he') {
-        document.body.style.direction = 'rtl';
-        document.body.style.textAlign = 'right';
-        document.querySelectorAll('header, main, footer').forEach(el => {
-            el.style.textAlign = 'right';
-        });
-    } else {
-        document.body.style.direction = 'ltr';
-        document.body.style.textAlign = 'left';
-        document.querySelectorAll('header, main, footer').forEach(el => {
-            el.style.textAlign = 'left';
-        });
+    // Sortieren nach Auswahl
+    if (filterValue === 'az') {
+        sortTable(0, 'asc');
+    } else if (filterValue === 'za') {
+        sortTable(0, 'desc');
+    } else if (filterValue === 'max') {
+        sortTable(2, 'desc');
+    } else if (filterValue === 'min') {
+        sortTable(2, 'asc');
     }
+}
+
+// Funktion zum Sortieren der Tabelle
+function sortTable(columnIndex, order) {
+    const table = document.getElementById('emissionsTable');
+    const rows = Array.from(table.querySelectorAll('tbody tr'));
+
+    rows.sort((a, b) => {
+        const aText = a.cells[columnIndex].textContent;
+        const bText = b.cells[columnIndex].textContent;
+        const aValue = columnIndex === 2 ? parseInt(aText.replace('.', '').replace(',', ''), 10) : aText;
+        const bValue = columnIndex === 2 ? parseInt(bText.replace('.', '').replace(',', ''), 10) : bText;
+
+        if (aValue < bValue) return order === 'asc' ? -1 : 1;
+        if (aValue > bValue) return order === 'asc' ? 1 : -1;
+        return 0;
+    });
+
+    const tbody = table.querySelector('tbody');
+    rows.forEach(row => tbody.appendChild(row));
 }
