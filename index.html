@@ -3,93 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CO2-Footprint</title>
-    <link rel="stylesheet" href="style.css">
+    <title id="title">CO2-Footprint</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .rtl {
+            direction: rtl;
+            text-align: right;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #333;
+            color: #fff;
+            padding: 10px 20px;
+        }
+        #logo {
+            width: 100px;
+        }
+        #menuButton {
+            cursor: pointer;
+        }
+        #localMenu {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 60px;
+            background: #444;
+            width: 200px;
+            color: #fff;
+        }
+        #localMenu a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px;
+            display: block;
+        }
+        #localMenu a:hover {
+            background: #555;
+        }
+        .content {
+            flex: 1;
+            padding: 20px;
+        }
+        #searchInput {
+            margin-bottom: 10px;
+            padding: 5px;
+            width: calc(100% - 22px);
+        }
+        #filterSelect {
+            margin-bottom: 10px;
+            padding: 5px;
+        }
+        #emissionsTable {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+        #emissionsTable th, #emissionsTable td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        #emissionsTable th {
+            background: #f4f4f4;
+        }
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: sticky;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
-    <!-- Header mit Logo, globaler Navigation und Sprachwahl -->
     <header>
-        <div class="logo">
-            <img src="Logo CO2 Footprint.png" alt="CO2-Footprint Logo">
-        </div>
-        <nav class="global-nav">
-            <ul>
-                <li><a href="#" id="homeLink">Startseite</a></li>
-                <li><a href="#" id="aboutLink">Über uns</a></li>
-                <li><a href="#" id="contactLink">Kontakt</a></li>
-            </ul>
-        </nav>
-        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
-        <div class="language-switch">
+        <img id="logo" src="logo.png" alt="Logo">
+        <div>
             <select id="languageSelect" onchange="changeLanguage()">
                 <option value="de">Deutsch</option>
                 <option value="en">English</option>
                 <option value="he">עברית</option>
             </select>
+            <div id="menuButton" onclick="toggleMenu()">☰</div>
         </div>
     </header>
-
-    <!-- Verstecktes Menü mit lokalen Links -->
-    <nav class="local-menu" id="localMenu">
-        <ul>
-            <li><a href="ueber-co2.html" id="co2Link">Über CO2</a></li>
-            <li><a href="umwelt.html" id="environmentLink">Umwelt</a></li>
-            <li><a href="forschung.html" id="researchLink">Forschung</a></li>
-            <li><a href="impressum.html" id="impressumLink">Impressum</a></li>
-            <li><a href="datenschutz.html" id="datenschutzLink">Datenschutz</a></li>
-        </ul>
-    </nav>
-
-    <!-- Hauptinhalt: Begrüßungstext und Tabelle -->
-    <main>
-        <div class="welcome">
-            <h1 id="title">CO2-Footprint</h1>
-            <p id="welcomeText">Willkommen auf unserer CO2-Footprint Website. Diese Seite soll zu mehr Transparenz führen.</p>
-        </div>
-        <h2 id="tableTitle">CO2-Emissionen</h2>
-        <label for="filterSelect" id="filterLabel">Sortieren nach:</label>
-        <select id="filterSelect" onchange="filterTable()">
+    <div id="localMenu">
+        <a href="#" id="co2Link">Über CO2</a>
+        <a href="#" id="environmentLink">Umwelt</a>
+        <a href="#" id="researchLink">Forschung</a>
+        <a href="#" id="imprintLink">Impressum</a>
+        <a href="#" id="privacyLink">Datenschutz</a>
+    </div>
+    <div class="content">
+        <h1 id="welcomeText">Willkommen auf unserer CO2-Footprint Website. Diese Seite soll zu mehr Transparenz führen.</h1>
+        <input type="text" id="searchInput" placeholder="Suche...">
+        <select id="filterSelect">
             <option value="az">Alphabetisch A-Z</option>
             <option value="za">Alphabetisch Z-A</option>
             <option value="min">Kleinster Ausstoß</option>
             <option value="max">Größter Ausstoß</option>
         </select>
-        <input type="text" id="searchInput" placeholder="Suche..." oninput="filterTable()">
-        <div class="table-container">
-            <table id="emissionsTable">
-                <thead>
-                    <tr>
-                        <th id="countryColumn">Land</th>
-                        <th id="companyColumn">Unternehmen</th>
-                        <th id="emissionColumn">CO2-Ausstoß (in Tonnen)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr data-country="de" data-emission="1200000">
-                        <td>Deutschland</td>
-                        <td>BMW</td>
-                        <td>1.200.000</td>
-                    </tr>
-                    <tr data-country="us" data-emission="900000">
-                        <td>USA</td>
-                        <td>Amazon</td>
-                        <td>900.000</td>
-                    </tr>
-                    <tr data-country="br" data-emission="1500000">
-                        <td>Brasilien</td>
-                        <td>Petronas</td>
-                        <td>1.500.000</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </main>
-
-    <!-- Footer mit rechtlichem Hinweis -->
+        <table id="emissionsTable">
+            <thead>
+                <tr>
+                    <th id="countryColumn">Land</th>
+                    <th id="companyColumn">Unternehmen</th>
+                    <th id="emissionColumn">CO2-Ausstoß (in Tonnen)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Deutschland</td>
+                    <td>BMW</td>
+                    <td>1234</td>
+                </tr>
+                <tr>
+                    <td>USA</td>
+                    <td>Amazon</td>
+                    <td>5678</td>
+                </tr>
+                <tr>
+                    <td>Brasilien</td>
+                    <td>Petronas</td>
+                    <td>91011</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
     <footer>
-        <p id="footerText">&copy; 2024 CO2-Footprint. Alle Rechte vorbehalten. <a href="impressum.html">Impressum</a> und <a href="datenschutz.html">Datenschutz</a></p>
+        <div id="footerText">© 2024 CO2-Footprint. Alle Rechte vorbehalten. Impressum und Datenschutz</div>
     </footer>
-
     <script src="script.js"></script>
 </body>
 </html>
