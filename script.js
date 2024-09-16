@@ -138,13 +138,18 @@ function filterTable() {
         filteredRows.sort((a, b) => parseInt(a.getAttribute('data-emission')) - parseInt(b.getAttribute('data-emission')));
     }
 
-    // Tabelle aktualisieren
     const tbody = table.querySelector('tbody');
-    tbody.innerHTML = '';
-    filteredRows.forEach(row => tbody.appendChild(row));
+    tbody.innerHTML = ''; // Leeren des Tabellenkörpers
+    filteredRows.forEach(row => tbody.appendChild(row)); // Hinzufügen der gefilterten Zeilen
 }
 
-// Initiales Filter anwenden
-document.addEventListener('DOMContentLoaded', () => {
+// Event-Listener für Sprache und Filter
+document.getElementById('languageSelect').addEventListener('change', changeLanguage);
+document.getElementById('filterSelect').addEventListener('change', filterTable);
+document.getElementById('searchInput').addEventListener('input', filterTable);
+
+// Initiales Filtern und Übersetzen anwenden, wenn die Seite geladen wird
+window.onload = function() {
+    changeLanguage();
     filterTable();
-});
+};
