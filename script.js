@@ -23,8 +23,6 @@ function changeLanguage() {
             co2Link: 'Über CO2',
             environmentLink: 'Umwelt',
             researchLink: 'Forschung',
-            impressumLink: 'Impressum',
-            privacyLink: 'Datenschutz',
             tableTitle: 'CO2-Emissionen',
             filterLabel: 'Sortieren nach:',
             footerText: '© 2024 CO2-Footprint. Alle Rechte vorbehalten. Impressum und Datenschutz',
@@ -32,7 +30,8 @@ function changeLanguage() {
             companyHeader: 'Unternehmen',
             emissionHeader: 'CO2-Ausstoß (in Tonnen)',
             germany: 'Deutschland',
-            brazil: 'Brasilien'
+            brazil: 'Brasilien',
+            usa: 'USA'
         },
         en: {
             title: 'CO2-Footprint',
@@ -43,8 +42,6 @@ function changeLanguage() {
             co2Link: 'About CO2',
             environmentLink: 'Environment',
             researchLink: 'Research',
-            impressumLink: 'Legal Notice',
-            privacyLink: 'Privacy Policy',
             tableTitle: 'CO2 Emissions',
             filterLabel: 'Sort by:',
             footerText: '© 2024 CO2-Footprint. All rights reserved. Legal Notice and Privacy Policy',
@@ -52,7 +49,8 @@ function changeLanguage() {
             companyHeader: 'Company',
             emissionHeader: 'CO2 Emissions (in tons)',
             germany: 'Germany',
-            brazil: 'Brazil'
+            brazil: 'Brazil',
+            usa: 'USA'
         },
         he: {
             title: 'טביעת רגל פחמנית',
@@ -63,8 +61,6 @@ function changeLanguage() {
             co2Link: 'על CO2',
             environmentLink: 'סביבה',
             researchLink: 'מחקר',
-            impressumLink: 'הודעה משפטית',
-            privacyLink: 'מדיניות פרטיות',
             tableTitle: 'פליטות CO2',
             filterLabel: 'מיון לפי:',
             footerText: '© 2024 טביעת רגל פחמנית. כל הזכויות שמורות. הודעה משפטית ומדיניות פרטיות',
@@ -72,7 +68,8 @@ function changeLanguage() {
             companyHeader: 'חברה',
             emissionHeader: 'פליטות CO2 (בטונות)',
             germany: 'גרמניה',
-            brazil: 'ברזיל'
+            brazil: 'ברזיל',
+            usa: 'ארה״ב'
         }
     };
 
@@ -86,14 +83,19 @@ function changeLanguage() {
     document.getElementById('co2Link').textContent = selectedLang.co2Link;
     document.getElementById('environmentLink').textContent = selectedLang.environmentLink;
     document.getElementById('researchLink').textContent = selectedLang.researchLink;
-    document.getElementById('impressumLink').textContent = selectedLang.impressumLink;
-    document.getElementById('privacyLink').textContent = selectedLang.privacyLink;
     document.getElementById('tableTitle').textContent = selectedLang.tableTitle;
     document.getElementById('filterLabel').textContent = selectedLang.filterLabel;
     document.getElementById('footerText').textContent = selectedLang.footerText;
     document.getElementById('countryColumn').textContent = selectedLang.countryHeader;
     document.getElementById('companyColumn').textContent = selectedLang.companyHeader;
     document.getElementById('emissionColumn').textContent = selectedLang.emissionHeader;
+
+    const rows = document.querySelectorAll('#emissionsTable tbody tr');
+    rows.forEach(row => {
+        const countryCell = row.cells[0];
+        const countryText = countryCell.getAttribute('data-translate');
+        countryCell.textContent = selectedLang[countryText] || countryCell.textContent;
+    });
 
     // Handling RTL for Hebrew
     document.body.classList.toggle('rtl', lang === 'he');
@@ -104,13 +106,12 @@ function filterTable() {
     const searchInput = document.getElementById('searchInput').value.toLowerCase();
     const filter = document.getElementById('filterSelect').value;
     const rows = document.querySelectorAll('#emissionsTable tbody tr');
-    const originalRows = Array.from(rows);
 
     // Filter basierend auf der Suchleiste
-    let filteredRows = originalRows.filter(row => {
+    let filteredRows = Array.from(rows).filter(row => {
         const country = row.cells[0].textContent.toLowerCase();
         const company = row.cells[1].textContent.toLowerCase();
-        return searchInput === '' || country.includes(searchInput) || company.includes(searchInput);
+        return country.includes(searchInput) || company.includes(searchInput);
     });
 
     // Sortierung basierend auf dem Filter
@@ -127,10 +128,36 @@ function filterTable() {
         } else if (filter === 'min') {
             return emissionA - emissionB;
         }
+        return 0;
     });
 
-    // Tabelle zurücksetzen und neue Reihen hinzufügen
-    const tbody = document.querySelector('#emissionsTable tbody');
-    tbody.innerHTML = '';
-    filteredRows.forEach(row => tbody.appendChild(row));
+    // Zeigt die gefilterten und sortierten Zeilen an
+    document.querySelector('#emissionsTable tbody').innerHTML = '';
+    filteredRows.forEach(row => {
+        document.querySelector('#emissionsTable tbody').appendChild(row);
+    });
+
+    // Wenn die Suchzeile leer ist, zeige alle Zeilen an
+    if (searchInput === '') {
+        const allRows = Array.from(rows);
+        allRows.sort((a, b) => {
+            const emissionA = parseInt(a.dataset.emission, 10);
+            const emissionB = parseInt(b.dataset.emission, 10);
+
+            if (filter === 'az') {
+                return a.cells[0].textContent.localeCompare(b.cells[0].textContent);
+            } else if (filter === 'za') {
+                return b.cells[0].textContent.localeCompare(a.cells[0].textContent);
+            } else if (filter === 'max') {
+                return emissionB - emissionA;
+            } else if (filter === 'min') {
+                return emissionA - emissionB;
+            }
+            return 0;
+        });
+        document.querySelector('#emissionsTable tbody').innerHTML = '';
+        allRows.forEach(row => {
+            document.querySelector('#emissionsTable tbody').appendChild(row);
+        });
+    }
 }
