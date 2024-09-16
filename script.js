@@ -1,11 +1,7 @@
 // Funktion zum Umschalten des Menüs
 function toggleMenu() {
     const menu = document.getElementById('localMenu');
-    if (menu.style.display === 'none' || menu.style.display === '') {
-        menu.style.display = 'block';
-    } else {
-        menu.style.display = 'none';
-    }
+    menu.style.display = menu.style.display === 'none' || menu.style.display === '' ? 'block' : 'none';
 }
 
 // Funktion zum Wechseln der Sprache
@@ -127,40 +123,20 @@ function filterTable() {
         const cells = row.querySelectorAll('td');
         const country = cells[0].textContent.toLowerCase();
         const company = cells[1].textContent.toLowerCase();
-        const emission = parseInt(cells[2].textContent.replace('.', '').replace(',', ''), 10);
-        const matchesSearch = country.includes(searchInput) || company.includes(searchInput);
+        const emission = parseInt(cells[2].textContent.replace(/,/g, ''));
 
-        row.style.display = matchesSearch ? '' : 'none';
+        const isVisible = 
+            (country.includes(searchInput) || company.includes(searchInput)) &&
+            (filterValue === 'none' || filterValue === 'asc' && emission > 0 || filterValue === 'desc' && emission < Infinity);
+
+        row.style.display = isVisible ? '' : 'none';
     });
-
-    // Sortieren nach Auswahl
-    if (filterValue === 'az') {
-        sortTable(0, 'asc');
-    } else if (filterValue === 'za') {
-        sortTable(0, 'desc');
-    } else if (filterValue === 'max') {
-        sortTable(2, 'desc');
-    } else if (filterValue === 'min') {
-        sortTable(2, 'asc');
-    }
 }
 
-// Funktion zum Sortieren der Tabelle
-function sortTable(columnIndex, order) {
-    const table = document.getElementById('emissionsTable');
-    const rows = Array.from(table.querySelectorAll('tbody tr'));
+// Event-Listener für Filter und Sprache
+document.getElementById('searchInput').addEventListener('input', filterTable);
+document.getElementById('filterSelect').addEventListener('change', filterTable);
+document.getElementById('languageSelect').addEventListener('change', changeLanguage);
 
-    rows.sort((a, b) => {
-        const aText = a.cells[columnIndex].textContent;
-        const bText = b.cells[columnIndex].textContent;
-        const aValue = columnIndex === 2 ? parseInt(aText.replace('.', '').replace(',', ''), 10) : aText;
-        const bValue = columnIndex === 2 ? parseInt(bText.replace('.', '').replace(',', ''), 10) : bText;
-
-        if (aValue < bValue) return order === 'asc' ? -1 : 1;
-        if (aValue > bValue) return order === 'asc' ? 1 : -1;
-        return 0;
-    });
-
-    const tbody = table.querySelector('tbody');
-    rows.forEach(row => tbody.appendChild(row));
-}
+// Initiale Filter-Tabelle anzeigen
+filterTable();
