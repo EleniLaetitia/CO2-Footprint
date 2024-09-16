@@ -1,38 +1,37 @@
-/* Allgemeine Stile */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f2f2f2; /* Helleres Grau */
+    background-color: #2d2d2d; /* Dunkelgrau Hintergrundfarbe */
+    color: #ffffff;
     margin: 0;
     padding: 0;
 }
 
-/* Header-Stile */
 header {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     padding: 10px;
-    background-color: #333; /* Dunkelgrau */
-    color: white;
+    background-color: #1e1e1e;
 }
 
 .logo img {
-    height: 50px;
+    max-height: 50px;
 }
 
 .global-nav ul {
-    list-style-type: none;
-    margin: 0;
+    list-style: none;
     padding: 0;
+    margin: 0;
     display: flex;
+    gap: 20px;
 }
 
 .global-nav li {
-    margin: 0 10px;
+    margin: 0;
 }
 
 .global-nav a {
-    color: white;
+    color: #ffffff;
     text-decoration: none;
 }
 
@@ -41,78 +40,70 @@ header {
     cursor: pointer;
 }
 
-.language-switch select {
-    background-color: #333;
-    color: white;
-    border: none;
-    padding: 5px;
+.language-switch {
+    margin-left: auto;
 }
 
-/* Menü-Stile */
 .local-menu {
-    position: absolute;
-    top: 60px;
-    left: 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: #1e1e1e;
+    color: #ffffff;
+    padding: 20px;
     width: 200px;
-    background-color: #333;
-    color: white;
-    padding: 10px;
-    border-radius: 0 0 10px 10px;
+    display: none;
+    height: 100%;
+    overflow-y: auto;
 }
 
 .local-menu ul {
-    list-style-type: none;
-    margin: 0;
+    list-style: none;
     padding: 0;
+    margin: 0;
 }
 
 .local-menu li {
-    margin: 5px 0;
+    margin: 10px 0;
 }
 
 .local-menu a {
-    color: white;
+    color: #ffffff;
     text-decoration: none;
 }
 
-/* Hauptinhalt-Stile */
 main {
     padding: 20px;
     text-align: center;
 }
 
 #welcomeText {
+    font-size: 1.2em;
     margin-bottom: 20px;
 }
 
-#filterSelect, #searchInput {
-    margin: 10px 0;
-}
-
-/* Tabelle-Stile */
-table {
+#emissionsTable {
     margin: 0 auto;
     border-collapse: collapse;
     width: 80%;
 }
 
-th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
+#emissionsTable th, #emissionsTable td {
+    border: 1px solid #ffffff;
+    padding: 10px;
 }
 
-th {
-    background-color: #f4f4f4;
-}
-
-tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-/* Footer-Stile */
-footer {
+#emissionsTable th {
     background-color: #333;
-    color: white;
+}
+
+#emissionsTable tbody tr:nth-child(even) {
+    background-color: #2c2c2c;
+}
+
+footer {
+    background-color: #1e1e1e;
+    color: #ffffff;
     text-align: center;
     padding: 10px;
     position: fixed;
@@ -120,7 +111,6 @@ footer {
     width: 100%;
 }
 
-/* RTL Layout für Hebräisch */
-body.rtl {
+.rtl {
     direction: rtl;
 }
