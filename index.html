@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="title">CO2-Footprint</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
 </head>
 <body>
-    <!-- Header mit Logo, globaler Navigation und Sprachwahl -->
     <header>
         <div class="header-content">
             <div class="logo">
-                <img src="Logo CO2 Footprint.png" alt="CO2-Footprint Logo">
+                <img src="logo.png" alt="Logo">
             </div>
             <nav class="global-nav">
                 <ul>
@@ -19,42 +19,31 @@
                     <li><a href="#" id="aboutLink">Über uns</a></li>
                     <li><a href="#" id="contactLink">Kontakt</a></li>
                 </ul>
+                <span class="menu-icon" onclick="toggleMenu()">☰</span>
             </nav>
-            <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
-            <div class="language-switch">
-                <select id="languageSelect" onchange="changeLanguage()">
-                    <option value="de">Deutsch</option>
-                    <option value="en">English</option>
-                    <option value="he">עברית</option>
-                </select>
-            </div>
+        </div>
+        <div id="localMenu" class="local-menu">
+            <ul>
+                <li><a href="#" id="co2Link">Über CO2</a></li>
+                <li><a href="#" id="environmentLink">Umwelt</a></li>
+                <li><a href="#" id="researchLink">Forschung</a></li>
+            </ul>
         </div>
     </header>
 
-    <!-- Verstecktes Menü mit lokalen Links -->
-    <nav class="local-menu" id="localMenu" style="display: none;">
-        <ul>
-            <li><a href="#co2" id="co2Link">Über CO2</a></li>
-            <li><a href="#environment" id="environmentLink">Umwelt</a></li>
-            <li><a href="#research" id="researchLink">Forschung</a></li>
-        </ul>
-    </nav>
-
-    <!-- Hauptinhalt: Begrüßungstext und Tabelle -->
     <main>
-        <div class="welcome">
-            <h1 id="title">CO2-Footprint</h1>
-            <p id="welcomeText">Willkommen auf unserer CO2-Footprint Website. Diese Seite soll zu mehr Transparenz führen.</p>
-        </div>
-        <h2 id="tableTitle">CO2-Emissionen</h2>
-        <label for="filterSelect" id="filterLabel">Sortieren nach:</label>
-        <select id="filterSelect" onchange="filterTable()">
-            <option value="az" id="az">Alphabetisch A-Z</option>
-            <option value="za" id="za">Alphabetisch Z-A</option>
-            <option value="max" id="max">Größter Ausstoß</option>
-            <option value="min" id="min">Kleinster Ausstoß</option>
+        <h1 id="tableTitle">CO2-Emissionen</h1>
+        <p id="welcomeText">Willkommen auf unserer CO2-Footprint Website. Diese Seite soll zu mehr Transparenz führen.</p>
+        <label id="filterLabel" for="filterSelect">Sortieren nach:</label>
+        <select id="filterSelect">
+            <option value="none">Keine</option>
+            <option value="asc">Alphabetisch A-Z</option>
+            <option value="desc">Alphabetisch Z-A</option>
+            <option value="max">Größter Ausstoß</option>
+            <option value="min">Kleinster Ausstoß</option>
         </select>
-        <input type="text" id="searchInput" placeholder="Suche..." oninput="filterTable()">
+        <input type="text" id="searchInput" placeholder="Suche...">
+
         <table id="emissionsTable">
             <thead>
                 <tr>
@@ -64,30 +53,28 @@
                 </tr>
             </thead>
             <tbody>
-                <tr data-country="de" data-emission="1200000">
+                <tr>
                     <td data-translate="germany">Deutschland</td>
-                    <td>BMW</td>
-                    <td>1.200.000</td>
+                    <td data-translate="bmw">BMW</td>
+                    <td>5000</td>
                 </tr>
-                <tr data-country="us" data-emission="900000">
+                <tr>
                     <td data-translate="usa">USA</td>
-                    <td>Amazon</td>
-                    <td>900.000</td>
+                    <td data-translate="amazon">Amazon</td>
+                    <td>15000</td>
                 </tr>
-                <tr data-country="br" data-emission="1500000">
+                <tr>
                     <td data-translate="brazil">Brasilien</td>
-                    <td>Petronas</td>
-                    <td>1.500.000</td>
+                    <td data-translate="petronas">Petronas</td>
+                    <td>8000</td>
                 </tr>
             </tbody>
         </table>
     </main>
 
-    <!-- Footer mit rechtlichem Hinweis -->
     <footer>
-        <p id="footerText">&copy; 2024 CO2-Footprint. Alle Rechte vorbehalten. <span id="legalText">Impressum und Datenschutz</span></p>
+        <p id="footerText">© 2024 CO2-Footprint. Alle Rechte vorbehalten.</p>
+        <p id="legalText">Impressum und Datenschutz</p>
     </footer>
-
-    <script src="script.js"></script>
 </body>
 </html>
