@@ -49,10 +49,10 @@
         <h2 id="tableTitle">CO2-Emissionen</h2>
         <label for="filterSelect" id="filterLabel">Sortieren nach:</label>
         <select id="filterSelect" onchange="filterTable()">
-            <option value="az">Alphabetisch A-Z</option>
-            <option value="za">Alphabetisch Z-A</option>
-            <option value="max">Größter Ausstoß</option>
-            <option value="min">Kleinster Ausstoß</option>
+            <option value="az" id="az">Alphabetisch A-Z</option>
+            <option value="za" id="za">Alphabetisch Z-A</option>
+            <option value="max" id="max">Größter Ausstoß</option>
+            <option value="min" id="min">Kleinster Ausstoß</option>
         </select>
         <input type="text" id="searchInput" placeholder="Suche..." oninput="filterTable()">
         <table id="emissionsTable">
@@ -91,4 +91,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
