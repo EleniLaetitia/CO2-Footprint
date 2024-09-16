@@ -1,93 +1,156 @@
-body {
-    font-family: Arial, sans-serif;
+/* Globale Stileinstellungen */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-#header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px;
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
     background-color: #f4f4f4;
 }
 
-#logo {
-    margin-right: 20px;
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
 }
 
-#menuButton {
+.logo img {
+    height: 50px;
+}
+
+.global-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.global-nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.menu-icon {
     cursor: pointer;
     font-size: 24px;
+    color: white;
+    padding: 0 10px;
 }
 
-#localMenu {
-    display: none;
+.language-switch {
+    margin-left: 20px;
+}
+
+.language-switch select {
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.local-menu {
+    background-color: #333;
+    color: white;
+    padding: 15px;
     position: absolute;
     top: 60px;
+    right: 0;
     left: 0;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 200px;
-    padding: 10px;
+    display: flex;
+    justify-content: center;
 }
 
-#localMenu a {
-    display: block;
-    padding: 10px;
+.local-menu ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.local-menu ul li a {
+    color: white;
     text-decoration: none;
-    color: #333;
+    font-size: 18px;
 }
 
-#localMenu a:hover {
-    background-color: #ddd;
-}
-
-#content {
-    margin: 20px;
-}
-
-#title {
+.welcome {
     text-align: center;
-    font-size: 24px;
-    margin-bottom: 20px;
+    margin: 20px 0;
 }
 
-#searchInput {
-    margin-bottom: 10px;
-    padding: 5px;
-    width: calc(100% - 22px);
+main {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
 }
 
-#filterSelect {
-    margin-bottom: 10px;
-    padding: 5px;
+.table-container {
+    width: 100%;
+    max-width: 800px;
 }
 
-#emissionsTable {
+table {
     width: 100%;
     border-collapse: collapse;
+    margin-top: 20px;
+    background-color: white;
 }
 
-#emissionsTable th, #emissionsTable td {
+table, th, td {
     border: 1px solid #ddd;
     padding: 8px;
-}
-
-#emissionsTable th {
-    background-color: #f4f4f4;
     text-align: left;
 }
 
-#footer {
+th {
+    background-color: #f2f2f2;
+}
+
+input, select {
+    margin-top: 10px;
+    padding: 10px;
+    width: 100%;
+    max-width: 300px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
     position: fixed;
     bottom: 0;
     width: 100%;
-    background-color: #f4f4f4;
-    text-align: center;
-    padding: 10px;
 }
 
-.rtl {
+@media (max-width: 768px) {
+    .global-nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .local-menu ul {
+        flex-direction: column;
+    }
+}
+
+body.rtl {
     direction: rtl;
+}
+
+body.rtl header {
+    flex-direction: row-reverse;
+}
+
+body.rtl .global-nav ul {
+    flex-direction: row-reverse;
+}
+
+body.rtl .local-menu {
+    flex-direction: row-reverse;
 }
