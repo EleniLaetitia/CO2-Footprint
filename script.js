@@ -31,7 +31,11 @@ function changeLanguage() {
             emissionHeader: 'CO2-Ausstoß (in Tonnen)',
             germany: 'Deutschland',
             brazil: 'Brasilien',
-            usa: 'USA'
+            usa: 'USA',
+            az: 'Alphabetisch A-Z',
+            za: 'Alphabetisch Z-A',
+            max: 'Größter Ausstoß',
+            min: 'Kleinster Ausstoß'
         },
         en: {
             title: 'CO2-Footprint',
@@ -50,7 +54,11 @@ function changeLanguage() {
             emissionHeader: 'CO2 Emissions (in tons)',
             germany: 'Germany',
             brazil: 'Brazil',
-            usa: 'USA'
+            usa: 'USA',
+            az: 'Alphabetical A-Z',
+            za: 'Alphabetical Z-A',
+            max: 'Highest Emission',
+            min: 'Lowest Emission'
         },
         he: {
             title: 'טביעת רגל פחמנית',
@@ -69,7 +77,11 @@ function changeLanguage() {
             emissionHeader: 'פליטות CO2 (בטונות)',
             germany: 'גרמניה',
             brazil: 'ברזיל',
-            usa: 'ארה״ב'
+            usa: 'ארה״ב',
+            az: 'אלפביתי א-ב',
+            za: 'אלפביתי ב-א',
+            max: 'פליטות גבוהות ביותר',
+            min: 'פליטות נמוכות ביותר'
         }
     };
 
@@ -89,6 +101,14 @@ function changeLanguage() {
     document.getElementById('countryColumn').textContent = selectedLang.countryHeader;
     document.getElementById('companyColumn').textContent = selectedLang.companyHeader;
     document.getElementById('emissionColumn').textContent = selectedLang.emissionHeader;
+
+    const filterSelect = document.getElementById('filterSelect');
+    filterSelect.innerHTML = `
+        <option value="az">${selectedLang.az}</option>
+        <option value="za">${selectedLang.za}</option>
+        <option value="max">${selectedLang.max}</option>
+        <option value="min">${selectedLang.min}</option>
+    `;
 
     const rows = document.querySelectorAll('#emissionsTable tbody tr');
     rows.forEach(row => {
