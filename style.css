@@ -1,147 +1,114 @@
-/* Grundlegende Stildefinitionen */
-body {
-    font-family: Arial, sans-serif;
+* {
     margin: 0;
     padding: 0;
-    text-align: center; /* Text zentrieren */
-    direction: ltr;
-    background-color: #f4f4f4;
+    box-sizing: border-box;
 }
 
-/* Header-Stil */
+body {
+    font-family: Arial, sans-serif;
+    direction: ltr;
+}
+
 header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: #333;
     color: white;
-    padding: 10px;
-    position: relative;
-    text-align: center; /* Header-Inhalt zentrieren */
-}
-
-.header-content {
-    display: flex;
-    align-items: center;
-    justify-content: center; /* Zentrieren des Headers */
+    padding: 1rem;
 }
 
 .logo img {
-    max-height: 50px;
-    margin-right: 20px; /* Abstand zwischen Logo und Navigation */
+    height: 50px;
 }
 
 .global-nav ul {
     list-style: none;
-    padding: 0;
-    margin: 0;
     display: flex;
-    gap: 15px;
+    gap: 1rem;
 }
 
-.global-nav a {
+.global-nav ul li a {
     color: white;
     text-decoration: none;
 }
 
 .menu-icon {
-    font-size: 24px;
     cursor: pointer;
-    display: none; /* Standardmäßig verstecken */
-    margin-left: auto; /* Positionierung an den rechten Rand */
+    font-size: 2rem;
+    color: white;
+    padding: 0 1rem;
 }
 
-/* Verstecktes Menü */
-.local-menu {
-    position: absolute;
-    top: 60px; /* Unterhalb des Headers */
-    left: 0;
-    background-color: #333;
-    color: white;
-    width: 200px;
-    display: none;
-    text-align: center; /* Menü-Inhalt zentrieren */
+.language-switch {
+    margin-right: 1rem;
 }
 
 .local-menu ul {
     list-style: none;
-    padding: 0;
-    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: #f4f4f4;
+    padding: 1rem;
 }
 
-.local-menu li {
-    padding: 10px;
-}
-
-.local-menu a {
-    color: white;
+.local-menu ul li a {
     text-decoration: none;
+    color: #333;
 }
 
-/* Hauptinhalt-Stil */
+.welcome {
+    text-align: center;
+    margin: 2rem 0;
+}
+
 main {
-    padding: 20px;
-    text-align: center; /* Hauptinhalt zentrieren */
-}
-
-#welcomeText {
-    font-size: 18px;
-    margin: 20px 0;
-}
-
-#tableTitle {
-    margin: 20px 0;
-}
-
-#filterSelect, #searchInput {
-    margin: 10px 0;
+    padding: 1rem;
 }
 
 table {
-    width: 80%; /* Tabelle zentrieren und Breite anpassen */
-    margin: 20px auto; /* Tabelle zentrieren */
+    width: 100%;
     border-collapse: collapse;
+    margin-top: 1rem;
 }
 
-th, td {
-    padding: 10px;
-    border: 1px solid #ddd;
+table, th, td {
+    border: 1px solid #333;
+    padding: 0.5rem;
+    text-align: left;
 }
 
 th {
-    background-color: #f4f4f4;
+    cursor: pointer;
 }
 
-/* Footer-Stil */
+input, select {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    width: 100%;
+}
+
 footer {
+    text-align: center;
+    padding: 1rem;
     background-color: #333;
     color: white;
-    padding: 10px;
-    text-align: center; /* Footer-Inhalt zentrieren */
     position: relative;
     bottom: 0;
     width: 100%;
 }
 
-/* RTL Anpassungen für Hebräisch */
-body[dir="rtl"] {
-    direction: rtl;
-    text-align: right;
-}
-
-header, main, footer {
-    text-align: right;
-}
-
-/* Menü-Icon bei kleinen Bildschirmen anzeigen */
 @media (max-width: 768px) {
-    .global-nav {
-        display: none; /* Verstecke globale Navigation auf kleinen Bildschirmen */
+    .global-nav ul {
+        flex-direction: column;
     }
-    
-    .menu-icon {
-        display: block; /* Menü-Icon anzeigen */
-    }
-    
-    .local-menu {
-        left: auto;
-        right: 0; /* Menü auf der rechten Seite bei kleinen Bildschirmen */
-    }
+}
+
+body.rtl {
+    direction: rtl;
+}
+
+body.rtl header, body.rtl .local-menu {
+    flex-direction: row-reverse;
 }
