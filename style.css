@@ -7,7 +7,7 @@ body {
 }
 
 header {
-    background-color: #333; /* Dunkelgrauer Header */
+    background-color: #555; /* Hellerer Grauton für den Header */
     color: white;
     display: flex;
     justify-content: space-between;
