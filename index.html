@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CO2-Footprint</title>
+    <title id="title">CO2-Footprint</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -42,47 +42,45 @@
 
     <!-- Hauptinhalt: Begrüßungstext und Tabelle -->
     <main>
-        <section class="welcome">
-            <h1 id="mainTitle">CO2-Footprint</h1>
+        <div class="welcome">
+            <h1 id="title">CO2-Footprint</h1>
             <p id="welcomeText">Willkommen auf unserer CO2-Footprint Website. Diese Seite soll zu mehr Transparenz führen.</p>
-        </section>
-        <section>
-            <h2 id="tableTitle">CO2-Emissionen</h2>
-            <label for="filterSelect" id="filterLabel">Sortieren nach:</label>
-            <select id="filterSelect" onchange="filterTable()">
-                <option value="az">Alphabetisch A-Z</option>
-                <option value="za">Alphabetisch Z-A</option>
-                <option value="max">Größter Ausstoß</option>
-                <option value="min">Kleinster Ausstoß</option>
-            </select>
-            <input type="text" id="searchInput" placeholder="Suche..." oninput="filterTable()">
-            <table id="emissionsTable">
-                <thead>
-                    <tr>
-                        <th id="countryColumn">Land</th>
-                        <th id="companyColumn">Unternehmen</th>
-                        <th id="emissionColumn">CO2-Ausstoß (in Tonnen)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr data-country="de" data-emission="1200000">
-                        <td data-translate="germany">Deutschland</td>
-                        <td>BMW</td>
-                        <td>1.200.000</td>
-                    </tr>
-                    <tr data-country="us" data-emission="900000">
-                        <td data-translate="usa">USA</td>
-                        <td>Amazon</td>
-                        <td>900.000</td>
-                    </tr>
-                    <tr data-country="br" data-emission="1500000">
-                        <td data-translate="brazil">Brasilien</td>
-                        <td>Petronas</td>
-                        <td>1.500.000</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
+        </div>
+        <h2 id="tableTitle">CO2-Emissionen</h2>
+        <label for="filterSelect" id="filterLabel">Sortieren nach:</label>
+        <select id="filterSelect" onchange="filterTable()">
+            <option value="az">Alphabetisch A-Z</option>
+            <option value="za">Alphabetisch Z-A</option>
+            <option value="max">Größter Ausstoß</option>
+            <option value="min">Kleinster Ausstoß</option>
+        </select>
+        <input type="text" id="searchInput" placeholder="Suche..." oninput="filterTable()">
+        <table id="emissionsTable">
+            <thead>
+                <tr>
+                    <th id="countryColumn">Land</th>
+                    <th id="companyColumn">Unternehmen</th>
+                    <th id="emissionColumn">CO2-Ausstoß (in Tonnen)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-country="de" data-emission="1200000">
+                    <td data-translate="germany">Deutschland</td>
+                    <td>BMW</td>
+                    <td>1.200.000</td>
+                </tr>
+                <tr data-country="us" data-emission="900000">
+                    <td data-translate="usa">USA</td>
+                    <td>Amazon</td>
+                    <td>900.000</td>
+                </tr>
+                <tr data-country="br" data-emission="1500000">
+                    <td data-translate="brazil">Brasilien</td>
+                    <td>Petronas</td>
+                    <td>1.500.000</td>
+                </tr>
+            </tbody>
+        </table>
     </main>
 
     <!-- Footer mit rechtlichem Hinweis -->
