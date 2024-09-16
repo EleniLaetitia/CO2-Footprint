@@ -3,11 +3,11 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f0f0f0; /* Hellgrauer Hintergrund für die gesamte Seite */
+    background-color: #e0e0e0; /* Hellerer Grauton für den Hintergrund */
 }
 
 header {
-    background-color: #555; /* Hellerer Grauton für den Header */
+    background-color: #555; /* Etwas hellerer Grau für den Header */
     color: white;
     display: flex;
     justify-content: space-between;
@@ -30,6 +30,8 @@ header {
     margin: 0;
     padding: 0;
     display: flex;
+    justify-content: center; /* Zentrierung der Navigation */
+    flex: 1;
 }
 
 .global-nav li {
@@ -83,6 +85,7 @@ main {
     max-width: 1200px;
     margin: auto;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Zentrierung des Textes */
 }
 
 h1, h2 {
@@ -92,6 +95,7 @@ h1, h2 {
 table {
     width: 100%;
     border-collapse: collapse;
+    margin: 0 auto; /* Zentrierung der Tabelle */
 }
 
 th, td {
@@ -108,6 +112,7 @@ input[type="text"] {
     padding: 5px;
     margin: 10px 0;
     width: calc(100% - 22px);
+    text-align: center; /* Zentrierung des Suchfeldes */
 }
 
 select {
@@ -115,8 +120,9 @@ select {
     margin: 10px 0;
 }
 
+/* Footer-Stile */
 footer {
-    background-color: #333;
+    background-color: #555;
     color: white;
     text-align: center;
     padding: 10px;
