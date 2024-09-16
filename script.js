@@ -23,6 +23,8 @@ function changeLanguage() {
             co2Link: 'Über CO2',
             environmentLink: 'Umwelt',
             researchLink: 'Forschung',
+            impressumLink: 'Impressum',
+            privacyLink: 'Datenschutz',
             tableTitle: 'CO2-Emissionen',
             filterLabel: 'Sortieren nach:',
             footerText: '© 2024 CO2-Footprint. Alle Rechte vorbehalten. Impressum und Datenschutz',
@@ -41,6 +43,8 @@ function changeLanguage() {
             co2Link: 'About CO2',
             environmentLink: 'Environment',
             researchLink: 'Research',
+            impressumLink: 'Legal Notice',
+            privacyLink: 'Privacy Policy',
             tableTitle: 'CO2 Emissions',
             filterLabel: 'Sort by:',
             footerText: '© 2024 CO2-Footprint. All rights reserved. Legal Notice and Privacy Policy',
@@ -59,6 +63,8 @@ function changeLanguage() {
             co2Link: 'על CO2',
             environmentLink: 'סביבה',
             researchLink: 'מחקר',
+            impressumLink: 'הודעה משפטית',
+            privacyLink: 'מדיניות פרטיות',
             tableTitle: 'פליטות CO2',
             filterLabel: 'מיון לפי:',
             footerText: '© 2024 טביעת רגל פחמנית. כל הזכויות שמורות. הודעה משפטית ומדיניות פרטיות',
@@ -80,6 +86,8 @@ function changeLanguage() {
     document.getElementById('co2Link').textContent = selectedLang.co2Link;
     document.getElementById('environmentLink').textContent = selectedLang.environmentLink;
     document.getElementById('researchLink').textContent = selectedLang.researchLink;
+    document.getElementById('impressumLink').textContent = selectedLang.impressumLink;
+    document.getElementById('privacyLink').textContent = selectedLang.privacyLink;
     document.getElementById('tableTitle').textContent = selectedLang.tableTitle;
     document.getElementById('filterLabel').textContent = selectedLang.filterLabel;
     document.getElementById('footerText').textContent = selectedLang.footerText;
@@ -96,12 +104,13 @@ function filterTable() {
     const searchInput = document.getElementById('searchInput').value.toLowerCase();
     const filter = document.getElementById('filterSelect').value;
     const rows = document.querySelectorAll('#emissionsTable tbody tr');
+    const originalRows = Array.from(rows);
 
     // Filter basierend auf der Suchleiste
-    let filteredRows = Array.from(rows).filter(row => {
+    let filteredRows = originalRows.filter(row => {
         const country = row.cells[0].textContent.toLowerCase();
         const company = row.cells[1].textContent.toLowerCase();
-        return country.includes(searchInput) || company.includes(searchInput);
+        return searchInput === '' || country.includes(searchInput) || company.includes(searchInput);
     });
 
     // Sortierung basierend auf dem Filter
