@@ -5,6 +5,92 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CO2-Footprint</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Einfache Styles für bessere Sichtbarkeit */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            background-color: #f4f4f4;
+        }
+        .logo img {
+            height: 50px;
+        }
+        .global-nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+        .global-nav a {
+            text-decoration: none;
+            color: #333;
+        }
+        .menu-icon {
+            cursor: pointer;
+            font-size: 24px;
+        }
+        .language-switch select {
+            margin-left: 10px;
+        }
+        .local-menu {
+            position: absolute;
+            top: 60px; /* Adjust as needed */
+            left: 0;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 200px;
+            padding: 10px;
+            display: none;
+        }
+        .local-menu ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .local-menu a {
+            text-decoration: none;
+            color: #333;
+            display: block;
+            padding: 10px;
+        }
+        .local-menu a:hover {
+            background-color: #f4f4f4;
+        }
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+        table {
+            margin: 0 auto;
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 800px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        footer {
+            background-color: #f4f4f4;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
     <!-- Header mit Logo, globaler Navigation und Sprachwahl -->
@@ -30,11 +116,13 @@
     </header>
 
     <!-- Verstecktes Menü mit lokalen Links -->
-    <nav class="local-menu" id="localMenu" style="display: none;">
+    <nav class="local-menu" id="localMenu">
         <ul>
             <li><a href="#" id="co2Link">Über CO2</a></li>
             <li><a href="#" id="environmentLink">Umwelt</a></li>
             <li><a href="#" id="researchLink">Forschung</a></li>
+            <li><a href="impressum.html" id="impressumLink">Impressum</a></li>
+            <li><a href="datenschutz.html" id="datenschutzLink">Datenschutz</a></li>
         </ul>
     </nav>
 
@@ -83,7 +171,7 @@
 
     <!-- Footer mit rechtlichem Hinweis -->
     <footer>
-        <p id="footerText">&copy; 2024 CO2-Footprint. Alle Rechte vorbehalten. Impressum und Datenschutz</p>
+        <p id="footerText">&copy; 2024 CO2-Footprint. Alle Rechte vorbehalten. <a href="impressum.html">Impressum</a> und <a href="datenschutz.html">Datenschutz</a></p>
     </footer>
 
     <script src="script.js"></script>
