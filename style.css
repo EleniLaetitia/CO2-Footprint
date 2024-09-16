@@ -11,9 +11,9 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
+    min-height: 100vh; /* Stellt sicher, dass der Footer am unteren Ende der Seite bleibt */
 }
 
 header {
@@ -61,11 +61,13 @@ header {
     background-color: #333;
     color: white;
     padding: 15px;
+    display: none; /* Standardmäßig versteckt */
 }
 
 .local-menu ul {
     list-style: none;
     display: flex;
+    flex-direction: column;
     gap: 15px;
 }
 
@@ -82,7 +84,7 @@ header {
 
 main {
     padding: 20px;
-    flex: 1;
+    flex: 1; /* Stellt sicher, dass der Hauptinhalt den verfügbaren Platz ausfüllt */
 }
 
 table {
