@@ -1,13 +1,3 @@
-// Funktion zum Umschalten des Menüs
-function toggleMenu() {
-    const menu = document.getElementById('localMenu');
-    if (menu.style.display === 'none' || menu.style.display === '') {
-        menu.style.display = 'block';
-    } else {
-        menu.style.display = 'none';
-    }
-}
-
 // Funktion zum Wechseln der Sprache
 function changeLanguage() {
     const lang = document.getElementById('languageSelect').value;
@@ -32,7 +22,11 @@ function changeLanguage() {
             emissionHeader: 'CO2-Ausstoß (in Tonnen)',
             germany: 'Deutschland',
             brazil: 'Brasilien',
-            usa: 'USA'
+            usa: 'USA',
+            az: 'Alphabetisch A-Z',
+            za: 'Alphabetisch Z-A',
+            max: 'Größter Ausstoß',
+            min: 'Kleinster Ausstoß'
         },
         en: {
             title: 'CO2-Footprint',
@@ -52,7 +46,11 @@ function changeLanguage() {
             emissionHeader: 'CO2 Emissions (in tons)',
             germany: 'Germany',
             brazil: 'Brazil',
-            usa: 'USA'
+            usa: 'USA',
+            az: 'Alphabetical A-Z',
+            za: 'Alphabetical Z-A',
+            max: 'Highest Emission',
+            min: 'Lowest Emission'
         },
         he: {
             title: 'טביעת רגל פחמנית',
@@ -72,7 +70,11 @@ function changeLanguage() {
             emissionHeader: 'פליטות CO2 (בטונות)',
             germany: 'גרמניה',
             brazil: 'ברזיל',
-            usa: 'ארצות הברית'
+            usa: 'ארצות הברית',
+            az: 'אלפביתי א–ב',
+            za: 'אלפביתי ב–א',
+            max: 'הפליטה הגדולה ביותר',
+            min: 'הפליטה הקטנה ביותר'
         }
     };
 
@@ -97,6 +99,11 @@ function changeLanguage() {
     // Übersetzung der Länderdaten in der Tabelle
     document.querySelectorAll('#emissionsTable td[data-translate]').forEach(cell => {
         cell.textContent = selectedLang[cell.getAttribute('data-translate')];
+    });
+
+    // Übersetzung der Filteroptionen
+    document.querySelectorAll('#filterSelect option').forEach(option => {
+        option.textContent = selectedLang[option.value];
     });
 
     // Handling RTL für Hebräisch
