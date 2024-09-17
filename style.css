@@ -1,46 +1,35 @@
-/* Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Grundlayout */
+/* Grundlegende Layout- und Stileinstellungen */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
-    text-align: center;
-    padding: 20px;
+    margin: 0;
+    padding: 0;
 }
 
-.rtl {
-    direction: rtl;
-}
-
-/* Header und Navigation */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    background-color: #333;
-    color: #fff;
+    background-color: #f4f4f4;
+    border-bottom: 1px solid #ddd;
 }
 
 .logo img {
-    max-width: 100px;
+    height: 50px;
 }
 
 .global-nav ul {
     list-style: none;
+    margin: 0;
+    padding: 0;
     display: flex;
-    gap: 20px;
+    gap: 15px;
 }
 
 .global-nav a {
-    color: white;
     text-decoration: none;
+    color: #333;
+    font-weight: bold;
 }
 
 .menu-icon {
@@ -52,12 +41,15 @@ header {
     padding: 5px;
 }
 
-/* Lokales Menü */
+.local-menu {
+    background-color: #f4f4f4;
+    border-top: 1px solid #ddd;
+    padding: 10px;
+}
+
 .local-menu ul {
     list-style: none;
-    background-color: #f4f4f4;
-    padding: 10px;
-    text-align: left;
+    padding: 0;
 }
 
 .local-menu a {
@@ -65,34 +57,35 @@ header {
     color: #333;
 }
 
-/* Hauptinhalt */
 main {
-    margin-top: 20px;
+    padding: 20px;
+    text-align: center;
 }
 
-.welcome {
-    margin-bottom: 20px;
+#welcomeText {
+    font-size: 18px;
 }
 
-/* Tabelle */
+#filterSelect, #searchInput {
+    margin: 10px;
+    padding: 5px;
+}
+
 table {
     width: 100%;
-    max-width: 600px;
     margin: 20px auto;
     border-collapse: collapse;
-    background-color: white;
 }
 
 th, td {
+    border: 1px solid #ddd;
     padding: 10px;
-    border: 1px solid #ccc;
     text-align: left;
 }
 
-/* Footer */
 footer {
-    margin-top: 40px;
-    padding: 10px;
-    background-color: #333;
-    color: white;
+    text-align: center;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-top: 1px solid #ddd;
 }
