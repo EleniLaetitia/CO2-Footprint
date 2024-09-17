@@ -1,27 +1,18 @@
-/* Reset-Styles */
-body, html {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
     font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background-color: #2e2e2e; /* Dunkelgrauer Hintergrund */
-    color: #f0f0f0; /* Helle Textfarbe */
+    margin: 0;
+    padding: 0;
+    background-color: #2f2f2f; /* Dunkelgrauer Hintergrund */
+    color: #ffffff; /* Weißer Text */
+    direction: ltr; /* Standard-Lesereihenfolge */
 }
 
-/* Header-Stile */
 header {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     padding: 10px;
-    background-color: #333; /* Dunkelgrauer Header */
-    border-bottom: 1px solid #444;
+    background-color: #333333; /* Dunkler Hintergrund für Header */
 }
 
 .logo img {
@@ -40,31 +31,23 @@ header {
 }
 
 .global-nav a {
+    color: #ffffff;
     text-decoration: none;
-    color: #f0f0f0; /* Helle Textfarbe */
 }
 
 .menu-icon {
+    font-size: 24px;
     cursor: pointer;
-    color: #f0f0f0; /* Helle Textfarbe */
 }
 
-.language-switch select {
-    margin-left: 10px;
-    background-color: #444; /* Dunkelgraue Hintergrundfarbe für Auswahl */
-    color: #f0f0f0; /* Helle Textfarbe */
-}
-
-/* Menü-Stile */
 .local-menu {
     position: fixed;
     top: 0;
-    right: 0;
-    background-color: #333; /* Dunkelgrauer Menü-Hintergrund */
-    border: 1px solid #444;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.5);
-    width: 200px;
+    left: 0;
+    background-color: #333333; /* Hintergrundfarbe des Menüs */
     padding: 10px;
+    border-right: 1px solid #444444; /* Trennlinie */
+    width: 200px;
 }
 
 .local-menu ul {
@@ -74,59 +57,48 @@ header {
 }
 
 .local-menu li {
-    margin-bottom: 10px;
+    margin: 10px 0;
 }
 
 .local-menu a {
+    color: #ffffff;
     text-decoration: none;
-    color: #f0f0f0; /* Helle Textfarbe */
 }
 
-/* Hauptinhalt-Stile */
-main {
-    flex: 1;
-    padding: 20px;
+.welcome {
     text-align: center;
+    margin: 20px 0;
+}
+
+#welcomeText, #tableTitle, #filterLabel, #footerText {
+    margin: 0;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
-    background-color: #444; /* Dunkelgraue Tabellen-Hintergrundfarbe */
+    margin: 20px 0;
+}
+
+table, th, td {
+    border: 1px solid #ffffff;
 }
 
 th, td {
     padding: 10px;
-    border: 1px solid #555; /* Etwas hellerer Grauton für Tabelle */
     text-align: left;
-    color: #f0f0f0; /* Helle Textfarbe */
 }
 
-/* Footer-Stile */
+tfoot {
+    background-color: #333333; /* Hintergrundfarbe des Fußbereichs */
+    color: #ffffff;
+}
+
 footer {
-    background-color: #333; /* Dunkelgrauer Footer-Hintergrund */
-    border-top: 1px solid #444;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #333333; /* Hintergrundfarbe des Fußbereichs */
     padding: 10px;
     text-align: center;
-    color: #f0f0f0; /* Helle Textfarbe */
-    position: relative;
-    width: 100%;
-    bottom: 0;
-}
-
-table {
-    margin: 20px auto;
-    border-collapse: collapse;
-    width: 80%;
-}
-
-table, th, td {
-    border: 1px solid #555;
-    padding: 8px;
-}
-
-th {
-    background-color: #555; /* Etwas heller als Tabellen-Hintergrund */
-    color: #f0f0f0; /* Helle Textfarbe */
 }
