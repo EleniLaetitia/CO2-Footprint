@@ -77,14 +77,14 @@ function changeLanguage() {
         document.getElementById('petronas').innerText = 'Petronas';
     } else if (lang === 'he') {
         document.body.style.direction = 'rtl';  // Rechts-nach-links
-        localMenu.style.left = 'auto';         // Menü auf der rechten Seite
-        localMenu.style.right = '0';           // Position für Hebräisch
+        localMenu.style.left = 'auto';          // Menü auf der rechten Seite
+        localMenu.style.right = '0';            // Standard-Position
 
-        document.getElementById('title').innerText = 'ניקוד CO2';
-        document.getElementById('welcomeText').innerText = 'ברוכים הבאים לאתר ניקוד CO2 שלנו. האתר הזה שואף לספק שקיפות רבה יותר.';
+        document.getElementById('title').innerText = 'מדד פחמן דו חמצני';
+        document.getElementById('welcomeText').innerText = 'ברוכים הבאים לאתר מדד פחמן דו חמצני שלנו. אתר זה מטרתו לספק שקיפות רבה יותר.';
         document.getElementById('homeLink').innerText = 'דף הבית';
         document.getElementById('aboutLink').innerText = 'אודותינו';
-        document.getElementById('contactLink').innerText = 'צור קשר';
+        document.getElementById('contactLink').innerText = 'יצירת קשר';
         document.getElementById('co2Link').innerText = 'אודות CO2';
         document.getElementById('environmentLink').innerText = 'סביבה';
         document.getElementById('researchLink').innerText = 'מחקר';
@@ -93,11 +93,11 @@ function changeLanguage() {
         document.getElementById('countryColumn').innerText = 'מדינה';
         document.getElementById('companyColumn').innerText = 'חברה';
         document.getElementById('emissionColumn').innerText = 'פליטת CO2 (בטון)';
-        document.getElementById('footerText').innerText = '© 2024 ניקוד CO2. כל הזכויות שמורות. מידע משפטי ומדיניות פרטיות';
+        document.getElementById('footerText').innerText = '© 2024 מדד פחמן דו חמצני. כל הזכויות שמורות. הערות חוקיות ומדיניות פרטיות';
 
         // Filteroptionen auf Hebräisch
-        document.getElementById('filterAll').innerText = 'הכול';
-        document.getElementById('filterUS').innerText = 'ארה"ב';
+        document.getElementById('filterAll').innerText = 'הכל';
+        document.getElementById('filterUS').innerText = 'ארצות הברית';
         document.getElementById('filterDE').innerText = 'גרמניה';
         document.getElementById('filterBR').innerText = 'ברזיל';
         document.getElementById('filterBMW').innerText = 'BMW';
@@ -106,29 +106,38 @@ function changeLanguage() {
 
         // Tabelle: Länder und Unternehmen auf Hebräisch
         document.getElementById('de').innerText = 'גרמניה';
-        document.getElementById('us').innerText = 'ארה"ב';
+        document.getElementById('us').innerText = 'ארצות הברית';
         document.getElementById('br').innerText = 'ברזיל';
         document.getElementById('bmw').innerText = 'BMW';
         document.getElementById('amazon').innerText = 'אמזון';
         document.getElementById('petronas').innerText = 'פטרונס';
     }
+    filterTable(); // Tabelle nach Sprachwechsel filtern
 }
 
-// Filtert die Tabelle basierend auf der Auswahl
+// Filtert die Tabelle basierend auf dem ausgewählten Filter und der Suchzeile
 function filterTable() {
-    const filter = document.getElementById('filterSelect').value;
     const searchInput = document.getElementById('searchInput').value.toLowerCase();
-    const rows = document.querySelectorAll('#emissionsTable tbody tr');
-    
-    rows.forEach(row => {
+    const filterValue = document.getElementById('filterSelect').value;
+    const tableRows = document.querySelectorAll('#emissionsTable tbody tr');
+
+    tableRows.forEach(row => {
         const country = row.getAttribute('data-country');
         const company = row.getAttribute('data-company');
         const emission = row.getAttribute('data-emission');
-        const isCountryMatch = filter === 'all' || country === filter;
-        const isCompanyMatch = filter === 'all' || company === filter;
-        const isSearchMatch = row.textContent.toLowerCase().includes(searchInput);
-        
-        if (isCountryMatch && isCompanyMatch && isSearchMatch) {
+
+        const matchesSearch = country.includes(searchInput) || company.includes(searchInput);
+        let matchesFilter = filterValue === 'all' || filterValue === country || filterValue === company;
+
+        if (filterValue === 'all') {
+            matchesFilter = true;
+        } else if (filterValue === country || filterValue === company) {
+            matchesFilter = true;
+        } else {
+            matchesFilter = false;
+        }
+
+        if (matchesSearch && matchesFilter) {
             row.style.display = '';
         } else {
             row.style.display = 'none';
@@ -136,7 +145,7 @@ function filterTable() {
     });
 }
 
-// Zeigt oder versteckt das lokale Menü
+// Menü ein- und ausblenden
 function toggleMenu() {
     const menu = document.getElementById('localMenu');
     menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
