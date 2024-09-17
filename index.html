@@ -4,58 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CO2-Footprint</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Header mit Logo, globaler Navigation und Sprachwahl -->
     <header>
         <div class="logo">
-            <img src="Logo CO2 Footprint.png" alt="CO2-Footprint Logo">
+            <img src="logo.png" alt="Logo">
         </div>
-        <nav class="global-nav">
+        <div class="global-nav">
             <ul>
-                <li><a href="#" id="homeLink">Startseite</a></li>
-                <li><a href="#" id="aboutLink">Über uns</a></li>
-                <li><a href="#" id="contactLink">Kontakt</a></li>
+                <li id="homeLink"><a href="#">Startseite</a></li>
+                <li id="aboutLink"><a href="#">Über uns</a></li>
+                <li id="contactLink"><a href="#">Kontakt</a></li>
             </ul>
-        </nav>
-        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
-        <div class="language-switch">
-            <select id="languageSelect" onchange="changeLanguage()">
-                <option value="de">Deutsch</option>
-                <option value="en">English</option>
-                <option value="he">עברית</option>
-            </select>
+            <div class="language-switch">
+                <select id="languageSelect" onchange="changeLanguage()">
+                    <option value="de">Deutsch</option>
+                    <option value="en">English</option>
+                    <option value="he">עברית</option>
+                </select>
+            </div>
+            <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        </div>
+        <div id="localMenu" class="local-menu">
+            <ul>
+                <li id="co2Link"><a href="#">Über CO2</a></li>
+                <li id="environmentLink"><a href="#">Umwelt</a></li>
+                <li id="researchLink"><a href="#">Forschung</a></li>
+            </ul>
         </div>
     </header>
-
-    <!-- Verstecktes Menü mit lokalen Links -->
-    <nav class="local-menu" id="localMenu" style="display: none;">
-        <ul>
-            <li><a href="#" id="co2Link">Über CO2</a></li>
-            <li><a href="#" id="environmentLink">Umwelt</a></li>
-            <li><a href="#" id="researchLink">Forschung</a></li>
-        </ul>
-    </nav>
-
-    <!-- Hauptinhalt: Begrüßungstext und Tabelle -->
     <main>
-        <div class="welcome">
-            <h1 id="title">CO2-Footprint</h1>
-            <p id="welcomeText">Willkommen auf unserer CO2-Footprint Website. Diese Seite soll zu mehr Transparenz führen.</p>
+        <h1 id="title">CO2-Footprint</h1>
+        <p id="welcomeText">Willkommen auf unserer CO2-Footprint Website. Diese Seite soll zu mehr Transparenz führen.</p>
+        <div>
+            <label id="filterLabel" for="filterSelect">Filter nach:</label>
+            <select id="filterSelect" onchange="filterTable()">
+                <option id="filterAll" value="all">Alle</option>
+                <option id="filterUS" value="US">USA</option>
+                <option id="filterDE" value="DE">Deutschland</option>
+                <option id="filterBR" value="BR">Brasilien</option>
+                <option id="filterBMW" value="BMW">BMW</option>
+                <option id="filterPetronas" value="Petronas">Petronas</option>
+                <option id="filterAmazon" value="Amazon">Amazon</option>
+            </select>
+            <input type="text" id="searchInput" oninput="filterTable()" placeholder="Suchen...">
         </div>
-        <h2 id="tableTitle">CO2-Emissionen</h2>
-        <label for="filterSelect" id="filterLabel">Filter nach:</label>
-        <select id="filterSelect" onchange="filterTable()">
-            <option value="all" id="filterAll">Alle</option>
-            <option value="us" id="filterUS">USA</option>
-            <option value="de" id="filterDE">Deutschland</option>
-            <option value="br" id="filterBR">Brasilien</option>
-            <option value="bmw" id="filterBMW">BMW</option>
-            <option value="petronas" id="filterPetronas">Petronas</option>
-            <option value="amazon" id="filterAmazon">Amazon</option>
-        </select>
-        <input type="text" id="searchInput" placeholder="Suche..." oninput="filterTable()">
         <table id="emissionsTable">
             <thead>
                 <tr>
@@ -65,30 +59,27 @@
                 </tr>
             </thead>
             <tbody>
-                <tr data-country="de" data-company="bmw" data-emission="1200000">
+                <tr data-country="DE" data-company="BMW" data-emission="15000">
                     <td id="de">Deutschland</td>
                     <td>BMW</td>
-                    <td>1.200.000</td>
+                    <td>15000</td>
                 </tr>
-                <tr data-country="us" data-company="amazon" data-emission="900000">
+                <tr data-country="US" data-company="Amazon" data-emission="20000">
                     <td id="us">USA</td>
                     <td>Amazon</td>
-                    <td>900.000</td>
+                    <td>20000</td>
                 </tr>
-                <tr data-country="br" data-company="petronas" data-emission="1500000">
+                <tr data-country="BR" data-company="Petronas" data-emission="10000">
                     <td id="br">Brasilien</td>
                     <td>Petronas</td>
-                    <td>1.500.000</td>
+                    <td>10000</td>
                 </tr>
             </tbody>
         </table>
     </main>
-
-    <!-- Footer mit rechtlichem Hinweis -->
     <footer>
-        <p id="footerText">&copy; 2024 CO2-Footprint. Alle Rechte vorbehalten. Impressum und Datenschutz</p>
+        <p id="footerText">© 2024 CO2-Footprint. Alle Rechte vorbehalten. Impressum und Datenschutz</p>
     </footer>
-
-    <script src="script.js"></script>
+    <script src="scripts.js"></script>
 </body>
 </html>
