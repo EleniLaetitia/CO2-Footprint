@@ -122,9 +122,9 @@ function filterTable() {
     const tableRows = document.querySelectorAll('#emissionsTable tbody tr');
 
     tableRows.forEach(row => {
-        const country = row.getAttribute('data-country');
-        const company = row.getAttribute('data-company');
-        const emission = row.getAttribute('data-emission');
+        const country = row.querySelector('td[id]').innerText.toLowerCase();
+        const company = row.querySelector('td[id]').innerText.toLowerCase();
+        const emission = row.querySelector('td:last-child').innerText;
 
         const matchesSearch = country.includes(searchInput) || company.includes(searchInput);
         let matchesFilter = filterValue === 'all' || filterValue === country || filterValue === company;
