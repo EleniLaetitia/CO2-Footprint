@@ -1,83 +1,56 @@
-/* Reset-Styles */
-body, html {
+html, body {
+    height: 100%;
     margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
 
 body {
-    font-family: Arial, sans-serif;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
 }
 
-/* Header-Stile */
 header {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     padding: 10px;
-    background-color: #f8f8f8;
-    border-bottom: 1px solid #ddd;
+    background: #f4f4f4;
 }
 
-.logo img {
-    height: 50px;
+#logo {
+    /* Füge hier die Stile für dein Logo hinzu */
 }
 
-.global-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+#main-nav {
     display: flex;
+    align-items: center;
 }
 
-.global-nav li {
-    margin: 0 10px;
-}
-
-.global-nav a {
-    text-decoration: none;
-    color: #333;
-}
-
-.menu-icon {
+#menu-icon {
+    font-size: 24px;
     cursor: pointer;
 }
 
-.language-switch select {
-    margin-left: 10px;
-}
-
-/* Menü-Stile */
-.local-menu {
-    position: fixed;
-    top: 0;
-    right: 0;
-    background-color: #f8f8f8;
-    border: 1px solid #ddd;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    width: 200px;
-    padding: 10px;
-}
-
-.local-menu ul {
+#nav-links {
+    display: none;
     list-style: none;
-    margin: 0;
     padding: 0;
+    margin: 0;
 }
 
-.local-menu li {
-    margin-bottom: 10px;
+#nav-links.active {
+    display: block;
 }
 
-.local-menu a {
+#nav-links li {
+    margin: 0 10px;
+}
+
+#nav-links a {
     text-decoration: none;
     color: #333;
 }
 
-/* Hauptinhalt-Stile */
 main {
     flex: 1;
     padding: 20px;
@@ -87,48 +60,43 @@ main {
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
-}
-
-th, td {
-    padding: 10px;
-    border: 1px solid #ddd;
-    text-align: left;
-}
-
-/* Footer-Stile */
-footer {
-    background-color: #f8f8f8;
-    border-top: 1px solid #ddd;
-    padding: 10px;
-    text-align: center;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
-
-table {
-    margin: 20px auto;
-    border-collapse: collapse;
-    width: 80%;
+    margin: 20px 0;
 }
 
 table, th, td {
     border: 1px solid #ddd;
-    padding: 8px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
 }
 
 th {
-    background-color: #4CAF50;
-    color: white;
+    background: #f4f4f4;
 }
 
 footer {
-    text-align: center;
+    background: #f4f4f4;
     padding: 10px;
-    background-color: #4CAF50;
-    color: white;
+    text-align: center;
     position: relative;
-    width: 100%;
     bottom: 0;
+    width: 100%;
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+footer ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+footer ul li a {
+    text-decoration: none;
+    color: #333;
 }
