@@ -31,6 +31,14 @@ function changeLanguage() {
         document.getElementById('filterBMW').innerText = 'BMW';
         document.getElementById('filterPetronas').innerText = 'Petronas';
         document.getElementById('filterAmazon').innerText = 'Amazon';
+
+        // Tabelleninhalte auf Deutsch
+        document.getElementById('deCountry').innerText = 'Deutschland';
+        document.getElementById('bmwCompany').innerText = 'BMW';
+        document.getElementById('usCountry').innerText = 'USA';
+        document.getElementById('amazonCompany').innerText = 'Amazon';
+        document.getElementById('brCountry').innerText = 'Brasilien';
+        document.getElementById('petronasCompany').innerText = 'Petronas';
     } else if (lang === 'en') {
         document.body.style.direction = 'ltr';  // Links-nach-rechts
         localMenu.style.right = 'auto';         // Menü auf der linken Seite
@@ -59,6 +67,14 @@ function changeLanguage() {
         document.getElementById('filterBMW').innerText = 'BMW';
         document.getElementById('filterPetronas').innerText = 'Petronas';
         document.getElementById('filterAmazon').innerText = 'Amazon';
+
+        // Tabelleninhalte auf Englisch
+        document.getElementById('deCountry').innerText = 'Germany';
+        document.getElementById('bmwCompany').innerText = 'BMW';
+        document.getElementById('usCountry').innerText = 'USA';
+        document.getElementById('amazonCompany').innerText = 'Amazon';
+        document.getElementById('brCountry').innerText = 'Brazil';
+        document.getElementById('petronasCompany').innerText = 'Petronas';
     } else if (lang === 'he') {
         document.body.style.direction = 'rtl';  // Rechts-nach-links
         localMenu.style.left = 'auto';          // Menü auf der rechten Seite
@@ -87,6 +103,14 @@ function changeLanguage() {
         document.getElementById('filterBMW').innerText = 'BMW';
         document.getElementById('filterPetronas').innerText = 'פטרונאס';
         document.getElementById('filterAmazon').innerText = 'אמזון';
+
+        // Tabelleninhalte auf Hebräisch
+        document.getElementById('deCountry').innerText = 'גרמניה';
+        document.getElementById('bmwCompany').innerText = 'BMW';
+        document.getElementById('usCountry').innerText = 'ארה"ב';
+        document.getElementById('amazonCompany').innerText = 'אמזון';
+        document.getElementById('brCountry').innerText = 'ברזיל';
+        document.getElementById('petronasCompany').innerText = 'פטרונאס';
     }
 }
 
@@ -108,12 +132,12 @@ function filterTable() {
         const emission = row.querySelector('td:nth-child(3)').textContent.toLowerCase();
 
         const matchesFilter = filter === 'all' || 
-            (filter === 'us' && country === document.getElementById('us').textContent.toLowerCase()) ||
-            (filter === 'de' && country === document.getElementById('de').textContent.toLowerCase()) ||
-            (filter === 'br' && country === document.getElementById('br').textContent.toLowerCase()) ||
-            (filter === 'bmw' && company === document.getElementById('filterBMW').textContent.toLowerCase()) ||
-            (filter === 'petronas' && company === document.getElementById('filterPetronas').textContent.toLowerCase()) ||
-            (filter === 'amazon' && company === document.getElementById('filterAmazon').textContent.toLowerCase());
+            (filter === 'us' && country === document.getElementById('usCountry').textContent.toLowerCase()) ||
+            (filter === 'de' && country === document.getElementById('deCountry').textContent.toLowerCase()) ||
+            (filter === 'br' && country === document.getElementById('brCountry').textContent.toLowerCase()) ||
+            (filter === 'bmw' && company === document.getElementById('bmwCompany').textContent.toLowerCase()) ||
+            (filter === 'petronas' && company === document.getElementById('petronasCompany').textContent.toLowerCase()) ||
+            (filter === 'amazon' && company === document.getElementById('amazonCompany').textContent.toLowerCase());
 
         const matchesSearch = country.includes(search) || company.includes(search);
 
