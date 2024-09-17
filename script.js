@@ -77,8 +77,8 @@ function changeLanguage() {
         document.getElementById('petronas').innerText = 'Petronas';
     } else if (lang === 'he') {
         document.body.style.direction = 'rtl';  // Rechts-nach-links
-        localMenu.style.left = 'auto';          // Menü auf der rechten Seite
-        localMenu.style.right = '0';            // Position für Hebräisch
+        localMenu.style.left = 'auto';         // Menü auf der rechten Seite
+        localMenu.style.right = '0';           // Position für Hebräisch
 
         document.getElementById('title').innerText = 'ניקוד CO2';
         document.getElementById('welcomeText').innerText = 'ברוכים הבאים לאתר ניקוד CO2 שלנו. האתר הזה שואף לספק שקיפות רבה יותר.';
