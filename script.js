@@ -116,24 +116,27 @@ function filterTable() {
     const tableRows = document.querySelectorAll('#emissionsTable tbody tr');
 
     tableRows.forEach(row => {
+        const cells = row.querySelectorAll('td');
+        let rowContainsSearchTerm = false;
+
+        // Prüfen, ob eine Zelle den Suchbegriff enthält
+        cells.forEach(cell => {
+            if (cell.innerText.toLowerCase().includes(searchInput)) {
+                rowContainsSearchTerm = true;
+            }
+        });
+
         const countryCell = row.querySelector('td[data-country]');
         const companyCell = row.querySelector('td[data-company]');
         const country = countryCell ? countryCell.innerText.toLowerCase() : '';
         const company = companyCell ? companyCell.innerText.toLowerCase() : '';
 
-        const matchesSearch = country.includes(searchInput) || company.includes(searchInput);
         const matchesFilter = filterValue === 'all' || filterValue === country || filterValue === company;
 
-        if (matchesSearch && matchesFilter) {
+        if (rowContainsSearchTerm && matchesFilter) {
             row.style.display = '';
         } else {
             row.style.display = 'none';
         }
     });
-}
-
-// Menü ein- und ausblenden
-function toggleMenu() {
-    const menu = document.getElementById('localMenu');
-    menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
 }
