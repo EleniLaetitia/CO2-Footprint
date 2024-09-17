@@ -3,6 +3,7 @@ function changeLanguage() {
     const lang = document.getElementById('languageSelect').value;
     
     if (lang === 'de') {
+        document.body.style.direction = 'ltr';  // Links-nach-rechts
         document.getElementById('title').innerText = 'CO2-Footprint';
         document.getElementById('welcomeText').innerText = 'Willkommen auf unserer CO2-Footprint Website. Diese Seite soll zu mehr Transparenz führen.';
         document.getElementById('homeLink').innerText = 'Startseite';
@@ -32,6 +33,7 @@ function changeLanguage() {
         document.getElementById('us').innerText = 'USA';
         document.getElementById('br').innerText = 'Brasilien';
     } else if (lang === 'en') {
+        document.body.style.direction = 'ltr';  // Links-nach-rechts
         document.getElementById('title').innerText = 'CO2-Footprint';
         document.getElementById('welcomeText').innerText = 'Welcome to our CO2-Footprint website. This site aims to provide more transparency.';
         document.getElementById('homeLink').innerText = 'Home';
@@ -61,6 +63,7 @@ function changeLanguage() {
         document.getElementById('us').innerText = 'USA';
         document.getElementById('br').innerText = 'Brazil';
     } else if (lang === 'he') {
+        document.body.style.direction = 'rtl';  // Rechts-nach-links
         document.getElementById('title').innerText = 'טביעת רגל פחמנית';
         document.getElementById('welcomeText').innerText = 'ברוכים הבאים לאתר טביעת הרגל הפחמנית שלנו. אתר זה שואף לספק יותר שקיפות.';
         document.getElementById('homeLink').innerText = 'דף הבית';
