@@ -1,44 +1,33 @@
-html, body {
-    height: 100%;
-    margin: 0;
-    font-family: Arial, sans-serif;
-}
-
 body {
-    display: flex;
-    flex-direction: column;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 header {
     display: flex;
     align-items: center;
     padding: 10px;
-    background: #f4f4f4;
+    background-color: #f4f4f4;
+    border-bottom: 1px solid #ccc;
     position: relative;
 }
 
-.logo {
-    margin-right: auto;
-}
-
 .logo img {
-    height: 50px; /* Größe des Logos anpassen */
-}
-
-.global-nav {
-    display: flex;
-    align-items: center;
+    height: 50px;
 }
 
 .global-nav ul {
     list-style: none;
-    padding: 0;
     margin: 0;
+    padding: 0;
     display: flex;
+    flex-grow: 1;
+    justify-content: center;
 }
 
 .global-nav li {
-    margin: 0 15px;
+    margin: 0 10px;
 }
 
 .global-nav a {
@@ -49,38 +38,45 @@ header {
 .menu-icon {
     font-size: 24px;
     cursor: pointer;
-    margin-left: 20px;
+    margin-left: auto;
 }
 
 .language-switch {
-    margin-left: 20px;
+    margin-left: 10px;
 }
 
 .local-menu {
+    display: none;
     position: absolute;
-    top: 60px; /* Höhe des Headers anpassen */
+    top: 60px;
     right: 0;
-    background: #fff;
-    border: 1px solid #ddd;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 .local-menu ul {
     list-style: none;
-    padding: 0;
     margin: 0;
+    padding: 0;
 }
 
 .local-menu li {
-    padding: 10px;
+    border-bottom: 1px solid #ccc;
 }
 
 .local-menu a {
+    display: block;
+    padding: 10px;
     text-decoration: none;
     color: #333;
 }
 
+.local-menu a:hover {
+    background-color: #f0f0f0;
+}
+
 main {
-    flex: 1;
     padding: 20px;
     text-align: center;
 }
@@ -91,29 +87,23 @@ table {
     margin: 20px 0;
 }
 
-table, th, td {
-    border: 1px solid #ddd;
-}
-
 th, td {
+    border: 1px solid #ccc;
     padding: 10px;
     text-align: left;
 }
 
-th {
-    background: #f4f4f4;
+tfoot {
+    text-align: center;
+    padding: 10px;
 }
 
 footer {
-    background: #f4f4f4;
+    background-color: #f4f4f4;
     padding: 10px;
     text-align: center;
+    border-top: 1px solid #ccc;
     position: fixed;
     bottom: 0;
     width: 100%;
-}
-
-footer a {
-    text-decoration: none;
-    color: #333;
 }
