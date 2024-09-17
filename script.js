@@ -12,7 +12,7 @@ function changeLanguage() {
         document.getElementById('environmentLink').innerText = 'Umwelt';
         document.getElementById('researchLink').innerText = 'Forschung';
         document.getElementById('tableTitle').innerText = 'CO2-Emissionen';
-        document.getElementById('filterLabel').innerText = 'Sortieren nach:';
+        document.getElementById('filterLabel').innerText = 'Filtern nach:';
         document.getElementById('countryColumn').innerText = 'Land';
         document.getElementById('companyColumn').innerText = 'Unternehmen';
         document.getElementById('emissionColumn').innerText = 'CO2-Ausstoß (in Tonnen)';
@@ -27,7 +27,7 @@ function changeLanguage() {
         document.getElementById('environmentLink').innerText = 'Environment';
         document.getElementById('researchLink').innerText = 'Research';
         document.getElementById('tableTitle').innerText = 'CO2 Emissions';
-        document.getElementById('filterLabel').innerText = 'Sort by:';
+        document.getElementById('filterLabel').innerText = 'Filter by:';
         document.getElementById('countryColumn').innerText = 'Country';
         document.getElementById('companyColumn').innerText = 'Company';
         document.getElementById('emissionColumn').innerText = 'CO2 Emissions (in tons)';
@@ -42,7 +42,7 @@ function changeLanguage() {
         document.getElementById('environmentLink').innerText = 'סביבה';
         document.getElementById('researchLink').innerText = 'מחקר';
         document.getElementById('tableTitle').innerText = 'פליטות פחמן';
-        document.getElementById('filterLabel').innerText = 'מיון לפי:';
+        document.getElementById('filterLabel').innerText = 'סנן לפי:';
         document.getElementById('countryColumn').innerText = 'מדינה';
         document.getElementById('companyColumn').innerText = 'חברה';
         document.getElementById('emissionColumn').innerText = 'פליטות CO2 (בטונות)';
@@ -65,13 +65,15 @@ function filterTable() {
     rows.forEach(row => {
         const country = row.getAttribute('data-country');
         const company = row.getAttribute('data-company');
-        const emission = parseInt(row.getAttribute('data-emission'));
 
-        // Filter nach Länder und Unternehmen
-        const showRow = (filterValue === 'az' && row.textContent.toLowerCase().includes(searchTerm)) ||
-                        (filterValue === 'za' && row.textContent.toLowerCase().includes(searchTerm)) ||
-                        (filterValue === country || filterValue === company);
+        // Filterlogik für Länder und Unternehmen
+        const matchesFilter = (filterValue === 'all') || (filterValue === country) || (filterValue === company);
+        const matchesSearch = row.innerText.toLowerCase().includes(searchTerm);
 
-        row.style.display = showRow ? '' : 'none';
+        if (matchesFilter && matchesSearch) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
+        }
     });
 }
