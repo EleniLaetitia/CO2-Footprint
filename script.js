@@ -16,7 +16,6 @@ function changeLanguage() {
         document.getElementById('co2Link').innerText = 'Über CO2';
         document.getElementById('environmentLink').innerText = 'Umwelt';
         document.getElementById('researchLink').innerText = 'Forschung';
-        document.getElementById('tableTitle').innerText = 'CO2-Emissionen';
         document.getElementById('filterLabel').innerText = 'Filter nach:';
         document.getElementById('countryColumn').innerText = 'Land';
         document.getElementById('companyColumn').innerText = 'Unternehmen';
@@ -49,7 +48,6 @@ function changeLanguage() {
         document.getElementById('co2Link').innerText = 'About CO2';
         document.getElementById('environmentLink').innerText = 'Environment';
         document.getElementById('researchLink').innerText = 'Research';
-        document.getElementById('tableTitle').innerText = 'CO2 Emissions';
         document.getElementById('filterLabel').innerText = 'Filter by:';
         document.getElementById('countryColumn').innerText = 'Country';
         document.getElementById('companyColumn').innerText = 'Company';
@@ -82,7 +80,6 @@ function changeLanguage() {
         document.getElementById('co2Link').innerText = 'אודות פחמן';
         document.getElementById('environmentLink').innerText = 'סביבה';
         document.getElementById('researchLink').innerText = 'מחקר';
-        document.getElementById('tableTitle').innerText = 'פליטות פחמן דו חמצני';
         document.getElementById('filterLabel').innerText = 'מיון לפי:';
         document.getElementById('countryColumn').innerText = 'מדינה';
         document.getElementById('companyColumn').innerText = 'חברה';
