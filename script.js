@@ -31,6 +31,11 @@ function changeLanguage() {
         document.getElementById('filterBMW').innerText = 'BMW';
         document.getElementById('filterPetronas').innerText = 'Petronas';
         document.getElementById('filterAmazon').innerText = 'Amazon';
+
+        // Tabelleninhalte auf Deutsch
+        document.querySelectorAll('tr[data-country="us"] td.country').forEach(td => td.innerText = 'USA');
+        document.querySelectorAll('tr[data-country="de"] td.country').forEach(td => td.innerText = 'Deutschland');
+        document.querySelectorAll('tr[data-country="br"] td.country').forEach(td => td.innerText = 'Brasilien');
     } else if (lang === 'en') {
         document.body.style.direction = 'ltr';  
         localMenu.style.right = 'auto';         
@@ -59,6 +64,11 @@ function changeLanguage() {
         document.getElementById('filterBMW').innerText = 'BMW';
         document.getElementById('filterPetronas').innerText = 'Petronas';
         document.getElementById('filterAmazon').innerText = 'Amazon';
+
+        // Tabelleninhalte auf Englisch
+        document.querySelectorAll('tr[data-country="us"] td.country').forEach(td => td.innerText = 'USA');
+        document.querySelectorAll('tr[data-country="de"] td.country').forEach(td => td.innerText = 'Germany');
+        document.querySelectorAll('tr[data-country="br"] td.country').forEach(td => td.innerText = 'Brazil');
     } else if (lang === 'he') {
         document.body.style.direction = 'rtl';  
         localMenu.style.left = 'auto';         
@@ -87,6 +97,11 @@ function changeLanguage() {
         document.getElementById('filterBMW').innerText = 'BMW';
         document.getElementById('filterPetronas').innerText = 'פטרונס';
         document.getElementById('filterAmazon').innerText = 'אמזון';
+
+        // Tabelleninhalte auf Hebräisch
+        document.querySelectorAll('tr[data-country="us"] td.country').forEach(td => td.innerText = 'ארה"ב');
+        document.querySelectorAll('tr[data-country="de"] td.country').forEach(td => td.innerText = 'גרמניה');
+        document.querySelectorAll('tr[data-country="br"] td.country').forEach(td => td.innerText = 'ברזיל');
     }
 }
 
