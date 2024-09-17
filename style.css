@@ -13,7 +13,6 @@ header {
     padding: 10px;
     background-color: #4CAF50;
     color: white;
-    position: relative;
 }
 
 .logo img {
@@ -96,7 +95,7 @@ footer {
     padding: 10px;
     background-color: #4CAF50;
     color: white;
-    position: fixed; /* Fixiert den Footer am Ende der Seite */
+    position: relative;
     width: 100%;
     bottom: 0;
 }
