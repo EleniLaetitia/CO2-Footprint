@@ -18,6 +18,15 @@ function changeLanguage() {
         document.getElementById('emissionColumn').innerText = 'CO2-Ausstoß (in Tonnen)';
         document.getElementById('footerText').innerText = '© 2024 CO2-Footprint. Alle Rechte vorbehalten. Impressum und Datenschutz';
 
+        // Filteroptionen auf Deutsch
+        document.getElementById('filterAll').innerText = 'Alle';
+        document.getElementById('filterUS').innerText = 'USA';
+        document.getElementById('filterDE').innerText = 'Deutschland';
+        document.getElementById('filterBR').innerText = 'Brasilien';
+        document.getElementById('filterBMW').innerText = 'BMW';
+        document.getElementById('filterPetronas').innerText = 'Petronas';
+        document.getElementById('filterAmazon').innerText = 'Amazon';
+
         // Tabelle: Länder auf Deutsch
         document.getElementById('de').innerText = 'Deutschland';
         document.getElementById('us').innerText = 'USA';
@@ -38,25 +47,43 @@ function changeLanguage() {
         document.getElementById('emissionColumn').innerText = 'CO2 Emissions (in tons)';
         document.getElementById('footerText').innerText = '© 2024 CO2-Footprint. All rights reserved. Legal Notice and Privacy Policy';
 
+        // Filteroptionen auf Englisch
+        document.getElementById('filterAll').innerText = 'All';
+        document.getElementById('filterUS').innerText = 'USA';
+        document.getElementById('filterDE').innerText = 'Germany';
+        document.getElementById('filterBR').innerText = 'Brazil';
+        document.getElementById('filterBMW').innerText = 'BMW';
+        document.getElementById('filterPetronas').innerText = 'Petronas';
+        document.getElementById('filterAmazon').innerText = 'Amazon';
+
         // Tabelle: Länder auf Englisch
         document.getElementById('de').innerText = 'Germany';
         document.getElementById('us').innerText = 'USA';
         document.getElementById('br').innerText = 'Brazil';
     } else if (lang === 'he') {
         document.getElementById('title').innerText = 'טביעת רגל פחמנית';
-        document.getElementById('welcomeText').innerText = 'ברוכים הבאים לאתר טביעת רגל פחמנית שלנו. אתר זה נועד להגביר את השקיפות.';
-        document.getElementById('homeLink').innerText = 'בית';
+        document.getElementById('welcomeText').innerText = 'ברוכים הבאים לאתר טביעת הרגל הפחמנית שלנו. אתר זה שואף לספק יותר שקיפות.';
+        document.getElementById('homeLink').innerText = 'דף הבית';
         document.getElementById('aboutLink').innerText = 'עלינו';
         document.getElementById('contactLink').innerText = 'צור קשר';
         document.getElementById('co2Link').innerText = 'על CO2';
         document.getElementById('environmentLink').innerText = 'סביבה';
         document.getElementById('researchLink').innerText = 'מחקר';
-        document.getElementById('tableTitle').innerText = 'פליטות פחמן';
-        document.getElementById('filterLabel').innerText = 'סינון לפי:';
+        document.getElementById('tableTitle').innerText = 'פליטות פחמן דו חמצני';
+        document.getElementById('filterLabel').innerText = 'סנן לפי:';
         document.getElementById('countryColumn').innerText = 'מדינה';
         document.getElementById('companyColumn').innerText = 'חברה';
         document.getElementById('emissionColumn').innerText = 'פליטות CO2 (בטונות)';
-        document.getElementById('footerText').innerText = '© 2024 טביעת רגל פחמנית. כל הזכויות שמורות. הודעות משפטיות ומדיניות פרטיות';
+        document.getElementById('footerText').innerText = '© 2024 טביעת רגל פחמנית. כל הזכויות שמורות. הצהרה משפטית ומדיניות פרטיות';
+
+        // Filteroptionen auf Hebräisch
+        document.getElementById('filterAll').innerText = 'הכל';
+        document.getElementById('filterUS').innerText = 'ארה"ב';
+        document.getElementById('filterDE').innerText = 'גרמניה';
+        document.getElementById('filterBR').innerText = 'ברזיל';
+        document.getElementById('filterBMW').innerText = 'BMW';
+        document.getElementById('filterPetronas').innerText = 'פטרונס';
+        document.getElementById('filterAmazon').innerText = 'אמזון';
 
         // Tabelle: Länder auf Hebräisch
         document.getElementById('de').innerText = 'גרמניה';
