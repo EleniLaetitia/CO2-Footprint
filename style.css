@@ -11,42 +11,72 @@ body {
 
 header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     padding: 10px;
     background: #f4f4f4;
+    position: relative;
 }
 
-#logo {
-    /* Füge hier die Stile für dein Logo hinzu */
-}
-
-#main-nav {
+.header-container {
     display: flex;
     align-items: center;
+    width: 100%;
+    justify-content: space-between;
 }
 
-#menu-icon {
+.logo img {
+    height: 50px; /* Größe des Logos anpassen */
+}
+
+.global-nav {
+    flex: 1;
+}
+
+.global-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.global-nav li {
+    margin: 0 15px;
+}
+
+.global-nav a {
+    text-decoration: none;
+    color: #333;
+}
+
+.menu-icon {
     font-size: 24px;
     cursor: pointer;
 }
 
-#nav-links {
-    display: none;
+.language-switch {
+    margin-left: 20px;
+}
+
+.local-menu {
+    position: absolute;
+    top: 60px; /* Höhe des Headers anpassen */
+    right: 0;
+    background: #fff;
+    border: 1px solid #ddd;
+}
+
+.local-menu ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-#nav-links.active {
-    display: block;
+.local-menu li {
+    padding: 10px;
 }
 
-#nav-links li {
-    margin: 0 10px;
-}
-
-#nav-links a {
+.local-menu a {
     text-decoration: none;
     color: #333;
 }
@@ -85,18 +115,7 @@ footer {
     width: 100%;
 }
 
-footer ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-footer ul li {
-    display: inline;
-    margin: 0 10px;
-}
-
-footer ul li a {
+footer a {
     text-decoration: none;
     color: #333;
 }
