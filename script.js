@@ -2,128 +2,155 @@
 function changeLanguage() {
     const lang = document.getElementById('languageSelect').value;
     const localMenu = document.getElementById('localMenu');
-    
-    if (lang === 'de') {
-        document.body.style.direction = 'ltr';  // Links-nach-rechts
-        localMenu.style.right = 'auto';         // Menü auf der linken Seite
-        localMenu.style.left = '0';             // Standard-Position
-        
-        document.getElementById('title').innerText = 'CO2-Footprint';
-        document.getElementById('welcomeText').innerText = 'Willkommen auf unserer CO2-Footprint Website. Diese Seite soll zu mehr Transparenz führen.';
-        document.getElementById('homeLink').innerText = 'Startseite';
-        document.getElementById('aboutLink').innerText = 'Über uns';
-        document.getElementById('contactLink').innerText = 'Kontakt';
-        document.getElementById('co2Link').innerText = 'Über CO2';
-        document.getElementById('environmentLink').innerText = 'Umwelt';
-        document.getElementById('researchLink').innerText = 'Forschung';
-        document.getElementById('tableTitle').innerText = 'CO2-Emissionen';
-        document.getElementById('filterLabel').innerText = 'Filter nach:';
-        document.getElementById('countryColumn').innerText = 'Land';
-        document.getElementById('companyColumn').innerText = 'Unternehmen';
-        document.getElementById('emissionColumn').innerText = 'CO2-Ausstoß (in Tonnen)';
-        document.getElementById('footerText').innerText = '© 2024 CO2-Footprint. Alle Rechte vorbehalten. Impressum und Datenschutz';
 
-        // Filteroptionen auf Deutsch
-        document.getElementById('filterAll').innerText = 'Alle';
-        document.getElementById('filterUS').innerText = 'USA';
-        document.getElementById('filterDE').innerText = 'Deutschland';
-        document.getElementById('filterBR').innerText = 'Brasilien';
-        document.getElementById('filterBMW').innerText = 'BMW';
-        document.getElementById('filterPetronas').innerText = 'Petronas';
-        document.getElementById('filterAmazon').innerText = 'Amazon';
+    const translations = {
+        de: {
+            title: 'CO2-Footprint',
+            welcomeText: 'Willkommen auf unserer CO2-Footprint Website. Diese Seite soll zu mehr Transparenz führen.',
+            homeLink: 'Startseite',
+            aboutLink: 'Über uns',
+            contactLink: 'Kontakt',
+            co2Link: 'Über CO2',
+            environmentLink: 'Umwelt',
+            researchLink: 'Forschung',
+            tableTitle: 'CO2-Emissionen',
+            filterLabel: 'Filter nach:',
+            countryColumn: 'Land',
+            companyColumn: 'Unternehmen',
+            emissionColumn: 'CO2-Ausstoß (in Tonnen)',
+            footerText: '© 2024 CO2-Footprint. Alle Rechte vorbehalten. Impressum und Datenschutz',
+            filters: {
+                all: 'Alle',
+                us: 'USA',
+                de: 'Deutschland',
+                br: 'Brasilien',
+                bmw: 'BMW',
+                petronas: 'Petronas',
+                amazon: 'Amazon'
+            },
+            countries: {
+                de: 'Deutschland',
+                us: 'USA',
+                br: 'Brasilien'
+            }
+        },
+        en: {
+            title: 'CO2-Footprint',
+            welcomeText: 'Welcome to our CO2-Footprint website. This site aims to provide more transparency.',
+            homeLink: 'Home',
+            aboutLink: 'About Us',
+            contactLink: 'Contact',
+            co2Link: 'About CO2',
+            environmentLink: 'Environment',
+            researchLink: 'Research',
+            tableTitle: 'CO2 Emissions',
+            filterLabel: 'Filter by:',
+            countryColumn: 'Country',
+            companyColumn: 'Company',
+            emissionColumn: 'CO2 Emissions (in tons)',
+            footerText: '© 2024 CO2-Footprint. All rights reserved. Legal Notice and Privacy Policy',
+            filters: {
+                all: 'All',
+                us: 'USA',
+                de: 'Germany',
+                br: 'Brazil',
+                bmw: 'BMW',
+                petronas: 'Petronas',
+                amazon: 'Amazon'
+            },
+            countries: {
+                de: 'Germany',
+                us: 'USA',
+                br: 'Brazil'
+            }
+        },
+        he: {
+            title: 'טביעת רגל פחמנית',
+            welcomeText: 'ברוכים הבאים לאתר טביעת הרגל הפחמנית שלנו. אתר זה שואף לספק יותר שקיפות.',
+            homeLink: 'דף הבית',
+            aboutLink: 'עלינו',
+            contactLink: 'צור קשר',
+            co2Link: 'על CO2',
+            environmentLink: 'סביבה',
+            researchLink: 'מחקר',
+            tableTitle: 'פליטות פחמן דו חמצני',
+            filterLabel: 'סנן לפי:',
+            countryColumn: 'מדינה',
+            companyColumn: 'חברה',
+            emissionColumn: 'פליטות CO2 (בטונות)',
+            footerText: '© 2024 טביעת רגל פחמנית. כל הזכויות שמורות. הצהרה משפטית ומדיניות פרטיות',
+            filters: {
+                all: 'הכל',
+                us: 'ארה"ב',
+                de: 'גרמניה',
+                br: 'ברזיל',
+                bmw: 'BMW',
+                petronas: 'פטרונס',
+                amazon: 'אמזון'
+            },
+            countries: {
+                de: 'גרמניה',
+                us: 'ארה"ב',
+                br: 'ברזיל'
+            }
+        }
+    };
 
-        // Tabelle: Länder auf Deutsch
-        document.getElementById('de').innerText = 'Deutschland';
-        document.getElementById('us').innerText = 'USA';
-        document.getElementById('br').innerText = 'Brasilien';
-    } else if (lang === 'en') {
-        document.body.style.direction = 'ltr';  // Links-nach-rechts
-        localMenu.style.right = 'auto';         // Menü auf der linken Seite
-        localMenu.style.left = '0';             // Standard-Position
+    const currentTranslations = translations[lang];
+    document.body.style.direction = lang === 'he' ? 'rtl' : 'ltr';
 
-        document.getElementById('title').innerText = 'CO2-Footprint';
-        document.getElementById('welcomeText').innerText = 'Welcome to our CO2-Footprint website. This site aims to provide more transparency.';
-        document.getElementById('homeLink').innerText = 'Home';
-        document.getElementById('aboutLink').innerText = 'About Us';
-        document.getElementById('contactLink').innerText = 'Contact';
-        document.getElementById('co2Link').innerText = 'About CO2';
-        document.getElementById('environmentLink').innerText = 'Environment';
-        document.getElementById('researchLink').innerText = 'Research';
-        document.getElementById('tableTitle').innerText = 'CO2 Emissions';
-        document.getElementById('filterLabel').innerText = 'Filter by:';
-        document.getElementById('countryColumn').innerText = 'Country';
-        document.getElementById('companyColumn').innerText = 'Company';
-        document.getElementById('emissionColumn').innerText = 'CO2 Emissions (in tons)';
-        document.getElementById('footerText').innerText = '© 2024 CO2-Footprint. All rights reserved. Legal Notice and Privacy Policy';
+    // Aktualisiere die Texte
+    document.getElementById('title').textContent = currentTranslations.title;
+    document.getElementById('welcomeText').textContent = currentTranslations.welcomeText;
+    document.getElementById('homeLink').textContent = currentTranslations.homeLink;
+    document.getElementById('aboutLink').textContent = currentTranslations.aboutLink;
+    document.getElementById('contactLink').textContent = currentTranslations.contactLink;
+    document.getElementById('co2Link').textContent = currentTranslations.co2Link;
+    document.getElementById('environmentLink').textContent = currentTranslations.environmentLink;
+    document.getElementById('researchLink').textContent = currentTranslations.researchLink;
+    document.getElementById('tableTitle').textContent = currentTranslations.tableTitle;
+    document.getElementById('filterLabel').textContent = currentTranslations.filterLabel;
+    document.getElementById('countryColumn').textContent = currentTranslations.countryColumn;
+    document.getElementById('companyColumn').textContent = currentTranslations.companyColumn;
+    document.getElementById('emissionColumn').textContent = currentTranslations.emissionColumn;
+    document.getElementById('footerText').textContent = currentTranslations.footerText;
 
-        // Filteroptionen auf Englisch
-        document.getElementById('filterAll').innerText = 'All';
-        document.getElementById('filterUS').innerText = 'USA';
-        document.getElementById('filterDE').innerText = 'Germany';
-        document.getElementById('filterBR').innerText = 'Brazil';
-        document.getElementById('filterBMW').innerText = 'BMW';
-        document.getElementById('filterPetronas').innerText = 'Petronas';
-        document.getElementById('filterAmazon').innerText = 'Amazon';
+    // Update der Filteroptionen
+    const filterSelect = document.getElementById('filterSelect');
+    Array.from(filterSelect.options).forEach(option => {
+        option.textContent = currentTranslations.filters[option.value] || option.textContent;
+    });
 
-        // Tabelle: Länder auf Englisch
-        document.getElementById('de').innerText = 'Germany';
-        document.getElementById('us').innerText = 'USA';
-        document.getElementById('br').innerText = 'Brazil';
-    } else if (lang === 'he') {
-        document.body.style.direction = 'rtl';  // Rechts-nach-links
-        localMenu.style.right = '0';             // Menü auf der rechten Seite
-        localMenu.style.left = 'auto';           // Menü von rechts ausrichten
+    // Update der Tabelle
+    Array.from(document.querySelectorAll('#emissionsTable tbody tr')).forEach(row => {
+        const countryCell = row.cells[0];
+        countryCell.textContent = currentTranslations.countries[countryCell.textContent.toLowerCase()] || countryCell.textContent;
+    });
 
-        document.getElementById('title').innerText = 'טביעת רגל פחמנית';
-        document.getElementById('welcomeText').innerText = 'ברוכים הבאים לאתר טביעת הרגל הפחמנית שלנו. אתר זה שואף לספק יותר שקיפות.';
-        document.getElementById('homeLink').innerText = 'דף הבית';
-        document.getElementById('aboutLink').innerText = 'עלינו';
-        document.getElementById('contactLink').innerText = 'צור קשר';
-        document.getElementById('co2Link').innerText = 'על CO2';
-        document.getElementById('environmentLink').innerText = 'סביבה';
-        document.getElementById('researchLink').innerText = 'מחקר';
-        document.getElementById('tableTitle').innerText = 'פליטות פחמן דו חמצני';
-        document.getElementById('filterLabel').innerText = 'סנן לפי:';
-        document.getElementById('countryColumn').innerText = 'מדינה';
-        document.getElementById('companyColumn').innerText = 'חברה';
-        document.getElementById('emissionColumn').innerText = 'פליטות CO2 (בטונות)';
-        document.getElementById('footerText').innerText = '© 2024 טביעת רגל פחמנית. כל הזכויות שמורות. הצהרה משפטית ומדיניות פרטיות';
-
-        // Filteroptionen auf Hebräisch
-        document.getElementById('filterAll').innerText = 'הכל';
-        document.getElementById('filterUS').innerText = 'ארה"ב';
-        document.getElementById('filterDE').innerText = 'גרמניה';
-        document.getElementById('filterBR').innerText = 'ברזיל';
-        document.getElementById('filterBMW').innerText = 'BMW';
-        document.getElementById('filterPetronas').innerText = 'פטרונס';
-        document.getElementById('filterAmazon').innerText = 'אמזון';
-
-        // Tabelle: Länder auf Hebräisch
-        document.getElementById('de').innerText = 'גרמניה';
-        document.getElementById('us').innerText = 'ארה"ב';
-        document.getElementById('br').innerText = 'ברזיל';
-    }
+    // Menü Positionierung
+    localMenu.style.display = lang === 'he' ? 'block' : 'none';
 }
 
-// Menü-Icon Funktionalität
+// Menü ein- und ausblenden
 function toggleMenu() {
-    const menu = document.getElementById('localMenu');
-    menu.style.display = (menu.style.display === 'none' || menu.style.display === '') ? 'block' : 'none';
+    const localMenu = document.getElementById('localMenu');
+    localMenu.style.display = localMenu.style.display === 'block' ? 'none' : 'block';
 }
 
-// Tabellenfilter
+// Tabelle filtern
 function filterTable() {
-    const filter = document.getElementById('filterSelect').value.toLowerCase();
-    const searchInput = document.getElementById('searchInput').value.toLowerCase();
+    const filter = document.getElementById('filterSelect').value;
+    const search = document.getElementById('searchInput').value.toLowerCase();
     const rows = document.querySelectorAll('#emissionsTable tbody tr');
 
     rows.forEach(row => {
-        const country = row.getAttribute('data-country').toLowerCase();
-        const company = row.getAttribute('data-company').toLowerCase();
-        const emission = row.getAttribute('data-emission').toLowerCase();
-        const matchesFilter = filter === 'all' || country === filter || company === filter;
-        const matchesSearch = country.includes(searchInput) || company.includes(searchInput) || emission.includes(searchInput);
+        const country = row.dataset.country;
+        const company = row.dataset.company.toLowerCase();
+        const emission = row.dataset.emission;
 
-        row.style.display = (matchesFilter && matchesSearch) ? '' : 'none';
+        const show = (filter === 'all' || filter === country || filter === company) &&
+            (company.includes(search) || emission.includes(search));
+
+        row.style.display = show ? '' : 'none';
     });
 }
