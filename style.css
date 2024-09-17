@@ -96,8 +96,7 @@ footer {
     padding: 10px;
     background-color: #4CAF50;
     color: white;
-    position: relative;
+    position: fixed; /* Fixiert den Footer am Ende der Seite */
     width: 100%;
     bottom: 0;
-    clear: both; /* Sicherstellen, dass der Footer am Ende bleibt */
 }
