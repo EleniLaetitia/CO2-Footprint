@@ -47,13 +47,13 @@
         <h2 id="tableTitle">CO2-Emissionen</h2>
         <label for="filterSelect" id="filterLabel">Filter nach:</label>
         <select id="filterSelect" onchange="filterTable()">
-            <option value="all">Alle</option>
-            <option value="us">USA</option>
-            <option value="de">Deutschland</option>
-            <option value="br">Brasilien</option>
-            <option value="bmw">BMW</option>
-            <option value="petronas">Petronas</option>
-            <option value="amazon">Amazon</option>
+            <option value="all" id="filterAll">Alle</option>
+            <option value="us" id="filterUS">USA</option>
+            <option value="de" id="filterDE">Deutschland</option>
+            <option value="br" id="filterBR">Brasilien</option>
+            <option value="bmw" id="filterBMW">BMW</option>
+            <option value="petronas" id="filterPetronas">Petronas</option>
+            <option value="amazon" id="filterAmazon">Amazon</option>
         </select>
         <input type="text" id="searchInput" placeholder="Suche..." oninput="filterTable()">
         <table id="emissionsTable">
