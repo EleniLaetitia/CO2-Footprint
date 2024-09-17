@@ -1,21 +1,18 @@
-/* Allgemeine Stile */
 body {
     font-family: Arial, sans-serif;
-    background-color: #2f2f2f; /* Dunkelgrauer Hintergrund */
-    color: #ffffff; /* Weißer Text */
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    direction: ltr; /* Standard-Richtung */
+    background-color: #2f2f2f; /* Dunkelgrauer Hintergrund */
+    color: #ffffff; /* Weißer Text */
+    direction: ltr; /* Standard-Lesereihenfolge */
 }
 
 header {
-    background-color: #1c1c1c;
-    color: #ffffff;
-    padding: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 10px;
+    background-color: #333333; /* Dunkler Hintergrund für Header */
 }
 
 .logo img {
@@ -23,9 +20,9 @@ header {
 }
 
 .global-nav ul {
-    list-style-type: none;
-    padding: 0;
+    list-style: none;
     margin: 0;
+    padding: 0;
     display: flex;
 }
 
@@ -41,30 +38,22 @@ header {
 .menu-icon {
     font-size: 24px;
     cursor: pointer;
-    display: none; /* Standardmäßig ausgeblendet */
-}
-
-.language-switch select {
-    background-color: #1c1c1c;
-    color: #ffffff;
-    border: none;
-    padding: 5px;
 }
 
 .local-menu {
-    position: absolute;
-    top: 60px;
+    position: fixed;
+    top: 0;
     left: 0;
-    background-color: #1c1c1c;
-    color: #ffffff;
+    background-color: #333333; /* Hintergrundfarbe des Menüs */
     padding: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+    border-right: 1px solid #444444; /* Trennlinie */
+    width: 200px;
 }
 
 .local-menu ul {
-    list-style-type: none;
-    padding: 0;
+    list-style: none;
     margin: 0;
+    padding: 0;
 }
 
 .local-menu li {
@@ -76,32 +65,40 @@ header {
     text-decoration: none;
 }
 
-main {
-    padding: 20px;
+.welcome {
     text-align: center;
+    margin: 20px 0;
+}
+
+#welcomeText, #tableTitle, #filterLabel, #footerText {
+    margin: 0;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    margin: 20px 0;
+}
+
+table, th, td {
+    border: 1px solid #ffffff;
 }
 
 th, td {
     padding: 10px;
-    border: 1px solid #ffffff;
+    text-align: left;
 }
 
-th {
-    background-color: #333333;
+tfoot {
+    background-color: #333333; /* Hintergrundfarbe des Fußbereichs */
+    color: #ffffff;
 }
 
 footer {
-    background-color: #1c1c1c;
-    color: #ffffff;
-    text-align: center;
-    padding: 10px;
     position: fixed;
     bottom: 0;
     width: 100%;
+    background-color: #333333; /* Hintergrundfarbe des Fußbereichs */
+    padding: 10px;
+    text-align: center;
 }
