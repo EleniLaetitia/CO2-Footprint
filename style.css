@@ -1,18 +1,21 @@
+/* Allgemeine Stile */
 body {
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
     background-color: #2f2f2f; /* Dunkelgrauer Hintergrund */
     color: #ffffff; /* Weißer Text */
-    direction: ltr; /* Standard-Lesereihenfolge */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    direction: ltr; /* Standard-Richtung */
 }
 
 header {
+    background-color: #1c1c1c;
+    color: #ffffff;
+    padding: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
-    background-color: #333333; /* Dunkler Hintergrund für Header */
 }
 
 .logo img {
@@ -20,9 +23,9 @@ header {
 }
 
 .global-nav ul {
-    list-style: none;
-    margin: 0;
+    list-style-type: none;
     padding: 0;
+    margin: 0;
     display: flex;
 }
 
@@ -38,22 +41,30 @@ header {
 .menu-icon {
     font-size: 24px;
     cursor: pointer;
+    display: none; /* Standardmäßig ausgeblendet */
+}
+
+.language-switch select {
+    background-color: #1c1c1c;
+    color: #ffffff;
+    border: none;
+    padding: 5px;
 }
 
 .local-menu {
-    position: fixed;
-    top: 0;
+    position: absolute;
+    top: 60px;
     left: 0;
-    background-color: #333333; /* Hintergrundfarbe des Menüs */
+    background-color: #1c1c1c;
+    color: #ffffff;
     padding: 10px;
-    border-right: 1px solid #444444; /* Trennlinie */
-    width: 200px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
 }
 
 .local-menu ul {
-    list-style: none;
-    margin: 0;
+    list-style-type: none;
     padding: 0;
+    margin: 0;
 }
 
 .local-menu li {
@@ -65,40 +76,32 @@ header {
     text-decoration: none;
 }
 
-.welcome {
+main {
+    padding: 20px;
     text-align: center;
-    margin: 20px 0;
-}
-
-#welcomeText, #tableTitle, #filterLabel, #footerText {
-    margin: 0;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    margin: 20px 0;
-}
-
-table, th, td {
-    border: 1px solid #ffffff;
+    margin-top: 20px;
 }
 
 th, td {
     padding: 10px;
-    text-align: left;
+    border: 1px solid #ffffff;
 }
 
-tfoot {
-    background-color: #333333; /* Hintergrundfarbe des Fußbereichs */
-    color: #ffffff;
+th {
+    background-color: #333333;
 }
 
 footer {
+    background-color: #1c1c1c;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px;
     position: fixed;
     bottom: 0;
     width: 100%;
-    background-color: #333333; /* Hintergrundfarbe des Fußbereichs */
-    padding: 10px;
-    text-align: center;
 }
