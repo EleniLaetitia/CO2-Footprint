@@ -31,21 +31,13 @@ function changeLanguage() {
         document.getElementById('filterBMW').innerText = 'BMW';
         document.getElementById('filterPetronas').innerText = 'Petronas';
         document.getElementById('filterAmazon').innerText = 'Amazon';
-
-        // Tabelle: Länder und Unternehmen auf Deutsch
-        document.getElementById('de').innerText = 'Deutschland';
-        document.getElementById('us').innerText = 'USA';
-        document.getElementById('br').innerText = 'Brasilien';
-        document.getElementById('bmw').innerText = 'BMW';
-        document.getElementById('amazon').innerText = 'Amazon';
-        document.getElementById('petronas').innerText = 'Petronas';
     } else if (lang === 'en') {
         document.body.style.direction = 'ltr';  // Links-nach-rechts
         localMenu.style.right = 'auto';         // Menü auf der linken Seite
         localMenu.style.left = '0';             // Standard-Position
-
-        document.getElementById('title').innerText = 'CO2-Footprint';
-        document.getElementById('welcomeText').innerText = 'Welcome to our CO2-Footprint website. This site aims to provide more transparency.';
+        
+        document.getElementById('title').innerText = 'CO2 Footprint';
+        document.getElementById('welcomeText').innerText = 'Welcome to our CO2 Footprint website. This page aims to provide more transparency.';
         document.getElementById('homeLink').innerText = 'Home';
         document.getElementById('aboutLink').innerText = 'About Us';
         document.getElementById('contactLink').innerText = 'Contact';
@@ -57,7 +49,7 @@ function changeLanguage() {
         document.getElementById('countryColumn').innerText = 'Country';
         document.getElementById('companyColumn').innerText = 'Company';
         document.getElementById('emissionColumn').innerText = 'CO2 Emissions (in tons)';
-        document.getElementById('footerText').innerText = '© 2024 CO2-Footprint. All rights reserved. Legal Notice and Privacy Policy';
+        document.getElementById('footerText').innerText = '© 2024 CO2 Footprint. All rights reserved. Imprint and Privacy Policy';
 
         // Filteroptionen auf Englisch
         document.getElementById('filterAll').innerText = 'All';
@@ -67,77 +59,64 @@ function changeLanguage() {
         document.getElementById('filterBMW').innerText = 'BMW';
         document.getElementById('filterPetronas').innerText = 'Petronas';
         document.getElementById('filterAmazon').innerText = 'Amazon';
-
-        // Tabelle: Länder und Unternehmen auf Englisch
-        document.getElementById('de').innerText = 'Germany';
-        document.getElementById('us').innerText = 'USA';
-        document.getElementById('br').innerText = 'Brazil';
-        document.getElementById('bmw').innerText = 'BMW';
-        document.getElementById('amazon').innerText = 'Amazon';
-        document.getElementById('petronas').innerText = 'Petronas';
     } else if (lang === 'he') {
         document.body.style.direction = 'rtl';  // Rechts-nach-links
-        localMenu.style.left = 'auto';         // Menü auf der rechten Seite
-        localMenu.style.right = '0';           // Position für Hebräisch
-
-        document.getElementById('title').innerText = 'ניקוד CO2';
-        document.getElementById('welcomeText').innerText = 'ברוכים הבאים לאתר ניקוד CO2 שלנו. האתר הזה שואף לספק שקיפות רבה יותר.';
+        localMenu.style.left = 'auto';          // Menü auf der rechten Seite
+        localMenu.style.right = '0';            // Standard-Position
+        
+        document.getElementById('title').innerText = 'כדור הארץ';
+        document.getElementById('welcomeText').innerText = 'ברוכים הבאים לאתר CO2 Footprint שלנו. דף זה נועד לספק שקיפות רבה יותר.';
         document.getElementById('homeLink').innerText = 'דף הבית';
-        document.getElementById('aboutLink').innerText = 'אודותינו';
+        document.getElementById('aboutLink').innerText = 'אודות';
         document.getElementById('contactLink').innerText = 'צור קשר';
-        document.getElementById('co2Link').innerText = 'אודות CO2';
+        document.getElementById('co2Link').innerText = 'על CO2';
         document.getElementById('environmentLink').innerText = 'סביבה';
         document.getElementById('researchLink').innerText = 'מחקר';
-        document.getElementById('tableTitle').innerText = 'פליטת CO2';
+        document.getElementById('tableTitle').innerText = 'פליטות CO2';
         document.getElementById('filterLabel').innerText = 'סנן לפי:';
         document.getElementById('countryColumn').innerText = 'מדינה';
         document.getElementById('companyColumn').innerText = 'חברה';
-        document.getElementById('emissionColumn').innerText = 'פליטת CO2 (בטון)';
-        document.getElementById('footerText').innerText = '© 2024 ניקוד CO2. כל הזכויות שמורות. מידע משפטי ומדיניות פרטיות';
+        document.getElementById('emissionColumn').innerText = 'פליטות CO2 (בטון)';
+        document.getElementById('footerText').innerText = '© 2024 CO2 Footprint. כל הזכויות שמורות. מונחון פרטיות ותנאים';
 
         // Filteroptionen auf Hebräisch
-        document.getElementById('filterAll').innerText = 'הכול';
+        document.getElementById('filterAll').innerText = 'הכל';
         document.getElementById('filterUS').innerText = 'ארה"ב';
         document.getElementById('filterDE').innerText = 'גרמניה';
         document.getElementById('filterBR').innerText = 'ברזיל';
         document.getElementById('filterBMW').innerText = 'BMW';
-        document.getElementById('filterPetronas').innerText = 'פטרונס';
+        document.getElementById('filterPetronas').innerText = 'פטרונאס';
         document.getElementById('filterAmazon').innerText = 'אמזון';
-
-        // Tabelle: Länder und Unternehmen auf Hebräisch
-        document.getElementById('de').innerText = 'גרמניה';
-        document.getElementById('us').innerText = 'ארה"ב';
-        document.getElementById('br').innerText = 'ברזיל';
-        document.getElementById('bmw').innerText = 'BMW';
-        document.getElementById('amazon').innerText = 'אמזון';
-        document.getElementById('petronas').innerText = 'פטרונס';
     }
 }
 
-// Filtert die Tabelle basierend auf der Auswahl
-function filterTable() {
-    const filter = document.getElementById('filterSelect').value;
-    const searchInput = document.getElementById('searchInput').value.toLowerCase();
-    const rows = document.querySelectorAll('#emissionsTable tbody tr');
-    
-    rows.forEach(row => {
-        const country = row.getAttribute('data-country');
-        const company = row.getAttribute('data-company');
-        const emission = row.getAttribute('data-emission');
-        const isCountryMatch = filter === 'all' || country === filter;
-        const isCompanyMatch = filter === 'all' || company === filter;
-        const isSearchMatch = row.textContent.toLowerCase().includes(searchInput);
-        
-        if (isCountryMatch && isCompanyMatch && isSearchMatch) {
-            row.style.display = '';
-        } else {
-            row.style.display = 'none';
-        }
-    });
+// Menü ein- und ausblenden
+function toggleMenu() {
+    const localMenu = document.getElementById('localMenu');
+    localMenu.style.display = localMenu.style.display === 'block' ? 'none' : 'block';
 }
 
-// Zeigt oder versteckt das lokale Menü
-function toggleMenu() {
-    const menu = document.getElementById('localMenu');
-    menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+// Filtert die Tabelle basierend auf den Benutzereingaben
+function filterTable() {
+    const filter = document.getElementById('filterSelect').value;
+    const search = document.getElementById('searchInput').value.toLowerCase();
+    const rows = document.querySelectorAll('#emissionsTable tbody tr');
+
+    rows.forEach(row => {
+        const country = row.querySelector('td:nth-child(1)').textContent.toLowerCase();
+        const company = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
+        const emission = row.querySelector('td:nth-child(3)').textContent.toLowerCase();
+
+        const matchesFilter = filter === 'all' || 
+            (filter === 'us' && country === 'usa') ||
+            (filter === 'de' && country === 'deutschland') ||
+            (filter === 'br' && country === 'brasilien') ||
+            (filter === 'bmw' && company === 'bmw') ||
+            (filter === 'petronas' && company === 'petronas') ||
+            (filter === 'amazon' && company === 'amazon');
+
+        const matchesSearch = country.includes(search) || company.includes(search);
+
+        row.style.display = matchesFilter && matchesSearch ? '' : 'none';
+    });
 }
