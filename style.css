@@ -1,16 +1,27 @@
-body {
-    font-family: Arial, sans-serif;
+/* Reset-Styles */
+body, html {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #2e2e2e; /* Dunkelgrauer Hintergrund */
+    color: #f0f0f0; /* Helle Textfarbe */
+}
+
+/* Header-Stile */
 header {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding: 10px;
-    background-color: #f4f4f4;
-    border-bottom: 1px solid #ccc;
-    position: relative;
+    background-color: #333; /* Dunkelgrauer Header */
+    border-bottom: 1px solid #444;
 }
 
 .logo img {
@@ -22,8 +33,6 @@ header {
     margin: 0;
     padding: 0;
     display: flex;
-    flex-grow: 1;
-    justify-content: center;
 }
 
 .global-nav li {
@@ -32,27 +41,30 @@ header {
 
 .global-nav a {
     text-decoration: none;
-    color: #333;
+    color: #f0f0f0; /* Helle Textfarbe */
 }
 
 .menu-icon {
-    font-size: 24px;
     cursor: pointer;
-    margin-left: auto;
+    color: #f0f0f0; /* Helle Textfarbe */
 }
 
-.language-switch {
+.language-switch select {
     margin-left: 10px;
+    background-color: #444; /* Dunkelgraue Hintergrundfarbe für Auswahl */
+    color: #f0f0f0; /* Helle Textfarbe */
 }
 
+/* Menü-Stile */
 .local-menu {
-    display: none;
-    position: absolute;
-    top: 60px;
+    position: fixed;
+    top: 0;
     right: 0;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    background-color: #333; /* Dunkelgrauer Menü-Hintergrund */
+    border: 1px solid #444;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    width: 200px;
+    padding: 10px;
 }
 
 .local-menu ul {
@@ -62,21 +74,17 @@ header {
 }
 
 .local-menu li {
-    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
 }
 
 .local-menu a {
-    display: block;
-    padding: 10px;
     text-decoration: none;
-    color: #333;
+    color: #f0f0f0; /* Helle Textfarbe */
 }
 
-.local-menu a:hover {
-    background-color: #f0f0f0;
-}
-
+/* Hauptinhalt-Stile */
 main {
+    flex: 1;
     padding: 20px;
     text-align: center;
 }
@@ -84,26 +92,41 @@ main {
 table {
     width: 100%;
     border-collapse: collapse;
-    margin: 20px 0;
+    margin-top: 20px;
+    background-color: #444; /* Dunkelgraue Tabellen-Hintergrundfarbe */
 }
 
 th, td {
-    border: 1px solid #ccc;
     padding: 10px;
+    border: 1px solid #555; /* Etwas hellerer Grauton für Tabelle */
     text-align: left;
+    color: #f0f0f0; /* Helle Textfarbe */
 }
 
-tfoot {
-    text-align: center;
-    padding: 10px;
-}
-
+/* Footer-Stile */
 footer {
-    background-color: #f4f4f4;
+    background-color: #333; /* Dunkelgrauer Footer-Hintergrund */
+    border-top: 1px solid #444;
     padding: 10px;
     text-align: center;
-    border-top: 1px solid #ccc;
-    position: fixed;
-    bottom: 0;
+    color: #f0f0f0; /* Helle Textfarbe */
+    position: relative;
     width: 100%;
+    bottom: 0;
+}
+
+table {
+    margin: 20px auto;
+    border-collapse: collapse;
+    width: 80%;
+}
+
+table, th, td {
+    border: 1px solid #555;
+    padding: 8px;
+}
+
+th {
+    background-color: #555; /* Etwas heller als Tabellen-Hintergrund */
+    color: #f0f0f0; /* Helle Textfarbe */
 }
