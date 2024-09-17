@@ -108,12 +108,12 @@ function filterTable() {
         const emission = row.querySelector('td:nth-child(3)').textContent.toLowerCase();
 
         const matchesFilter = filter === 'all' || 
-            (filter === 'us' && country === 'usa') ||
-            (filter === 'de' && country === 'deutschland') ||
-            (filter === 'br' && country === 'brasilien') ||
-            (filter === 'bmw' && company === 'bmw') ||
-            (filter === 'petronas' && company === 'petronas') ||
-            (filter === 'amazon' && company === 'amazon');
+            (filter === 'us' && country === document.getElementById('us').textContent.toLowerCase()) ||
+            (filter === 'de' && country === document.getElementById('de').textContent.toLowerCase()) ||
+            (filter === 'br' && country === document.getElementById('br').textContent.toLowerCase()) ||
+            (filter === 'bmw' && company === document.getElementById('filterBMW').textContent.toLowerCase()) ||
+            (filter === 'petronas' && company === document.getElementById('filterPetronas').textContent.toLowerCase()) ||
+            (filter === 'amazon' && company === document.getElementById('filterAmazon').textContent.toLowerCase());
 
         const matchesSearch = country.includes(search) || company.includes(search);
 
