@@ -1,17 +1,18 @@
-/* Grundlegende Layout- und Stileinstellungen */
+/* Global Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    direction: ltr;
 }
 
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
-    background-color: #f4f4f4;
-    border-bottom: 1px solid #ddd;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
 }
 
 .logo img {
@@ -19,73 +20,67 @@ header {
 }
 
 .global-nav ul {
-    list-style: none;
+    list-style-type: none;
     margin: 0;
     padding: 0;
     display: flex;
-    gap: 15px;
 }
 
-.global-nav a {
+.global-nav ul li {
+    margin-right: 15px;
+}
+
+.global-nav ul li a {
+    color: white;
     text-decoration: none;
-    color: #333;
-    font-weight: bold;
-}
-
-.menu-icon {
-    font-size: 24px;
-    cursor: pointer;
-}
-
-.language-switch select {
-    padding: 5px;
-}
-
-.local-menu {
-    background-color: #f4f4f4;
-    border-top: 1px solid #ddd;
-    padding: 10px;
-}
-
-.local-menu ul {
-    list-style: none;
-    padding: 0;
-}
-
-.local-menu a {
-    text-decoration: none;
-    color: #333;
-}
-
-main {
-    padding: 20px;
-    text-align: center;
-}
-
-#welcomeText {
     font-size: 18px;
 }
 
-#filterSelect, #searchInput {
-    margin: 10px;
-    padding: 5px;
+.language-switch select {
+    font-size: 18px;
+}
+
+.menu-icon {
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.local-menu ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.local-menu ul li {
+    margin-bottom: 10px;
+}
+
+main {
+    text-align: center;
+    margin: 20px;
 }
 
 table {
-    width: 100%;
     margin: 20px auto;
     border-collapse: collapse;
+    width: 80%;
 }
 
-th, td {
+table, th, td {
     border: 1px solid #ddd;
-    padding: 10px;
-    text-align: left;
+    padding: 8px;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
 }
 
 footer {
     text-align: center;
-    padding: 20px;
-    background-color: #f4f4f4;
-    border-top: 1px solid #ddd;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
 }
