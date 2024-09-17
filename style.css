@@ -2,8 +2,9 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #2e2e2e;
-    color: #ffffff;
+    background-color: #2f2f2f; /* Dunkelgrauer Hintergrund */
+    color: #ffffff; /* Weißer Text */
+    direction: ltr; /* Standard-Lesereihenfolge */
 }
 
 header {
@@ -11,7 +12,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    background-color: #333;
+    background-color: #333333; /* Dunkler Hintergrund für Header */
 }
 
 .logo img {
@@ -39,22 +40,14 @@ header {
     cursor: pointer;
 }
 
-.language-switch select {
-    background-color: #444;
-    color: #fff;
-    border: none;
-    padding: 5px;
-}
-
 .local-menu {
     position: fixed;
     top: 0;
     left: 0;
+    background-color: #333333; /* Hintergrundfarbe des Menüs */
+    padding: 10px;
+    border-right: 1px solid #444444; /* Trennlinie */
     width: 200px;
-    background-color: #333;
-    padding: 20px;
-    box-shadow: 2px 0 5px rgba(0,0,0,0.5);
-    z-index: 1000;
 }
 
 .local-menu ul {
@@ -64,7 +57,7 @@ header {
 }
 
 .local-menu li {
-    margin-bottom: 10px;
+    margin: 10px 0;
 }
 
 .local-menu a {
@@ -72,29 +65,40 @@ header {
     text-decoration: none;
 }
 
-main {
-    padding: 20px;
+.welcome {
     text-align: center;
+    margin: 20px 0;
 }
 
-#emissionsTable {
+#welcomeText, #tableTitle, #filterLabel, #footerText {
+    margin: 0;
+}
+
+table {
     width: 100%;
-    margin-top: 20px;
     border-collapse: collapse;
+    margin: 20px 0;
 }
 
-#emissionsTable th, #emissionsTable td {
+table, th, td {
     border: 1px solid #ffffff;
-    padding: 8px;
-    text-align: center;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+tfoot {
+    background-color: #333333; /* Hintergrundfarbe des Fußbereichs */
+    color: #ffffff;
 }
 
 footer {
     position: fixed;
     bottom: 0;
     width: 100%;
-    background-color: #333;
-    color: #ffffff;
-    text-align: center;
+    background-color: #333333; /* Hintergrundfarbe des Fußbereichs */
     padding: 10px;
+    text-align: center;
 }
