@@ -12,11 +12,16 @@ function changeLanguage() {
         document.getElementById('environmentLink').innerText = 'Umwelt';
         document.getElementById('researchLink').innerText = 'Forschung';
         document.getElementById('tableTitle').innerText = 'CO2-Emissionen';
-        document.getElementById('filterLabel').innerText = 'Filtern nach:';
+        document.getElementById('filterLabel').innerText = 'Filter nach:';
         document.getElementById('countryColumn').innerText = 'Land';
         document.getElementById('companyColumn').innerText = 'Unternehmen';
         document.getElementById('emissionColumn').innerText = 'CO2-Ausstoß (in Tonnen)';
         document.getElementById('footerText').innerText = '© 2024 CO2-Footprint. Alle Rechte vorbehalten. Impressum und Datenschutz';
+
+        // Tabelle: Länder auf Deutsch
+        document.getElementById('de').innerText = 'Deutschland';
+        document.getElementById('us').innerText = 'USA';
+        document.getElementById('br').innerText = 'Brasilien';
     } else if (lang === 'en') {
         document.getElementById('title').innerText = 'CO2-Footprint';
         document.getElementById('welcomeText').innerText = 'Welcome to our CO2-Footprint website. This site aims to provide more transparency.';
@@ -32,6 +37,11 @@ function changeLanguage() {
         document.getElementById('companyColumn').innerText = 'Company';
         document.getElementById('emissionColumn').innerText = 'CO2 Emissions (in tons)';
         document.getElementById('footerText').innerText = '© 2024 CO2-Footprint. All rights reserved. Legal Notice and Privacy Policy';
+
+        // Tabelle: Länder auf Englisch
+        document.getElementById('de').innerText = 'Germany';
+        document.getElementById('us').innerText = 'USA';
+        document.getElementById('br').innerText = 'Brazil';
     } else if (lang === 'he') {
         document.getElementById('title').innerText = 'טביעת רגל פחמנית';
         document.getElementById('welcomeText').innerText = 'ברוכים הבאים לאתר טביעת רגל פחמנית שלנו. אתר זה נועד להגביר את השקיפות.';
@@ -42,38 +52,38 @@ function changeLanguage() {
         document.getElementById('environmentLink').innerText = 'סביבה';
         document.getElementById('researchLink').innerText = 'מחקר';
         document.getElementById('tableTitle').innerText = 'פליטות פחמן';
-        document.getElementById('filterLabel').innerText = 'סנן לפי:';
+        document.getElementById('filterLabel').innerText = 'סינון לפי:';
         document.getElementById('countryColumn').innerText = 'מדינה';
         document.getElementById('companyColumn').innerText = 'חברה';
         document.getElementById('emissionColumn').innerText = 'פליטות CO2 (בטונות)';
         document.getElementById('footerText').innerText = '© 2024 טביעת רגל פחמנית. כל הזכויות שמורות. הודעות משפטיות ומדיניות פרטיות';
+
+        // Tabelle: Länder auf Hebräisch
+        document.getElementById('de').innerText = 'גרמניה';
+        document.getElementById('us').innerText = 'ארה"ב';
+        document.getElementById('br').innerText = 'ברזיל';
     }
 }
 
-// Menü umschalten
+// Menü-Icon Funktionalität
 function toggleMenu() {
     const menu = document.getElementById('localMenu');
-    menu.style.display = (menu.style.display === 'none') ? 'block' : 'none';
+    menu.style.display = (menu.style.display === 'none' || menu.style.display === '') ? 'block' : 'none';
 }
 
-// Such- und Filterfunktion für die Tabelle
+// Tabellenfilter
 function filterTable() {
-    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-    const filterValue = document.getElementById('filterSelect').value;
+    const filter = document.getElementById('filterSelect').value;
+    const searchInput = document.getElementById('searchInput').value.toLowerCase();
     const rows = document.querySelectorAll('#emissionsTable tbody tr');
 
     rows.forEach(row => {
         const country = row.getAttribute('data-country');
         const company = row.getAttribute('data-company');
+        const emission = row.getAttribute('data-emission');
+        const matchesFilter = filter === 'all' || country === filter || company === filter;
+        const matchesSearch = country.includes(searchInput) || company.includes(searchInput) || emission.includes(searchInput);
 
-        // Filterlogik für Länder und Unternehmen
-        const matchesFilter = (filterValue === 'all') || (filterValue === country) || (filterValue === company);
-        const matchesSearch = row.innerText.toLowerCase().includes(searchTerm);
-
-        if (matchesFilter && matchesSearch) {
-            row.style.display = '';
-        } else {
-            row.style.display = 'none';
-        }
+        row.style.display = (matchesFilter && matchesSearch) ? '' : 'none';
     });
 }
