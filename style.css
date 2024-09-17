@@ -1,18 +1,25 @@
-/* Global Styles */
-body {
-    font-family: Arial, sans-serif;
+/* Reset-Styles */
+body, html {
     margin: 0;
     padding: 0;
-    direction: ltr;
+    box-sizing: border-box;
 }
 
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header-Stile */
 header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     padding: 10px;
-    background-color: #4CAF50;
-    color: white;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #ddd;
 }
 
 .logo img {
@@ -20,58 +27,84 @@ header {
 }
 
 .global-nav ul {
-    list-style-type: none;
+    list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
 }
 
-.global-nav ul li {
-    margin-right: 15px;
+.global-nav li {
+    margin: 0 10px;
 }
 
-.global-nav ul li a {
-    color: white;
+.global-nav a {
     text-decoration: none;
-    font-size: 18px;
-}
-
-.language-switch select {
-    font-size: 18px;
+    color: #333;
 }
 
 .menu-icon {
-    font-size: 30px;
     cursor: pointer;
 }
 
+.language-switch select {
+    margin-left: 10px;
+}
+
+/* Menü-Stile */
 .local-menu {
-    position: absolute;
-    top: 60px; /* Abstand vom Header */
-    background-color: white;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: #f8f8f8;
     border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    width: 200px;
     padding: 10px;
-    display: none;
 }
 
 .local-menu ul {
-    list-style-type: none;
-    padding: 0;
+    list-style: none;
     margin: 0;
+    padding: 0;
 }
 
-.local-menu ul li {
+.local-menu li {
     margin-bottom: 10px;
 }
 
-.local-menu ul li a {
+.local-menu a {
     text-decoration: none;
-    color: #4CAF50;
+    color: #333;
 }
 
+/* Hauptinhalt-Stile */
 main {
+    flex: 1;
+    padding: 20px;
     text-align: center;
-    margin: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+/* Footer-Stile */
+footer {
+    background-color: #f8f8f8;
+    border-top: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
 table {
