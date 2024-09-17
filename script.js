@@ -113,14 +113,14 @@ function toggleMenu() {
 
 // Tabellenfilter
 function filterTable() {
-    const filter = document.getElementById('filterSelect').value;
+    const filter = document.getElementById('filterSelect').value.toLowerCase();
     const searchInput = document.getElementById('searchInput').value.toLowerCase();
     const rows = document.querySelectorAll('#emissionsTable tbody tr');
 
     rows.forEach(row => {
-        const country = row.getAttribute('data-country');
-        const company = row.getAttribute('data-company');
-        const emission = row.getAttribute('data-emission');
+        const country = row.getAttribute('data-country').toLowerCase();
+        const company = row.getAttribute('data-company').toLowerCase();
+        const emission = row.getAttribute('data-emission').toLowerCase();
         const matchesFilter = filter === 'all' || country === filter || company === filter;
         const matchesSearch = country.includes(searchInput) || company.includes(searchInput) || emission.includes(searchInput);
 
