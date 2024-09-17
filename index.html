@@ -9,23 +9,25 @@
 <body>
     <!-- Header mit Logo, globaler Navigation und Sprachwahl -->
     <header>
-        <div class="logo">
-            <img src="Logo CO2 Footprint.png" alt="CO2-Footprint Logo">
-        </div>
-        <nav class="global-nav">
-            <ul>
-                <li><a href="#" id="homeLink">Startseite</a></li>
-                <li><a href="#" id="aboutLink">Über uns</a></li>
-                <li><a href="#" id="contactLink">Kontakt</a></li>
-            </ul>
-        </nav>
-        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
-        <div class="language-switch">
-            <select id="languageSelect" onchange="changeLanguage()">
-                <option value="de">Deutsch</option>
-                <option value="en">English</option>
-                <option value="he">עברית</option>
-            </select>
+        <div class="header-container">
+            <div class="logo">
+                <img src="Logo CO2 Footprint.png" alt="CO2-Footprint Logo">
+            </div>
+            <nav class="global-nav">
+                <ul>
+                    <li><a href="#" id="homeLink">Startseite</a></li>
+                    <li><a href="#" id="aboutLink">Über uns</a></li>
+                    <li><a href="#" id="contactLink">Kontakt</a></li>
+                </ul>
+            </nav>
+            <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+            <div class="language-switch">
+                <select id="languageSelect" onchange="changeLanguage()">
+                    <option value="de">Deutsch</option>
+                    <option value="en">English</option>
+                    <option value="he">עברית</option>
+                </select>
+            </div>
         </div>
     </header>
 
@@ -86,7 +88,7 @@
 
     <!-- Footer mit rechtlichem Hinweis -->
     <footer>
-        <p id="footerText">&copy; 2024 CO2-Footprint. Alle Rechte vorbehalten. Impressum und Datenschutz</p>
+        <p id="footerText">&copy; 2024 CO2-Footprint. Alle Rechte vorbehalten. <a href="#impressum">Impressum</a> und <a href="#privacy">Datenschutz</a></p>
     </footer>
 
     <script src="script.js"></script>
