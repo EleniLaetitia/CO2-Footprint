@@ -2,12 +2,12 @@
 function changeLanguage() {
     const lang = document.getElementById('languageSelect').value;
     const localMenu = document.getElementById('localMenu');
-    
+
     if (lang === 'de') {
-        document.body.style.direction = 'ltr';  
-        localMenu.style.right = 'auto';         
-        localMenu.style.left = '0';             
-        
+        document.body.style.direction = 'ltr';
+        localMenu.style.right = 'auto';
+        localMenu.style.left = '0';
+
         document.getElementById('title').innerText = 'CO2-Footprint';
         document.getElementById('welcomeText').innerText = 'Willkommen auf unserer CO2-Footprint Website. Diese Seite soll zu mehr Transparenz führen.';
         document.getElementById('homeLink').innerText = 'Startseite';
@@ -33,16 +33,21 @@ function changeLanguage() {
         document.getElementById('filterAmazon').innerText = 'Amazon';
 
         // Tabelleninhalte auf Deutsch
-        document.querySelectorAll('tr[data-country="us"] td.country').forEach(td => td.innerText = 'USA');
         document.querySelectorAll('tr[data-country="de"] td.country').forEach(td => td.innerText = 'Deutschland');
+        document.querySelectorAll('tr[data-country="us"] td.country').forEach(td => td.innerText = 'USA');
         document.querySelectorAll('tr[data-country="br"] td.country').forEach(td => td.innerText = 'Brasilien');
-    } else if (lang === 'en') {
-        document.body.style.direction = 'ltr';  
-        localMenu.style.right = 'auto';         
-        localMenu.style.left = '0';             
 
-        document.getElementById('title').innerText = 'CO2-Footprint';
-        document.getElementById('welcomeText').innerText = 'Welcome to our CO2-Footprint website. This site aims to provide more transparency.';
+        document.querySelectorAll('tr[data-company="bmw"] td.company').forEach(td => td.innerText = 'BMW');
+        document.querySelectorAll('tr[data-company="amazon"] td.company').forEach(td => td.innerText = 'Amazon');
+        document.querySelectorAll('tr[data-company="petronas"] td.company').forEach(td => td.innerText = 'Petronas');
+
+    } else if (lang === 'en') {
+        document.body.style.direction = 'ltr';
+        localMenu.style.right = 'auto';
+        localMenu.style.left = '0';
+
+        document.getElementById('title').innerText = 'CO2 Footprint';
+        document.getElementById('welcomeText').innerText = 'Welcome to our CO2 Footprint website. This site aims to provide more transparency.';
         document.getElementById('homeLink').innerText = 'Home';
         document.getElementById('aboutLink').innerText = 'About Us';
         document.getElementById('contactLink').innerText = 'Contact';
@@ -54,7 +59,7 @@ function changeLanguage() {
         document.getElementById('countryColumn').innerText = 'Country';
         document.getElementById('companyColumn').innerText = 'Company';
         document.getElementById('emissionColumn').innerText = 'CO2 Emissions (in tons)';
-        document.getElementById('footerText').innerText = '© 2024 CO2-Footprint. All rights reserved. Legal Notice and Privacy Policy';
+        document.getElementById('footerText').innerText = '© 2024 CO2 Footprint. All rights reserved. Legal Notice and Privacy Policy';
 
         // Filteroptionen auf Englisch
         document.getElementById('filterAll').innerText = 'All';
@@ -66,13 +71,18 @@ function changeLanguage() {
         document.getElementById('filterAmazon').innerText = 'Amazon';
 
         // Tabelleninhalte auf Englisch
-        document.querySelectorAll('tr[data-country="us"] td.country').forEach(td => td.innerText = 'USA');
         document.querySelectorAll('tr[data-country="de"] td.country').forEach(td => td.innerText = 'Germany');
+        document.querySelectorAll('tr[data-country="us"] td.country').forEach(td => td.innerText = 'USA');
         document.querySelectorAll('tr[data-country="br"] td.country').forEach(td => td.innerText = 'Brazil');
+
+        document.querySelectorAll('tr[data-company="bmw"] td.company').forEach(td => td.innerText = 'BMW');
+        document.querySelectorAll('tr[data-company="amazon"] td.company').forEach(td => td.innerText = 'Amazon');
+        document.querySelectorAll('tr[data-company="petronas"] td.company').forEach(td => td.innerText = 'Petronas');
+
     } else if (lang === 'he') {
-        document.body.style.direction = 'rtl';  
-        localMenu.style.left = 'auto';         
-        localMenu.style.right = '0';           
+        document.body.style.direction = 'rtl';
+        localMenu.style.left = 'auto';
+        localMenu.style.right = '0';
 
         document.getElementById('title').innerText = 'ניקוד CO2';
         document.getElementById('welcomeText').innerText = 'ברוכים הבאים לאתר ניקוד CO2 שלנו. האתר נועד לספק יותר שקיפות.';
@@ -99,9 +109,13 @@ function changeLanguage() {
         document.getElementById('filterAmazon').innerText = 'אמזון';
 
         // Tabelleninhalte auf Hebräisch
-        document.querySelectorAll('tr[data-country="us"] td.country').forEach(td => td.innerText = 'ארה"ב');
         document.querySelectorAll('tr[data-country="de"] td.country').forEach(td => td.innerText = 'גרמניה');
+        document.querySelectorAll('tr[data-country="us"] td.country').forEach(td => td.innerText = 'ארה"ב');
         document.querySelectorAll('tr[data-country="br"] td.country').forEach(td => td.innerText = 'ברזיל');
+
+        document.querySelectorAll('tr[data-company="bmw"] td.company').forEach(td => td.innerText = 'BMW');
+        document.querySelectorAll('tr[data-company="amazon"] td.company').forEach(td => td.innerText = 'אמזון');
+        document.querySelectorAll('tr[data-company="petronas"] td.company').forEach(td => td.innerText = 'פטרונס');
     }
 }
 
@@ -117,18 +131,18 @@ function toggleMenu() {
 
 // Tabelle filtern
 function filterTable() {
-    const filter = document.getElementById('filterSelect').value;
+    const filter = document.getElementById('filterSelect').value.toLowerCase();
     const search = document.getElementById('searchInput').value.toLowerCase();
     const rows = document.querySelectorAll('#emissionsTable tbody tr');
-    
+
     rows.forEach(row => {
         const country = row.dataset.country.toLowerCase();
         const company = row.dataset.company.toLowerCase();
         const emission = row.dataset.emission;
-        
+
         const matchesFilter = (filter === 'all' || filter === country || filter === company);
         const matchesSearch = (!search || country.includes(search) || company.includes(search) || emission.includes(search));
-        
+
         if (matchesFilter && matchesSearch) {
             row.style.display = '';
         } else {
