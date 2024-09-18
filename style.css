@@ -40,6 +40,10 @@ header {
     cursor: pointer;
 }
 
+.language-switch {
+    margin-left: 20px;
+}
+
 .local-menu {
     position: fixed;
     top: 0;
@@ -74,6 +78,10 @@ header {
     margin: 0;
 }
 
+main {
+    padding: 0 20px;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -95,10 +103,8 @@ tfoot {
 }
 
 footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
     background-color: #333333; /* Hintergrundfarbe des Fußbereichs */
     padding: 10px;
     text-align: center;
+    color: #ffffff;
 }
